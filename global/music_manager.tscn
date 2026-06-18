@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cgcqdghtuwmmf"]
+
+[ext_resource type="Script" uid="uid://di6merpl4ulc8" path="res://global/scripts/music_manager.gd" id="1_57y8n"]
+[ext_resource type="PackedScene" uid="uid://ikqgje3vu0yh" path="res://ui/song.tscn" id="2_jhamn"]
+[ext_resource type="AudioStream" uid="uid://dkusmrmwijn3f" path="res://assets/music/01/intro_rhythm.wav" id="3_xd52x"]
+[ext_resource type="AudioStream" uid="uid://bcbqdfe8jke57" path="res://assets/music/01/intro_lead.wav" id="4_lul4r"]
+[ext_resource type="AudioStream" uid="uid://dq8hj1o0ppnr7" path="res://assets/music/01/loop_rhythm.wav" id="5_ekuvj"]
+[ext_resource type="AudioStream" uid="uid://xd24wu2aibn6" path="res://assets/music/01/loop_lead.wav" id="6_54quk"]
+[ext_resource type="AudioStream" uid="uid://cvl3g1vekpk7a" path="res://assets/music/01/outro_rhythm.wav" id="7_sdfcm"]
+[ext_resource type="AudioStream" uid="uid://byw83hn3785o4" path="res://assets/music/01/outro_lead.wav" id="8_k1edt"]
+[ext_resource type="AudioStream" uid="uid://cprty4qcuuvba" path="res://assets/music/02/intro_rhythm.wav" id="9_8oqg7"]
+[ext_resource type="AudioStream" uid="uid://d1i57yr8k5j40" path="res://assets/music/02/intro_lead.wav" id="10_sdpgi"]
+[ext_resource type="AudioStream" uid="uid://bpps7hgqo3bvi" path="res://assets/music/02/loop_rhythm.wav" id="11_n4oys"]
+[ext_resource type="AudioStream" uid="uid://8rqy5tcackps" path="res://assets/music/02/loop_lead.wav" id="12_4n2xl"]
+
+[node name="MusicManager" type="Node" unique_id=962444912]
+script = ExtResource("1_57y8n")
+
+[node name="Song1" parent="." unique_id=192903458 instance=ExtResource("2_jhamn")]
+song_name = "Menu"
+intro_rhythm = ExtResource("3_xd52x")
+intro_lead = ExtResource("4_lul4r")
+loop_rhythm = ExtResource("5_ekuvj")
+loop_lead = ExtResource("6_54quk")
+outro_rhythm = ExtResource("7_sdfcm")
+outro_lead = ExtResource("8_k1edt")
+
+[node name="Song2" parent="." unique_id=605536035 instance=ExtResource("2_jhamn")]
+song_name = "Game"
+intro_rhythm = ExtResource("9_8oqg7")
+intro_lead = ExtResource("10_sdpgi")
+loop_rhythm = ExtResource("11_n4oys")
+loop_lead = ExtResource("12_4n2xl")

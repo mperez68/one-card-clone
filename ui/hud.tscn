@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c55sp3jjtraie"]
+
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_rbyyf"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="2_276te"]
+[ext_resource type="Script" uid="uid://dxv0wh2o1haq3" path="res://ui/scripts/hud.gd" id="2_en2x2"]
+[ext_resource type="PackedScene" uid="uid://cclwhjjeyy50w" path="res://ui/options_panel.tscn" id="3_1v5rv"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="3_q43x7"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_q43x7"]
+
+[node name="HUD" type="Control" unique_id=27375061]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_rbyyf")
+script = ExtResource("2_en2x2")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1051922068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OptionsControl" type="CenterContainer" parent="MarginContainer" unique_id=31325320]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/OptionsControl" unique_id=375813947]
+layout_mode = 2
+
+[node name="TitlePanel" type="PanelContainer" parent="MarginContainer/OptionsControl/VBoxContainer" unique_id=980349813]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/OptionsControl/VBoxContainer/TitlePanel" unique_id=121320751]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = ExtResource("3_q43x7")
+horizontal_alignment = 1
+
+[node name="OptionsPanel" parent="MarginContainer/OptionsControl/VBoxContainer" unique_id=850112227 instance=ExtResource("3_1v5rv")]
+layout_mode = 2
+
+[node name="ReturnPanel" type="PanelContainer" parent="MarginContainer/OptionsControl/VBoxContainer" unique_id=1660159446]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsControl/VBoxContainer/ReturnPanel" unique_id=1396689017]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" parent="MarginContainer/OptionsControl/VBoxContainer/ReturnPanel/HBoxContainer" unique_id=1437571411 instance=ExtResource("2_276te")]
+layout_mode = 2
+text = "Return"
+
+[node name="QuitButton" parent="MarginContainer/OptionsControl/VBoxContainer/ReturnPanel/HBoxContainer" unique_id=1986256228 instance=ExtResource("5_q43x7")]
+layout_mode = 2
+text = "Back"
+back = true
+
+[node name="InGameControl" type="Control" parent="MarginContainer" unique_id=2030962016]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MenuButton" parent="MarginContainer/InGameControl" unique_id=1352353119 instance=ExtResource("2_276te")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+text = "Esc"
+
+[connection signal="pressed" from="MarginContainer/OptionsControl/VBoxContainer/ReturnPanel/HBoxContainer/ReturnButton" to="." method="_on_new_control_requested" binds= [0]]
+[connection signal="pressed" from="MarginContainer/InGameControl/MenuButton" to="." method="_on_new_control_requested" binds= [1]]

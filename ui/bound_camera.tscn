@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cd6hjqjtlew8v"]
+
+[ext_resource type="Script" uid="uid://butdvyqc6ow1r" path="res://ui/scripts/bound_camera.gd" id="1_xfg3d"]
+
+[sub_resource type="Gradient" id="Gradient_xfg3d"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w2rw5"]
+gradient = SubResource("Gradient_xfg3d")
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xfg3d"]
+gradient = SubResource("Gradient_xfg3d")
+width = 32
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+
+[node name="BoundCamera" type="Camera2D" unique_id=1760976908]
+script = ExtResource("1_xfg3d")
+scroll_speed = 600.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=645223380]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1483526646]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopScrollRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=385369761]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_w2rw5")
+
+[node name="RightScrollRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=187582465]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_xfg3d")
+
+[node name="BotScrollRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=49899080]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_w2rw5")
+flip_v = true
+
+[node name="LeftScrollRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=215091003]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = -32.0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_xfg3d")
+flip_h = true
+
+[connection signal="mouse_entered" from="CanvasLayer/Control/TopScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [true, 0]]
+[connection signal="mouse_exited" from="CanvasLayer/Control/TopScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [false, 0]]
+[connection signal="mouse_entered" from="CanvasLayer/Control/RightScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [true, 1]]
+[connection signal="mouse_exited" from="CanvasLayer/Control/RightScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [false, 1]]
+[connection signal="mouse_entered" from="CanvasLayer/Control/BotScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [true, 2]]
+[connection signal="mouse_exited" from="CanvasLayer/Control/BotScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [false, 2]]
+[connection signal="mouse_entered" from="CanvasLayer/Control/LeftScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [true, 3]]
+[connection signal="mouse_exited" from="CanvasLayer/Control/LeftScrollRect" to="." method="_on_scroll_rect_mouse_event" binds= [false, 3]]

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://c3njtoyv7xfje"]
+
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="1_600bw"]
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_o7a4m"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="2_f2ib0"]
+[ext_resource type="Script" uid="uid://cvv7h4qtri4g8" path="res://main_scenes/menus/scripts/menu_control.gd" id="2_not5v"]
+[ext_resource type="Script" uid="uid://bdimxwm4psorj" path="res://ui/scripts/credits_footer.gd" id="4_not5v"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_p5o37"]
+[ext_resource type="PackedScene" uid="uid://c18qfne8f4xr5" path="res://ui/footer_container.tscn" id="6_o7a4m"]
+
+[node name="CreditsMenu" type="Control" unique_id=94607635]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o7a4m")
+script = ExtResource("2_not5v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=202009754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InnerMarginsContainer" type="Control" parent="MarginContainer" unique_id=989431201]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/InnerMarginsContainer" unique_id=174712066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer" unique_id=938014337]
+layout_mode = 2
+
+[node name="HeaderPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=1458201375]
+layout_mode = 2
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/HeaderPanel" unique_id=1288688810]
+layout_mode = 2
+text = "Credits"
+label_settings = ExtResource("1_600bw")
+horizontal_alignment = 1
+
+[node name="CreditsPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=824273762]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel" unique_id=1549038246]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer" unique_id=1896787059]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1148993353]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])
+
+Tools Used:
+Ableton Live
+Massive Sound Library
+EastWest Sound Library
+Aseprite
+Tilesetter
+
+[/center]"
+fit_content = true
+
+[node name="GodotVersionLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1581874423]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Made in Godot 4.6.0.stable"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+script = ExtResource("4_not5v")
+
+[node name="FooterContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("6_o7a4m")]
+layout_mode = 2
+
+[node name="QuitButton" parent="MarginContainer/InnerMarginsContainer" unique_id=1180821417 instance=ExtResource("5_p5o37")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 0.0
+grow_vertical = 0
+text = "Back"
+back = true
+
+[connection signal="meta_clicked" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]

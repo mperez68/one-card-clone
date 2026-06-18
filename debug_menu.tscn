@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cdnpeet3onm56"]
+
+[ext_resource type="Script" uid="uid://b7h5nwq4g5gqr" path="res://debug_menu.gd" id="1_05ddu"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="2_vjgy2"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="3_5vgp0"]
+[ext_resource type="PackedScene" uid="uid://y23bf8ew2u57" path="res://ui/audio_slider.tscn" id="3_vjgy2"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_05ddu"]
+resource_local_to_scene = false
+
+[node name="DebugMenu" type="Control" unique_id=295004399]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05ddu")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1936657998]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1222080219]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=585133354]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1332375542]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("2_vjgy2")
+horizontal_alignment = 1
+
+[node name="AudioBusSlider" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1087602345 instance=ExtResource("3_vjgy2")]
+layout_mode = 2
+
+[node name="AudioBusSlider2" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=279877160 instance=ExtResource("3_vjgy2")]
+layout_mode = 2
+bus = "Music"
+
+[node name="AudioBusSlider3" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=989517591 instance=ExtResource("3_vjgy2")]
+layout_mode = 2
+bus = "Sfx"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2131713319]
+layout_mode = 2
+alignment = 1
+
+[node name="Song1Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=181409251 instance=ExtResource("3_5vgp0")]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_05ddu")
+text = "Song 1"
+
+[node name="Song2Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1807842077 instance=ExtResource("3_5vgp0")]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_05ddu")
+text = "Song 2"
+
+[node name="InvalidSongButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1206079673 instance=ExtResource("3_5vgp0")]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_05ddu")
+text = "Invalid Song"
+
+[node name="SongStopButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1784808065 instance=ExtResource("3_5vgp0")]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_05ddu")
+text = "Stop Music"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1196589234]
+layout_mode = 2
+alignment = 1
+
+[node name="RestartButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=242184848 instance=ExtResource("3_5vgp0")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "ForceRestart"
+
+[node name="OutroButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2064411541 instance=ExtResource("3_5vgp0")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "PlayOutro
+"
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=378905469]
+layout_mode = 2
+text = "Game State"
+label_settings = ExtResource("2_vjgy2")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=325867988]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=396416524 instance=ExtResource("3_5vgp0")]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=997920371 instance=ExtResource("3_5vgp0")]
+layout_mode = 2
+text = "Load"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Song1Button" to="." method="_on_song_button_pressed" binds= ["Menu"]]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Song2Button" to="." method="_on_song_button_pressed" binds= ["Game"]]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/InvalidSongButton" to="." method="_on_song_button_pressed" binds= ["Invalid Song"]]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/SongStopButton" to="." method="_on_song_stop_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer3/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer3/LoadButton" to="." method="_on_load_button_pressed"]

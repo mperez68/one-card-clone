@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://ct50vvobm0yfk"]
+
+[ext_resource type="PackedScene" uid="uid://cd6hjqjtlew8v" path="res://ui/bound_camera.tscn" id="1_akvua"]
+[ext_resource type="Script" uid="uid://coxacwjemhvcv" path="res://debug_scene.gd" id="1_xre04"]
+[ext_resource type="Texture2D" uid="uid://bpx4wbmoxfcpn" path="res://icon.svg" id="2_xre04"]
+[ext_resource type="PackedScene" uid="uid://c55sp3jjtraie" path="res://ui/hud.tscn" id="3_rec6y"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="4_32o2v"]
+
+[node name="DebugScene" type="Node2D" unique_id=197728274]
+script = ExtResource("1_xre04")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1459196197]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1279570095]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1644526515]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="LockButton" parent="CanvasLayer/Control/HBoxContainer" unique_id=814927453 instance=ExtResource("4_32o2v")]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "Lock"
+
+[node name="CenterButton" parent="CanvasLayer/Control/HBoxContainer" unique_id=548831579 instance=ExtResource("4_32o2v")]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "Center Focus"
+
+[node name="HUD" parent="CanvasLayer" unique_id=27375061 instance=ExtResource("3_rec6y")]
+
+[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=1995135534]
+scale = Vector2(12, 12)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=231528135]
+unique_name_in_owner = true
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=847703786]
+position = Vector2(128, 128)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=765407979]
+position = Vector2(-128, -129)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1941015852]
+position = Vector2(256, 256)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=2112377683]
+position = Vector2(-256, -256)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=26728616]
+position = Vector2(384, 384)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1722088045]
+position = Vector2(-384, -384)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1453223765]
+position = Vector2(512, 512)
+texture = ExtResource("2_xre04")
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=960249620]
+position = Vector2(-512, -512)
+texture = ExtResource("2_xre04")
+
+[node name="BoundCamera" parent="." unique_id=824576654 instance=ExtResource("1_akvua")]
+unique_name_in_owner = true
+locked = false
+
+[connection signal="toggled" from="CanvasLayer/Control/HBoxContainer/LockButton" to="." method="_on_lock_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/HBoxContainer/CenterButton" to="." method="_on_center_button_toggled"]

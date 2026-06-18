@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cclwhjjeyy50w"]
+
+[ext_resource type="Script" uid="uid://8gva3n8g3lax" path="res://ui/scripts/options_panel.gd" id="1_fg6fp"]
+[ext_resource type="PackedScene" uid="uid://y23bf8ew2u57" path="res://ui/audio_slider.tscn" id="1_vq557"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="2_fg6fp"]
+
+[node name="OptionsPanel" type="PanelContainer" unique_id=850112227]
+script = ExtResource("1_fg6fp")
+
+[node name="OptionsContainer" type="VBoxContainer" parent="." unique_id=1834454242]
+layout_mode = 2
+
+[node name="MasterSlider" parent="OptionsContainer" unique_id=1087602345 instance=ExtResource("1_vq557")]
+layout_mode = 2
+
+[node name="MusicSlider" parent="OptionsContainer" unique_id=1665504572 instance=ExtResource("1_vq557")]
+layout_mode = 2
+bus = "Music"
+
+[node name="SfxSlider" parent="OptionsContainer" unique_id=436534679 instance=ExtResource("1_vq557")]
+layout_mode = 2
+bus = "Sfx"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsContainer" unique_id=413262160]
+layout_mode = 2
+alignment = 1
+
+[node name="FullscreenButton" parent="OptionsContainer/HBoxContainer" unique_id=733894970 instance=ExtResource("2_fg6fp")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Fullscreen"
+
+[node name="BorderlessButton" parent="OptionsContainer/HBoxContainer" unique_id=1463904032 instance=ExtResource("2_fg6fp")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Borderless"
+
+[connection signal="toggled" from="OptionsContainer/HBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="OptionsContainer/HBoxContainer/BorderlessButton" to="." method="_on_borderless_button_toggled"]

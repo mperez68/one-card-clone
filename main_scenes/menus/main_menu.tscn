@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://duu3y5iwhrxg0"]
+
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_do6qc"]
+[ext_resource type="Script" uid="uid://dkfgbvo05f8o2" path="res://ui/scripts/title_label.gd" id="2_7p3sw"]
+[ext_resource type="Script" uid="uid://cvv7h4qtri4g8" path="res://main_scenes/menus/scripts/menu_control.gd" id="2_g8byo"]
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="2_ids5a"]
+[ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="4_vb3i7"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_vb3i7"]
+[ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="6_himie"]
+[ext_resource type="PackedScene" uid="uid://b27xpmt51ajfg" path="res://main_scenes/menus/options_menu.tscn" id="7_g8byo"]
+[ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="8_38vm8"]
+[ext_resource type="PackedScene" uid="uid://c3njtoyv7xfje" path="res://main_scenes/menus/credits_menu.tscn" id="9_38vm8"]
+[ext_resource type="PackedScene" uid="uid://c18qfne8f4xr5" path="res://ui/footer_container.tscn" id="9_yy0sh"]
+
+[sub_resource type="Resource" id="Resource_yy0sh"]
+script = ExtResource("6_himie")
+location_override = "res://debug_scene.tscn"
+button_text = "Debug Scene"
+metadata/_custom_type_script = "uid://cqkdtdqupov0c"
+
+[sub_resource type="Resource" id="Resource_wcnxn"]
+script = ExtResource("8_38vm8")
+packed_scene = ExtResource("7_g8byo")
+button_text = "Options"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_fagh0"]
+script = ExtResource("8_38vm8")
+packed_scene = ExtResource("9_38vm8")
+button_text = "Credits"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[node name="MainMenu" type="Control" unique_id=218653914 node_paths=PackedStringArray("hide_for_mobile")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_do6qc")
+script = ExtResource("2_g8byo")
+hide_for_mobile = [NodePath("MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer2/QuitButton")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=465557249]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InnerMarginsContainer" type="Control" parent="MarginContainer" unique_id=106121699]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/InnerMarginsContainer" unique_id=1612148763]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer" unique_id=1832428607]
+layout_mode = 2
+
+[node name="TitleContainer" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=580736885]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/TitleContainer" unique_id=246676301]
+layout_mode = 2
+text = "boilerplate_template"
+label_settings = ExtResource("2_ids5a")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_7p3sw")
+
+[node name="BodyContainer" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=829041760]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer" unique_id=1233430881]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer" unique_id=1447609585]
+layout_mode = 2
+alignment = 1
+
+[node name="SceneChangeButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer" unique_id=871362439 instance=ExtResource("4_vb3i7")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Debug Scene"
+scene_link = SubResource("Resource_yy0sh")
+
+[node name="OptionsButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer" unique_id=288394055 instance=ExtResource("4_vb3i7")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+scene_link = SubResource("Resource_wcnxn")
+to_back_stack = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer" unique_id=1435528435]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditsButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer2" unique_id=1251249292 instance=ExtResource("4_vb3i7")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Credits"
+scene_link = SubResource("Resource_fagh0")
+to_back_stack = true
+
+[node name="QuitButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer2" unique_id=1890902989 instance=ExtResource("5_vb3i7")]
+layout_mode = 2
+size_flags_horizontal = 3
+save = false
+
+[node name="FooterContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("9_yy0sh")]
+layout_mode = 2

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c18qfne8f4xr5"]
+
+[ext_resource type="Texture2D" uid="uid://cq44eo38hf0ig" path="res://assets/icons/footer_icon-export.png" id="1_r4s2q"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="2_q0yho"]
+[ext_resource type="Script" uid="uid://ccvt4jcjtvtea" path="res://ui/scripts/footer.gd" id="2_r4s2q"]
+
+[node name="FooterContainer" type="PanelContainer" unique_id=636837887]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1548488325]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=203406810]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_r4s2q")
+stretch_mode = 3
+
+[node name="FooterLabel" type="Label" parent="VBoxContainer" unique_id=1898864554]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "GEIST_COMM_GAMES, 2026"
+label_settings = ExtResource("2_q0yho")
+script = ExtResource("2_r4s2q")

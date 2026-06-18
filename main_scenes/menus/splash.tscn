@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dlus41dea6h08"]
+
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_pscy7"]
+[ext_resource type="Script" uid="uid://b3y54ybh7go0i" path="res://main_scenes/menus/scripts/splash.gd" id="1_sgpox"]
+[ext_resource type="Script" uid="uid://dkfgbvo05f8o2" path="res://ui/scripts/title_label.gd" id="2_77x6k"]
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="2_e3ffy"]
+[ext_resource type="Texture2D" uid="uid://eerq5utn18pb" path="res://assets/icons/header_icon.png" id="3_pscy7"]
+[ext_resource type="PackedScene" uid="uid://c18qfne8f4xr5" path="res://ui/footer_container.tscn" id="6_pscy7"]
+
+[node name="Splash" type="Control" unique_id=1964828285 node_paths=PackedStringArray("hide_for_mobile")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pscy7")
+script = ExtResource("1_sgpox")
+hide_for_mobile = [NodePath("CenterContainer/VBoxContainer/PanelContainer"), NodePath("CenterContainer/VBoxContainer/FooterContainer")]
+song = ""
+
+[node name="PauseTimer" type="Timer" parent="." unique_id=1016216947]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1865300858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1051475556]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=580911871]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_pscy7")
+stretch_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=911789679]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=1634635203]
+layout_mode = 2
+text = "boilerplate_template"
+label_settings = ExtResource("2_e3ffy")
+horizontal_alignment = 1
+script = ExtResource("2_77x6k")
+
+[node name="FooterContainer" parent="CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("6_pscy7")]
+layout_mode = 2
+
+[connection signal="timeout" from="PauseTimer" to="." method="_on_pause_timer_timeout"]

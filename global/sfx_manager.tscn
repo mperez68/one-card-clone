@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://gxx2105nbtt1"]
+
+[ext_resource type="Script" uid="uid://cghb0wostuhjr" path="res://global/scripts/sfx_manager.gd" id="1_xuqmn"]
+[ext_resource type="AudioStream" uid="uid://i6mpitoql1iv" path="res://assets/sfx/click.wav" id="2_1lb6b"]
+
+[node name="SfxManager" type="Node"]
+script = ExtResource("1_xuqmn")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_1lb6b")
+bus = &"Sfx"

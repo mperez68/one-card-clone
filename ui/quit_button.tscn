@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c1iwfo7rduuxg"]
+
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="1_7mrdu"]
+[ext_resource type="Script" uid="uid://5nk0sx6tkink" path="res://ui/scripts/quit_button.gd" id="2_4huft"]
+
+[node name="QuitButton" unique_id=1970711352 instance=ExtResource("1_7mrdu")]
+text = "Quit to Desktop"
+script = ExtResource("2_4huft")
+back = false
+save = null

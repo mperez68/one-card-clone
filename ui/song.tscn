@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ikqgje3vu0yh"]
+
+[ext_resource type="Script" uid="uid://d3p1ciava7op4" path="res://ui/scripts/song.gd" id="1_n66pc"]
+
+[node name="Song" type="Node" unique_id=192903458]
+script = ExtResource("1_n66pc")
+
+[node name="IntroRhythm" type="AudioStreamPlayer" parent="." unique_id=632944383]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="IntroLead" type="AudioStreamPlayer" parent="." unique_id=957418620]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="LoopRhythm" type="AudioStreamPlayer" parent="." unique_id=1883998478]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="LoopLead" type="AudioStreamPlayer" parent="." unique_id=1436991973]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="OutroRhythm" type="AudioStreamPlayer" parent="." unique_id=1702206023]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="OutroLead" type="AudioStreamPlayer" parent="." unique_id=1636872078]
+unique_name_in_owner = true
+bus = &"Music"
+
+[connection signal="finished" from="IntroRhythm" to="." method="_on_intro_finished"]
+[connection signal="finished" from="OutroRhythm" to="." method="_on_outro_finished"]
