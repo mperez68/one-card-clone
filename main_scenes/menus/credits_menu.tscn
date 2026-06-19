@@ -71,18 +71,51 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1148993353]
 layout_mode = 2
-size_flags_vertical = 3
 bbcode_enabled = true
-text = "[center]
-Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])
-
-Tools Used:
-Ableton Live
-Massive Sound Library
-EastWest Sound Library
-Aseprite
-Tilesetter[/center]"
+text = "[center]Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])[/center]"
 fit_content = true
+
+[node name="Label" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=439979277]
+layout_mode = 2
+text = "Tools Used:"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=140745094]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=538502523]
+layout_mode = 2
+text = "Ableton Live"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=1405995339]
+layout_mode = 2
+text = "Aseprite"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=2117854986]
+layout_mode = 2
+text = "Massive Sound Library"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=865397463]
+layout_mode = 2
+text = "Tilesetter"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=363788724]
+layout_mode = 2
+text = "EastWest Sound Library"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
 
 [node name="GodotVersionLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1581874423]
 layout_mode = 2
@@ -97,6 +130,7 @@ script = ExtResource("4_not5v")
 layout_mode = 2
 
 [node name="QuitButton" parent="MarginContainer/InnerMarginsContainer" unique_id=1180821417 instance=ExtResource("5_p5o37")]
+custom_minimum_size = Vector2(48, 20)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

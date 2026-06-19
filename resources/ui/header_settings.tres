@@ -2,9 +2,14 @@
 
 [ext_resource type="FontFile" uid="uid://ceg1s232ybolx" path="res://assets/fonts/Simple_Script.ttf" id="1_iwxya"]
 
+[sub_resource type="FontVariation" id="FontVariation_4bj61"]
+base_font = ExtResource("1_iwxya")
+spacing_bottom = -7
+
 [resource]
-font = ExtResource("1_iwxya")
+line_spacing = -7.0
+font = SubResource("FontVariation_4bj61")
 font_size = 14
 font_color = Color(0.827451, 0.85490197, 0.5137255, 1)
-outline_size = 7
+outline_size = 4
 outline_color = Color(0.11372549, 0.20784314, 0, 1)

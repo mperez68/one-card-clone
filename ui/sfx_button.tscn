@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ctvxct2chu33b" path="res://ui/scripts/sfx_button.gd" id="1_chgxa"]
 
 [node name="SfxButton" type="Button" unique_id=1026818470]
-custom_minimum_size = Vector2(32, 16)
+custom_minimum_size = Vector2(32, 20)
 offset_right = 8.0
 offset_bottom = 8.0
-text = "Button"
+text = "Btn"
 script = ExtResource("1_chgxa")
