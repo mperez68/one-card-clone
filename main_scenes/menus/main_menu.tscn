@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dkfgbvo05f8o2" path="res://ui/scripts/title_label.gd" id="2_7p3sw"]
 [ext_resource type="Script" uid="uid://cvv7h4qtri4g8" path="res://main_scenes/menus/scripts/menu_control.gd" id="2_g8byo"]
 [ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="2_ids5a"]
+[ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="3_wcnxn"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="4_vb3i7"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_vb3i7"]
 [ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="6_himie"]
@@ -41,6 +42,9 @@ theme = ExtResource("1_do6qc")
 script = ExtResource("2_g8byo")
 hide_for_mobile = [NodePath("MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer2/QuitButton")]
 
+[node name="BgRect" parent="." unique_id=741438001 instance=ExtResource("3_wcnxn")]
+layout_mode = 0
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=465557249]
 layout_mode = 1
 anchors_preset = 15
@@ -68,7 +72,8 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/TitleContainer" unique_id=246676301]
 layout_mode = 2
-text = "boilerplate_template"
+text = "One-Card
+Dungeon"
 label_settings = ExtResource("2_ids5a")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -111,6 +116,7 @@ to_back_stack = true
 [node name="QuitButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer2" unique_id=1890902989 instance=ExtResource("5_vb3i7")]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Quit"
 save = false
 
 [node name="FooterContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("9_yy0sh")]

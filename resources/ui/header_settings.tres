@@ -1,4 +1,10 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://x6yphufd1ppd"]
 
+[ext_resource type="FontFile" uid="uid://ceg1s232ybolx" path="res://assets/fonts/Simple_Script.ttf" id="1_iwxya"]
+
 [resource]
-font_size = 64
+font = ExtResource("1_iwxya")
+font_size = 14
+font_color = Color(0.827451, 0.85490197, 0.5137255, 1)
+outline_size = 7
+outline_color = Color(0.11372549, 0.20784314, 0, 1)

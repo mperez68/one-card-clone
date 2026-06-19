@@ -3,6 +3,7 @@
 [ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="1_c5csj"]
 [ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_h1gfu"]
 [ext_resource type="Script" uid="uid://bjur6ik8nil8a" path="res://main_scenes/menus/scripts/options_menu.gd" id="1_ipjqj"]
+[ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="2_qvjux"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="3_8wyxj"]
 [ext_resource type="PackedScene" uid="uid://cclwhjjeyy50w" path="res://ui/options_panel.tscn" id="4_8wyxj"]
 
@@ -14,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ipjqj")
+
+[node name="BgRect" parent="." unique_id=741438001 instance=ExtResource("2_qvjux")]
+layout_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1450593022]
 layout_mode = 1
@@ -55,9 +59,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 128.0
+offset_top = -24.0
+offset_right = 32.0
 offset_bottom = 0.0
 grow_vertical = 0
 text = "Back"
 back = true
+save = false

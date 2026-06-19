@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c18qfne8f4xr5"]
 
-[ext_resource type="Texture2D" uid="uid://cq44eo38hf0ig" path="res://assets/icons/footer_icon-export.png" id="1_r4s2q"]
+[ext_resource type="Texture2D" uid="uid://dy8kbpbffjkki" path="res://assets/icons/geist_logo.png" id="1_r4s2q"]
 [ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="2_q0yho"]
 [ext_resource type="Script" uid="uid://ccvt4jcjtvtea" path="res://ui/scripts/footer.gd" id="2_r4s2q"]
 

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bbtuq7qy671l2"]
+
+[sub_resource type="Gradient" id="Gradient_pscy7"]
+colors = PackedColorArray(0.11372549, 0.20784314, 0, 1, 0.1882353, 0.30980393, 0.0627451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1by8w"]
+gradient = SubResource("Gradient_pscy7")
+width = 256
+height = 192
+fill_to = Vector2(1, 1)
+
+[node name="BgRect" type="TextureRect" unique_id=741438001]
+offset_right = 256.0
+offset_bottom = 192.0
+texture = SubResource("GradientTexture2D_1by8w")

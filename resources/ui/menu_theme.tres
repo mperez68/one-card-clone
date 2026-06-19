@@ -1,24 +1,32 @@
 [gd_resource type="Theme" format=3 uid="uid://dxyu51du6xt8k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bs8b"]
-content_margin_left = 8.0
-content_margin_top = 16.0
-content_margin_right = 8.0
-content_margin_bottom = 16.0
-bg_color = Color(0, 0, 0, 0.3372549)
-border_width_left = 1
-border_width_top = 2
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[ext_resource type="Texture2D" uid="uid://daeh6cel7l3cu" path="res://assets/sprites/tiles.png" id="1_1cp1y"]
+[ext_resource type="FontFile" uid="uid://ceg1s232ybolx" path="res://assets/fonts/Simple_Script.ttf" id="1_6x7we"]
+[ext_resource type="FontFile" uid="uid://mol4fxc6v1ey" path="res://assets/fonts/Micro_Chat.ttf" id="2_glb6i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glb6i"]
+atlas = ExtResource("1_1cp1y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1cp1y"]
+texture = SubResource("AtlasTexture_glb6i")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [resource]
+default_font = ExtResource("1_6x7we")
+default_font_size = 7
+HBoxContainer/constants/separation = 0
 MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 32
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_5bs8b")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_1cp1y")
+RichTextLabel/constants/outline_size = 5
+RichTextLabel/font_sizes/normal_font_size = 5
+RichTextLabel/fonts/normal_font = ExtResource("2_glb6i")
+VBoxContainer/constants/separation = 0

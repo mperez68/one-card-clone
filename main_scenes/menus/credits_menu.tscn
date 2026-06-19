@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_o7a4m"]
 [ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="2_f2ib0"]
 [ext_resource type="Script" uid="uid://cvv7h4qtri4g8" path="res://main_scenes/menus/scripts/menu_control.gd" id="2_not5v"]
+[ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="3_not5v"]
 [ext_resource type="Script" uid="uid://bdimxwm4psorj" path="res://ui/scripts/credits_footer.gd" id="4_not5v"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_p5o37"]
 [ext_resource type="PackedScene" uid="uid://c18qfne8f4xr5" path="res://ui/footer_container.tscn" id="6_o7a4m"]
@@ -17,6 +18,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_o7a4m")
 script = ExtResource("2_not5v")
+
+[node name="BgRect" parent="." unique_id=741438001 instance=ExtResource("3_not5v")]
+layout_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=202009754]
 layout_mode = 1
@@ -34,6 +38,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -119.0
+offset_right = 140.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -53,7 +61,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel" unique_id=1549038246]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(224, 112)
 layout_mode = 2
 
 [node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer" unique_id=1896787059]
@@ -63,6 +71,7 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1148993353]
 layout_mode = 2
+size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center]
 Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])
@@ -72,17 +81,16 @@ Ableton Live
 Massive Sound Library
 EastWest Sound Library
 Aseprite
-Tilesetter
-
-[/center]"
+Tilesetter[/center]"
 fit_content = true
 
 [node name="GodotVersionLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1581874423]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Made in Godot 4.6.0.stable"
+text = "Made in Godot 4.7.0.stable"
 label_settings = ExtResource("2_f2ib0")
 horizontal_alignment = 1
+vertical_alignment = 2
 script = ExtResource("4_not5v")
 
 [node name="FooterContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("6_o7a4m")]
@@ -93,11 +101,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 128.0
+offset_top = -24.0
+offset_right = 32.0
 offset_bottom = 0.0
 grow_vertical = 0
 text = "Back"
 back = true
+save = false
 
 [connection signal="meta_clicked" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
