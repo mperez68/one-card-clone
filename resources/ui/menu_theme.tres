@@ -208,6 +208,11 @@ texture_margin_bottom = 2.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1by8w"]
+bg_color = Color(0.11372549, 0.20784314, 0, 1)
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+
 [sub_resource type="FontVariation" id="FontVariation_ffnig"]
 base_font = ExtResource("1_6x7we")
 spacing_bottom = -7
@@ -230,12 +235,14 @@ HSlider/icons/tick = SubResource("AtlasTexture_qtimg")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_ffnig")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_fleop")
 HSlider/styles/slider = SubResource("StyleBoxTexture_ycp3f")
-MarginContainer/constants/margin_bottom = 32
-MarginContainer/constants/margin_left = 16
-MarginContainer/constants/margin_right = 16
-MarginContainer/constants/margin_top = 32
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_1cp1y")
 RichTextLabel/constants/outline_size = 5
 RichTextLabel/font_sizes/normal_font_size = 5
 RichTextLabel/fonts/normal_font = ExtResource("2_glb6i")
 VBoxContainer/constants/separation = 0
+VSeparator/constants/separation = 2
+VSeparator/styles/separator = SubResource("StyleBoxFlat_1by8w")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bc40b7y5j2m4v"]
+
+[ext_resource type="Script" uid="uid://cy5idndy5td7s" path="res://addons/boilerplate_tactical_grid/game_objects/scripts/grid_node_2d.gd" id="1_lua7e"]
+
+[node name="GridNode2D" type="Node2D" unique_id=1426874908 groups=["entity"]]
+position = Vector2(8, 8)
+script = ExtResource("1_lua7e")

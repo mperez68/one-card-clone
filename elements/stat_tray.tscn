@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://capadifnn3uqv"]
+
+[ext_resource type="Script" uid="uid://c1heiulaaep8q" path="res://elements/scripts/stat_tray.gd" id="1_4jlv5"]
+[ext_resource type="Texture2D" uid="uid://b72bw2vm1y5pa" path="res://assets/sprites/combat_icons.png" id="1_aasrx"]
+[ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="2_aasrx"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="3_huhxt"]
+[ext_resource type="FontFile" uid="uid://mol4fxc6v1ey" path="res://assets/fonts/Micro_Chat.ttf" id="3_ji4jj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jlv5"]
+atlas = ExtResource("1_aasrx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jlv5"]
+load_path = "res://.godot/imported/combat_icons.png-024176b4e0d861268b61d23b9970147b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huhxt"]
+atlas = SubResource("CompressedTexture2D_4jlv5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ji4jj"]
+load_path = "res://.godot/imported/combat_icons.png-024176b4e0d861268b61d23b9970147b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhaf3"]
+atlas = SubResource("CompressedTexture2D_ji4jj")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ct7n7"]
+load_path = "res://.godot/imported/combat_icons.png-024176b4e0d861268b61d23b9970147b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seyta"]
+atlas = SubResource("CompressedTexture2D_ct7n7")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhaf3"]
+font = ExtResource("3_ji4jj")
+font_size = 5
+font_color = Color(0.49803922, 0.47843137, 0.15686275, 1)
+outline_size = 5
+outline_color = Color(0.11372549, 0.20784314, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_huhxt"]
+font = ExtResource("3_ji4jj")
+font_size = 5
+font_color = Color(0.827451, 0.85490197, 0.5137255, 1)
+outline_size = 5
+outline_color = Color(0.11372549, 0.20784314, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ji4jj"]
+font = ExtResource("3_ji4jj")
+font_size = 5
+font_color = Color(0.5803922, 0.61960787, 0.17254902, 1)
+outline_size = 5
+outline_color = Color(0.11372549, 0.20784314, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6h3d5"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x5ec"]
+atlas = SubResource("CompressedTexture2D_6h3d5")
+region = Rect2(0, 192, 16, 16)
+
+[node name="StatTray" type="VBoxContainer" unique_id=1923911916]
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_4jlv5")
+stat_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_4jlv5"),
+1: SubResource("AtlasTexture_huhxt"),
+2: SubResource("AtlasTexture_dhaf3"),
+3: SubResource("AtlasTexture_seyta")
+})
+
+[node name="EnemyStatLabel" type="Label" parent="." unique_id=626357469]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_dhaf3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatTexture" type="TextureRect" parent="." unique_id=329861685]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+texture = SubResource("AtlasTexture_4jlv5")
+
+[node name="RemainingValueLabel" type="Label" parent="." unique_id=483469174]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 12
+text = "0"
+label_settings = SubResource("LabelSettings_huhxt")
+vertical_alignment = 1
+
+[node name="SlashLabel" type="Label" parent="." unique_id=811343598]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 12
+text = "/"
+label_settings = ExtResource("3_huhxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalValueLabel" type="Label" parent="." unique_id=2057764348]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 12
+text = "1"
+label_settings = SubResource("LabelSettings_ji4jj")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StatDice" parent="." unique_id=757168519 instance=ExtResource("2_aasrx")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 12
+face_value = 1
+
+[node name="ModifierDice" parent="." unique_id=422343156 instance=ExtResource("2_aasrx")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 12
+texture = SubResource("AtlasTexture_6x5ec")
+type = 5
+
+[connection signal="value_changed" from="StatDice" to="." method="_on_dice_value_changed"]
+[connection signal="dropped" from="ModifierDice" to="." method="_on_modifier_dice_dropped"]
+[connection signal="value_changed" from="ModifierDice" to="." method="_on_dice_value_changed"]

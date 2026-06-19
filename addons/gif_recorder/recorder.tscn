@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://c8b4fltujg36m"]
+
+[ext_resource type="Script" uid="uid://p24jkaggfrs5" path="res://addons/gif_recorder/recorder_popup.gd" id="1_kb1p5"]
+[ext_resource type="Texture2D" uid="uid://dt3v3yhm7pnid" path="res://addons/gif_recorder/dot-red.png" id="2_it02b"]
+[ext_resource type="Texture2D" uid="uid://c5m5kosrksgi2" path="res://addons/gif_recorder/hand-open.png" id="2_kb1p5"]
+[ext_resource type="Texture2D" uid="uid://chp1ybrrcfai1" path="res://addons/gif_recorder/dot-border.png" id="3_2hktp"]
+[ext_resource type="Texture2D" uid="uid://b4hwj7yrdab1n" path="res://addons/gif_recorder/dot-yellow.png" id="3_70yca"]
+[ext_resource type="Texture2D" uid="uid://d04g7i7e6soof" path="res://addons/gif_recorder/hand-closed.png" id="3_qikt5"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1843499695]
+layer = 1000
+
+[node name="Recorder" type="Control" parent="." unique_id=1511196887 node_paths=PackedStringArray("record_area", "input_area", "width_edit", "height_edit", "borders", "record_button", "move_button", "frame_counter", "parameter_toggle", "parameters_node", "scale_options", "export_option_button")]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_kb1p5")
+record_area = NodePath("NoInputs/VBoxContainer/Display")
+input_area = NodePath("Inputs")
+width_edit = NodePath("Inputs/InputContainer/W/W")
+height_edit = NodePath("Inputs/InputContainer/H/H")
+recording_color = Color(1, 1, 1, 0)
+borders = [NodePath("NoInputs/BorderLeft"), NodePath("NoInputs/VBoxContainer/BorderTop"), NodePath("NoInputs/VBoxContainer/BorderBottom"), NodePath("NoInputs/BorderRight"), NodePath("NoInputs/VBoxContainer/Display/CenterContainer/ColorRect")]
+idle_button_texture = ExtResource("2_it02b")
+recording_button_texture = ExtResource("3_70yca")
+record_button = NodePath("Inputs/InputContainer/Record")
+move_button = NodePath("Inputs/InputContainer/Move")
+idle_move_texture = ExtResource("3_qikt5")
+pressed_move_texture = ExtResource("2_kb1p5")
+frame_counter = NodePath("Inputs/InputContainer/FrameLabel")
+parameter_toggle = NodePath("Inputs/InputContainer/ParameterToggle")
+parameters_node = NodePath("Inputs/InputContainer/Parameters")
+scale_options = NodePath("Inputs/InputContainer/Parameters/HBoxContainer2/ScaleOption")
+export_option_button = NodePath("Inputs/InputContainer/Parameters/HBoxContainer2/RecorderMode")
+
+[node name="Inputs" type="PanelContainer" parent="Recorder" unique_id=733630880]
+layout_mode = 1
+offset_right = 328.0
+offset_bottom = 31.0
+
+[node name="InputContainer" type="HBoxContainer" parent="Recorder/Inputs" unique_id=1477469906]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="W" type="HBoxContainer" parent="Recorder/Inputs/InputContainer" unique_id=746885525]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/W" unique_id=1835686303]
+layout_mode = 2
+text = "W:"
+
+[node name="W" type="LineEdit" parent="Recorder/Inputs/InputContainer/W" unique_id=697585323]
+layout_mode = 2
+text = "300"
+placeholder_text = "300"
+max_length = 3
+select_all_on_focus = true
+virtual_keyboard_type = 2
+
+[node name="H" type="HBoxContainer" parent="Recorder/Inputs/InputContainer" unique_id=1483478648]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/H" unique_id=2106039721]
+layout_mode = 2
+text = "H:"
+
+[node name="H" type="LineEdit" parent="Recorder/Inputs/InputContainer/H" unique_id=1668257623]
+layout_mode = 2
+text = "300"
+placeholder_text = "300"
+max_length = 3
+select_all_on_focus = true
+virtual_keyboard_type = 2
+
+[node name="ParameterToggle" type="CheckBox" parent="Recorder/Inputs/InputContainer" unique_id=1789154262]
+layout_mode = 2
+text = "..."
+alignment = 1
+
+[node name="Parameters" type="VBoxContainer" parent="Recorder/Inputs/InputContainer" unique_id=860226701]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Recorder/Inputs/InputContainer/Parameters" unique_id=1993588488]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=292028597]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=1949532022]
+layout_mode = 2
+text = "30FPS"
+
+[node name="CheckButton" type="CheckButton" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=1202956272]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=186035326]
+layout_mode = 2
+text = "60FPS"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Recorder/Inputs/InputContainer/Parameters" unique_id=885692931]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=697804630]
+layout_mode = 2
+text = "Scale"
+
+[node name="ScaleOption" type="OptionButton" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=1389793903]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "0.75"
+popup/item_1/id = 1
+popup/item_2/text = "0.5"
+popup/item_2/id = 2
+popup/item_3/text = "0.25"
+popup/item_3/id = 3
+
+[node name="Label2" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=1453604092]
+layout_mode = 2
+text = "Mode"
+
+[node name="RecorderMode" type="OptionButton" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=196063478]
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "FFMPEG"
+popup/item_0/id = 0
+popup/item_1/text = "GIFSKI"
+popup/item_1/id = 1
+
+[node name="Spacer2" type="Control" parent="Recorder/Inputs/InputContainer" unique_id=173842938]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Record" type="TextureButton" parent="Recorder/Inputs/InputContainer" unique_id=1328601407]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_it02b")
+texture_hover = ExtResource("3_2hktp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Move" type="TextureButton" parent="Recorder/Inputs/InputContainer" unique_id=593631605]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_kb1p5")
+texture_pressed = ExtResource("3_qikt5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FrameLabel" type="Label" parent="Recorder/Inputs/InputContainer" unique_id=462449066]
+layout_mode = 2
+
+[node name="NoInputs" type="HBoxContainer" parent="Recorder" unique_id=351625333]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 26.0
+offset_bottom = 93.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="BorderLeft" type="ColorRect" parent="Recorder/NoInputs" unique_id=1285979263]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Recorder/NoInputs" unique_id=1275943973]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="BorderTop" type="ColorRect" parent="Recorder/NoInputs/VBoxContainer" unique_id=162222437]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="Display" type="Control" parent="Recorder/NoInputs/VBoxContainer" unique_id=1192268536]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Recorder/NoInputs/VBoxContainer/Display" unique_id=349609683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Recorder/NoInputs/VBoxContainer/Display/CenterContainer" unique_id=704838800]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 2
+
+[node name="BorderBottom" type="ColorRect" parent="Recorder/NoInputs/VBoxContainer" unique_id=946185360]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="BorderRight" type="ColorRect" parent="Recorder/NoInputs" unique_id=1772279109]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[connection signal="gui_input" from="Recorder/Inputs" to="Recorder" method="_drag_input"]
+[connection signal="text_changed" from="Recorder/Inputs/InputContainer/W/W" to="Recorder" method="_size_changed"]
+[connection signal="text_changed" from="Recorder/Inputs/InputContainer/H/H" to="Recorder" method="_size_changed"]
+[connection signal="toggled" from="Recorder/Inputs/InputContainer/Parameters/HBoxContainer/CheckButton" to="Recorder" method="toggle_fps_mode"]
+[connection signal="item_selected" from="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2/RecorderMode" to="Recorder" method="set_recorder_mode"]
+[connection signal="gui_input" from="Recorder/Inputs/InputContainer/Record" to="Recorder" method="_drag_input"]
+[connection signal="pressed" from="Recorder/Inputs/InputContainer/Record" to="Recorder" method="_record_pressed"]
+[connection signal="gui_input" from="Recorder/Inputs/InputContainer/Move" to="Recorder" method="_drag_input"]

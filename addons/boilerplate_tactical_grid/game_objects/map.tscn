@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cw4xrff5j6wmn"]
+
+[ext_resource type="Script" uid="uid://b5j8ev5yijjxx" path="res://addons/boilerplate_tactical_grid/game_objects/scripts/map.gd" id="1_ww0o4"]
+[ext_resource type="TileSet" uid="uid://bk5oa5kjd1cx0" path="res://addons/boilerplate_tactical_grid/temp_sprites/tilesets/highlight_tileset.tres" id="2_p5cqr"]
+[ext_resource type="TileSet" uid="uid://dokfe8h2kkwic" path="res://addons/boilerplate_tactical_grid/temp_sprites/tilesets/fog_tileset.tres" id="3_k8vvt"]
+
+[sub_resource type="TileSet" id="TileSet_af014"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "vis"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5cqr"]
+
+[node name="Map" type="Node2D" unique_id=952170447]
+script = ExtResource("1_ww0o4")
+
+[node name="HighlightLayer" type="TileMapLayer" parent="." unique_id=647420736]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.39215687)
+z_index = 1
+y_sort_enabled = true
+tile_set = ExtResource("2_p5cqr")
+navigation_enabled = false
+
+[node name="TargetLayer" type="TileMapLayer" parent="." unique_id=209876532]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.627451)
+z_index = 1
+y_sort_enabled = true
+tile_set = ExtResource("2_p5cqr")
+navigation_enabled = false
+
+[node name="HoverLayer" type="TileMapLayer" parent="." unique_id=1224585054]
+unique_name_in_owner = true
+z_index = 1
+y_sort_enabled = true
+tile_set = ExtResource("2_p5cqr")
+navigation_enabled = false
+
+[node name="VisLayer" type="TileMapLayer" parent="." unique_id=552446504]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.5882353)
+z_index = 1
+y_sort_enabled = true
+tile_set = SubResource("TileSet_af014")
+
+[node name="FogOfWar" type="TileMapLayer" parent="." unique_id=882876958]
+unique_name_in_owner = true
+z_index = 1
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_p5cqr")
+tile_set = ExtResource("3_k8vvt")

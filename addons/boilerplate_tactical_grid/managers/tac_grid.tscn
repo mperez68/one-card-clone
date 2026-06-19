@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ds8tm6n5wum7p"]
+
+[ext_resource type="Script" uid="uid://drrm1vaaitcm3" path="res://addons/boilerplate_tactical_grid/managers/scripts/tac_grid.gd" id="1_4t7ds"]
+
+[node name="TacGrid" type="Node" unique_id=1413655154]
+script = ExtResource("1_4t7ds")

@@ -7,17 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="3_wcnxn"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="4_vb3i7"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_vb3i7"]
-[ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="6_himie"]
 [ext_resource type="PackedScene" uid="uid://b27xpmt51ajfg" path="res://main_scenes/menus/options_menu.tscn" id="7_g8byo"]
+[ext_resource type="PackedScene" uid="uid://onb3nc4xf5gu" path="res://main_scenes/level.tscn" id="7_wcnxn"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="8_38vm8"]
 [ext_resource type="PackedScene" uid="uid://c3njtoyv7xfje" path="res://main_scenes/menus/credits_menu.tscn" id="9_38vm8"]
 [ext_resource type="PackedScene" uid="uid://c18qfne8f4xr5" path="res://ui/footer_container.tscn" id="9_yy0sh"]
 
-[sub_resource type="Resource" id="Resource_yy0sh"]
-script = ExtResource("6_himie")
-location_override = "res://debug_scene.tscn"
-button_text = "Debug Scene"
-metadata/_custom_type_script = "uid://cqkdtdqupov0c"
+[sub_resource type="Resource" id="Resource_clqb2"]
+script = ExtResource("8_38vm8")
+packed_scene = ExtResource("7_wcnxn")
+button_text = "DELVE"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_wcnxn"]
 script = ExtResource("8_38vm8")
@@ -92,8 +92,8 @@ alignment = 1
 [node name="SceneChangeButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer" unique_id=871362439 instance=ExtResource("4_vb3i7")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Debug Scene"
-scene_link = SubResource("Resource_yy0sh")
+text = ""
+scene_link = SubResource("Resource_clqb2")
 
 [node name="OptionsButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer" unique_id=288394055 instance=ExtResource("4_vb3i7")]
 layout_mode = 2

@@ -1,0 +1,60 @@
+[gd_resource type="TileSet" format=3 uid="uid://bk5oa5kjd1cx0"]
+
+[ext_resource type="Texture2D" uid="uid://gb8q7f4fwc7j" path="res://addons/boilerplate_tactical_grid/temp_sprites/temp_highlights.png" id="1_iigjb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_moukf"]
+texture = ExtResource("1_iigjb")
+2:0/0 = 0
+2:0/0/terrain_set = 1
+2:0/0/terrain = 0
+2:1/0 = 0
+2:1/0/terrain_set = 1
+2:1/0/terrain = 2
+3:0/0 = 0
+3:0/0/terrain_set = 1
+3:0/0/terrain = 1
+3:1/0 = 0
+3:1/0/terrain_set = 1
+3:1/0/terrain = 3
+4:0/0 = 0
+4:0/0/terrain_set = 2
+4:0/0/terrain = 0
+4:1/0 = 0
+4:1/0/terrain_set = 2
+4:1/0/terrain = 2
+5:0/0 = 0
+5:0/0/terrain_set = 2
+5:0/0/terrain = 1
+5:1/0 = 0
+5:1/0/terrain_set = 2
+5:1/0/terrain = 3
+
+[resource]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "HighlightYellow"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "HoverYellow"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_0/terrain_2/name = "HighlightRed"
+terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+terrain_set_0/terrain_3/name = "HoverRed"
+terrain_set_0/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+terrain_set_1/mode = 0
+terrain_set_1/terrain_0/name = "HighlightYellow"
+terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_1/terrain_1/name = "HoverYellow"
+terrain_set_1/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_1/terrain_2/name = "HighlightRed"
+terrain_set_1/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+terrain_set_1/terrain_3/name = "HoverRed"
+terrain_set_1/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+terrain_set_2/mode = 0
+terrain_set_2/terrain_0/name = "HighlightYellow"
+terrain_set_2/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_2/terrain_1/name = "HoverYellow"
+terrain_set_2/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_2/terrain_2/name = "HighlightRed"
+terrain_set_2/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+terrain_set_2/terrain_3/name = "HoverRed"
+terrain_set_2/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+sources/1 = SubResource("TileSetAtlasSource_moukf")
