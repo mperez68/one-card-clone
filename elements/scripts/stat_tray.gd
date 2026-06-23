@@ -26,7 +26,7 @@ var total_value: int:
 		_update()
 var remaining_value: int:
 	set(value):
-		remaining_value = value
+		remaining_value = max(0, value)
 		_update()
 var enemy_value: int:
 	set(value):

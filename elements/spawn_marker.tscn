@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dhb31yudghw1y"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_7vh52"]
+[ext_resource type="Script" uid="uid://dt0pqeq0tbo7f" path="res://elements/scripts/spawn_marker.gd" id="2_16sr4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_16sr4"]
+load_path = "res://.godot/imported/tiles.png-96ebea94593a378b8712f71e8b40fe75.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7l7b"]
+atlas = SubResource("CompressedTexture2D_16sr4")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxlco"]
+load_path = "res://.godot/imported/tiles.png-96ebea94593a378b8712f71e8b40fe75.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxq1r"]
+atlas = SubResource("CompressedTexture2D_dxlco")
+region = Rect2(0, 32, 16, 16)
+
+[node name="SpawnMarker" unique_id=1426874908 instance=ExtResource("1_7vh52")]
+script = ExtResource("2_16sr4")
+type = 1
+sprite_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_h7l7b"),
+1: SubResource("AtlasTexture_xxq1r")
+})
+
+[node name="MarkerSprite" type="Sprite2D" parent="." index="0" unique_id=2019349901]
+unique_name_in_owner = true
+texture = SubResource("AtlasTexture_xxq1r")

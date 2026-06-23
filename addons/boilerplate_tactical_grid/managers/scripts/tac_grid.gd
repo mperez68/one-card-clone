@@ -31,7 +31,7 @@ func grid_2d_to_global(value: Vector2i) -> Vector2:
 	var ret: Vector2 = offset
 	match shape:
 		Shape.SQUARE:
-			ret += offset * Vector2(value.x, value.y)
+			ret += grid_size * Vector2(value.x, value.y)
 		Shape.DIAMOND:
 			ret += offset * (Vector2(value.x - value.y, value.x + value.y))
 	return ret

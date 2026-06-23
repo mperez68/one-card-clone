@@ -74,6 +74,9 @@ func face_and_move(target_position: Vector3i):
 	facing = to_facing(grid_position, target_position)
 	grid_position = target_position
 
+func move_to(target_position: Vector3i):
+	grid_position = target_position
+
 ## Find the Facing enum that the first point would have if it was directed at the end point.
 ## Inputs can be any combination of Vector2, Vector2i, or Vector3i. Returns Facing.RIGHT as default if unput is invalid or the same.
 static func to_facing(start, end) -> Facing:

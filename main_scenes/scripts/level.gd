@@ -2,7 +2,7 @@ class_name Level extends Node2D
 
 signal stage_changed(last_stage: Stage, new_stage: Stage)
 
-enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER, POST_GAME }
+enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTACK, POST_GAME }
 
 @onready var map: Map = %Map
 
@@ -27,7 +27,7 @@ func update(target: Vector3i):
 	print(target)
 
 func pass_turn():
-	stage = clamp((stage + 1) % Stage.POST_GAME, 1, Stage.COMPUTER) as Stage
+	stage = clamp((stage + 1) % Stage.POST_GAME, 1, Stage.COMPUTER_ATTACK) as Stage
 
 
 # PRIVATE
@@ -39,8 +39,11 @@ func _on_stage_changed(last_stage: Stage, new_stage: Stage) -> void:
 		_:
 			pass
 	match new_stage:
-		Stage.COMPUTER:
-			await get_tree().create_timer(0.5).timeout	# TODO approach, calc damage
+		Stage.COMPUTER_MOVE:
+			await get_tree().create_timer(0.5).timeout	# TODO approach
+			pass_turn()
+		Stage.COMPUTER_ATTACK:
+			await get_tree().create_timer(0.5).timeout	# TODO calc damage
 			pass_turn()
 		_:
 			pass

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://eeinuiutrflp"]
+
+[ext_resource type="PackedScene" uid="uid://dbegmmrk66ayu" path="res://elements/dice_grid_node_2d.tscn" id="1_155a7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtwah"]
+atlas = SubResource("CompressedTexture2D_rfep6")
+region = Rect2(0, 32, 16, 16)
+
+[node name="NpcDiceGridNode2D" unique_id=1426874908 groups=["npc"] instance=ExtResource("1_155a7")]
+
+[node name="Dice" parent="." index="0" unique_id=757168519]
+texture = SubResource("AtlasTexture_rtwah")
+type = 4
+face_value = 3

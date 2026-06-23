@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dbegmmrk66ayu"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_xbeoc"]
+[ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="2_i8kcj"]
+[ext_resource type="Script" uid="uid://bnsgy30b155mp" path="res://elements/scripts/dice_grid_node_2d.gd" id="2_lw25c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhoi1"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et0uw"]
+atlas = SubResource("CompressedTexture2D_mhoi1")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5skr3"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxfj5"]
+atlas = SubResource("CompressedTexture2D_5skr3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmqk0"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h61ea"]
+atlas = SubResource("CompressedTexture2D_mmqk0")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ul8td"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7qy5"]
+atlas = SubResource("CompressedTexture2D_ul8td")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtwah"]
+atlas = SubResource("CompressedTexture2D_rfep6")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6h3d5"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x5ec"]
+atlas = SubResource("CompressedTexture2D_6h3d5")
+region = Rect2(0, 192, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eq14r"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5akd"]
+atlas = SubResource("CompressedTexture2D_eq14r")
+region = Rect2(0, 208, 16, 16)
+
+[node name="DiceGridNode2D" unique_id=1426874908 instance=ExtResource("1_xbeoc")]
+script = ExtResource("2_lw25c")
+hp = 1
+default_type = 4
+
+[node name="Dice" parent="." index="0" unique_id=757168519 instance=ExtResource("2_i8kcj")]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_et0uw")
+type = 0
+face_value = 1
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
