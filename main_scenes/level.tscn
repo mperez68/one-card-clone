@@ -12,10 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://csd6n6x5dqno1" path="res://assets/icons/dice_32.png" id="8_kb74p"]
 [ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="9_1yxrq"]
 [ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="10_3ml1t"]
-[ext_resource type="PackedScene" uid="uid://d4ly7j6jyoj3r" path="res://elements/player_dice_grid_node_2d.tscn" id="10_20sh4"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
 [ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="11_3ml1t"]
-[ext_resource type="PackedScene" uid="uid://eeinuiutrflp" path="res://elements/npc_dice_grid_node_2d.tscn" id="11_kb74p"]
+[ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="16_3ml1t"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmqk0"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
@@ -408,26 +407,26 @@ use_fog = false
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAIAAcAAAAAAAEAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAAIAAUAAAAAAAEAAAAIAAQAAAAAAAEAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAYAAAAAAAEAAAACAAQAAAAAAAEAAAACAAUAAAAAAAEAAAACAAYAAAAAAAEAAAACAAcAAAAAAAEAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAADAAgAAAAAAAEAAAACAAgAAAAAAAEAAAACAAMAAAAAAAEAAAACAAIAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAALAAAAAAAAAAEAAAAMAAAAAAAAAAEAAAANAAAAAAAAAAEAAAAOAAAAAAAAAAEAAAAPAAAAAAAAAAEAAAAAAAsAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAkAAAAAAAEAAAAAAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAPAAkAAAAAAAEAAAAPAAgAAAAAAAEAAAAPAAcAAAAAAAEAAAAPAAYAAAAAAAEAAAAPAAUAAAAAAAEAAAAPAAQAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAIAAAAAAAEAAAAPAAEAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_1by8w")
 
-[node name="PlayerDiceGridNode2D" parent="." unique_id=1426874908 instance=ExtResource("10_20sh4")]
-z_index = 1
-position = Vector2(120, 88)
-grid_position = Vector3i(7, 5, 1)
-blocking = true
-
-[node name="NpcDiceGridNode2D" parent="." unique_id=1697430993 instance=ExtResource("11_kb74p")]
-z_index = 1
-position = Vector2(56, 88)
-hp = 3
-grid_position = Vector3i(3, 5, 1)
-
-[node name="NpcDiceGridNode2D2" parent="." unique_id=831015495 instance=ExtResource("11_kb74p")]
-z_index = 1
-position = Vector2(72, 56)
-hp = 3
-grid_position = Vector3i(4, 3, 1)
-
 [node name="NpcTimer" type="Timer" parent="." unique_id=221911610]
 unique_name_in_owner = true
+
+[node name="SpawnMarker" parent="." unique_id=1426874908 instance=ExtResource("16_3ml1t")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(120, 120)
+grid_position = Vector3i(7, 7, 1)
+
+[node name="SpawnMarker2" parent="." unique_id=1885530925 instance=ExtResource("16_3ml1t")]
+z_index = 1
+position = Vector2(56, 88)
+type = 0
+grid_position = Vector3i(3, 5, 1)
+
+[node name="SpawnMarker3" parent="." unique_id=1360502978 instance=ExtResource("16_3ml1t")]
+z_index = 1
+position = Vector2(88, 56)
+type = 0
+grid_position = Vector3i(5, 3, 1)
 
 [connection signal="stage_changed" from="." to="." method="_on_stage_changed"]
 [connection signal="stage_changed" from="." to="Hud/PlayerController" method="_on_stage_changed"]
@@ -449,4 +448,5 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton3" to="." method="_on_progression_button_pressed" binds= [2]]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton4" to="." method="_on_progression_button_pressed" binds= [3]]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton5" to="." method="_on_progression_button_pressed" binds= [4]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/FailureContainer/SceneChangeButton" to="Hud/PlayerController" method="_on_scene_change_button_pressed"]
 [connection signal="timeout" from="NpcTimer" to="." method="_on_npc_timer_timeout"]

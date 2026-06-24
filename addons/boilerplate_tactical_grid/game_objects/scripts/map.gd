@@ -245,10 +245,12 @@ func is_in_hard_range(start: Vector3i, end: Vector3i, max_distance: int = 9999) 
 	if !nav.has_point(_grid3d_to_id(end)):
 		return false
 	for entity in get_tree().get_nodes_in_group(GridNode2D.ENTITY_KEY):
-		entity.blocking = false
+		if entity is DiceGridNode2d:
+			entity.blocking = false
 	var ret: bool = get_route_weight(start, end) <= max_distance
 	for entity in get_tree().get_nodes_in_group(GridNode2D.ENTITY_KEY):
-		entity.blocking = entity.hp > 0
+		if entity is DiceGridNode2d:
+			entity.blocking = entity.hp > 0
 	return ret
 
 func get_closest_open(center: Vector3i) -> Vector3i:

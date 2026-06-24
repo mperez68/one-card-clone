@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c20ammecb41vp"]
+
+[ext_resource type="Script" uid="uid://ccrueft1camuc" path="res://global/scripts/player_stats_manager.gd" id="1_ak6kn"]
+
+[node name="PlayerStatsManager" type="Node" unique_id=1198231776]
+script = ExtResource("1_ak6kn")

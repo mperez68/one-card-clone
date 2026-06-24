@@ -57,6 +57,9 @@ func reset(game_reset: bool = false):
 	settable = stat != Stat.RANGE
 	modifier_dice.reset(settable)
 
+func set_base_dice(value: int):
+	stat_dice.face_value = value as Face.Value
+
 
 # PRIVATE
 func _update():

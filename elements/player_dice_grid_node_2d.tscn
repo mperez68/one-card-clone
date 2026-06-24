@@ -12,6 +12,7 @@ region = Rect2(0, 16, 16, 16)
 [node name="PlayerDiceGridNode2D" unique_id=1426874908 groups=["player"] instance=ExtResource("1_nkwvf")]
 hp = 6
 default_type = 3
+blocking = true
 
 [node name="Dice" parent="." index="0" unique_id=757168519]
 texture = SubResource("AtlasTexture_y7qy5")

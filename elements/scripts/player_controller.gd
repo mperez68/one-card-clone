@@ -25,19 +25,18 @@ var is_action: bool = false:
 var player: Node
 var map: Map
 
-# Mob Values
-var mob_move: int = 3
-var mob_atk: int = 3
-var mob_defence: int = 3
-var mob_range: int = 3
-
 # ENGINE
 func _ready() -> void:
-	if !_cache():
-		printerr("Can't cache!")
-		return
-	player.died.connect(end_game.bind(false))
-	
+	for tray in stat_tray_container.get_children():
+		match tray.stat:
+			StatTray.Stat.MOVEMENT:
+				tray.set_base_dice(PlayerStatsManager.movement)
+			StatTray.Stat.ATTACK:
+				tray.set_base_dice(PlayerStatsManager.attack)
+			StatTray.Stat.DEFENSE:
+				tray.set_base_dice(PlayerStatsManager.defense)
+			StatTray.Stat.RANGE:
+				tray.set_base_dice(PlayerStatsManager.a_range)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_action:
@@ -50,7 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var player_move: int = get_stat(StatTray.Stat.MOVEMENT)
 		if npc_at_grid_pos and can_attack(grid_pos):
 			npc_at_grid_pos.damage(1)
-			spend_stat(mob_atk, StatTray.Stat.ATTACK)
+			spend_stat(get_npc_stat(StatTray.Stat.DEFENSE), StatTray.Stat.ATTACK)
 			_update_highlights(true)
 			return
 		player.blocking = false
@@ -63,7 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		map.draw_highlight(Map.Highlight.TARGET_HOVER, [Vector2i(grid_pos.x, grid_pos.y)])
 
 func can_attack(grid_pos: Vector3i) -> bool:
-	return map.is_in_hard_range(player.grid_position, grid_pos, get_stat(StatTray.Stat.RANGE)) and get_stat(StatTray.Stat.ATTACK) >= mob_atk
+	return map.is_in_hard_range(player.grid_position, grid_pos, get_stat(StatTray.Stat.RANGE)) and get_stat(StatTray.Stat.ATTACK) >= get_npc_stat(StatTray.Stat.DEFENSE)
 
 
 # PUBLIC
@@ -71,6 +70,12 @@ func get_stat(stat: StatTray.Stat) -> int:
 	for tray in stat_tray_container.get_children():
 		if tray is StatTray and tray.stat == stat:
 			return tray.remaining_value
+	return 0
+
+func get_npc_stat(stat: StatTray.Stat) -> int:
+	for tray in stat_tray_container.get_children():
+		if tray is StatTray and tray.stat == stat:
+			return tray.enemy_value
 	return 0
 
 func spend_stat(value: int, stat: StatTray.Stat):
@@ -91,6 +96,10 @@ func set_enemy_stats(mve: int, atk: int, def: int, rng: int):
 			StatTray.Stat.RANGE:
 				new_value = rng
 		tray.enemy_value = new_value
+
+func add_player(new_player: DiceGridNode2d):
+	player = new_player
+	new_player.died.connect(end_game.bind(false))
 
 func end_game(success: bool):
 	animation_player.play("show")
@@ -196,3 +205,6 @@ func _on_allocation_button_pressed() -> void:
 
 func _on_end_turn_button_pressed() -> void:
 	pass_turn.emit()
+
+func _on_scene_change_button_pressed() -> void:
+	PlayerStatsManager.reset()

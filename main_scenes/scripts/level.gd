@@ -1,5 +1,8 @@
 class_name Level extends Node2D
 
+const PLAYER: PackedScene = preload("res://elements/player_dice_grid_node_2d.tscn")
+const NPC: PackedScene = preload("res://elements/npc_dice_grid_node_2d.tscn")
+
 signal stage_changed(last_stage: Stage, new_stage: Stage)
 
 enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTACK, POST_GAME }
@@ -7,9 +10,11 @@ enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTAC
 @onready var map: Map = %Map
 @onready var npc_timer: Timer = %NpcTimer
 @onready var player_controller: PlayerController = %PlayerController
+@onready var spawn_marker: SpawnMarker = %SpawnMarker
 
 @export var next_level: PackedScene = preload("res://main_scenes/menus/credits_menu.tscn")
 @export_group("Npc Stats")
+@export var npc_hp: int = 4
 @export var npc_movement: int = 4
 @export var npc_attack: int = 4
 @export var npc_defence: int = 4
@@ -30,12 +35,26 @@ var stage: Stage:
 
 # ENGINE
 func _ready() -> void:
+	# Player
+	var player: DiceGridNode2d = PLAYER.instantiate()
+	player.hp = PlayerStatsManager.hp
+	player.grid_position = spawn_marker.grid_position
+	add_child(player)
+	player_controller.add_player(player)
 	player_controller.set_enemy_stats(npc_movement, npc_attack, npc_defence, npc_range)
-	await get_tree().create_timer(0.5).timeout	# TODO start when prompted
-	pass_turn()
+	# NPCs
+	for child in get_children(true):
+		if child is SpawnMarker and child.type == SpawnMarker.Type.NPC:
+			var npc: DiceGridNode2d = NPC.instantiate()
+			npc.hp = npc_hp
+			npc.grid_position = child.grid_position
+			add_child(npc)
 	for npc in get_tree().get_nodes_in_group("npc"):
 		living_npcs += 1
 		npc.died.connect(_on_npc_died)
+	
+	await get_tree().create_timer(0.5).timeout	# TODO start when prompted
+	pass_turn()
 
 func _on_npc_died():
 	living_npcs -= 1
@@ -103,13 +122,13 @@ func _on_npc_timer_timeout() -> void:
 func _on_progression_button_pressed(selection: int) -> void:
 	match selection:
 		0:
-			print("heal")
+			PlayerStatsManager.heal()
 		1:
-			print("+1 movement")
+			PlayerStatsManager.boost_stat(StatTray.Stat.MOVEMENT)
 		2:
-			print("+1 attack")
+			PlayerStatsManager.boost_stat(StatTray.Stat.ATTACK)
 		3:
-			print("+1 defence")
+			PlayerStatsManager.boost_stat(StatTray.Stat.DEFENSE)
 		4:
-			print("+1 range")
+			PlayerStatsManager.boost_stat(StatTray.Stat.RANGE)
 	SceneManager.new_scene(next_level)

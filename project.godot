@@ -28,6 +28,7 @@ SfxManager="*res://global/sfx_manager.tscn"
 SettingsManager="*res://global/settings_manager.tscn"
 SaveStateManager="*uid://chrchktrakx3e"
 TacGrid="*uid://ds8tm6n5wum7p"
+PlayerStatsManager="*uid://c20ammecb41vp"
 
 [display]
 
