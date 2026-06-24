@@ -27,6 +27,7 @@ var stage: Stage:
 
 # ENGINE
 func _ready() -> void:
+	player_controller.set_enemy_stats(npc_movement, npc_attack, npc_defence, npc_range)
 	await get_tree().create_timer(0.5).timeout	# TODO start when prompted
 	pass_turn()
 

@@ -66,6 +66,20 @@ func spend_stat(value: int, stat: StatTray.Stat):
 		if tray is StatTray and tray.stat == stat:
 			tray.remaining_value -= value
 
+func set_enemy_stats(mve: int, atk: int, def: int, rng: int):
+	for tray: StatTray in stat_tray_container.get_children():
+		var new_value: int = 0
+		match tray.stat:
+			StatTray.Stat.MOVEMENT:
+				new_value = mve
+			StatTray.Stat.ATTACK:
+				new_value = atk
+			StatTray.Stat.DEFENSE:
+				new_value = def
+			StatTray.Stat.RANGE:
+				new_value = rng
+		tray.enemy_value = new_value
+
 
 # PRIVATE
 func _cache() -> bool:

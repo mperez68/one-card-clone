@@ -88,6 +88,7 @@ texture = SubResource("AtlasTexture_4jlv5")
 
 [node name="RemainingValueLabel" type="Label" parent="." unique_id=483469174]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 12
 text = "0"
@@ -96,6 +97,7 @@ vertical_alignment = 1
 
 [node name="SlashLabel" type="Label" parent="." unique_id=811343598]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 12
 text = "/"
