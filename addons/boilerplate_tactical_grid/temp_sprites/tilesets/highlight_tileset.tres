@@ -1,6 +1,38 @@
 [gd_resource type="TileSet" format=3 uid="uid://bk5oa5kjd1cx0"]
 
 [ext_resource type="Texture2D" uid="uid://gb8q7f4fwc7j" path="res://addons/boilerplate_tactical_grid/temp_sprites/temp_highlights.png" id="1_iigjb"]
+[ext_resource type="Texture2D" uid="uid://cgmdxnli7fxma" path="res://assets/sprites/map_indicators.png" id="1_moukf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8y65"]
+texture = ExtResource("1_moukf")
+0:0/animation_speed = 16.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 1
+0:1/animation_speed = 16.0
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/animation_frame_5/duration = 1.0
+0:1/animation_frame_6/duration = 1.0
+0:1/animation_frame_7/duration = 1.0
+0:1/0 = 0
+0:1/0/z_index = 2
+0:1/0/terrain_set = 0
+0:1/0/terrain = 3
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_moukf"]
 texture = ExtResource("1_iigjb")
@@ -29,14 +61,8 @@ texture = ExtResource("1_iigjb")
 5:1/0/terrain_set = 2
 5:1/0/terrain = 3
 0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
 1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 1
 1:1/0 = 0
-1:1/0/terrain_set = 0
-1:1/0/terrain = 3
 0:1/0 = 0
 0:1/0/terrain_set = 0
 0:1/0/terrain = 2
@@ -70,3 +96,4 @@ terrain_set_2/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 terrain_set_2/terrain_3/name = "HoverRed"
 terrain_set_2/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_moukf")
+sources/0 = SubResource("TileSetAtlasSource_m8y65")

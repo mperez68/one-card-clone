@@ -28,15 +28,15 @@ var mob_range: int = 3
 
 # ENGINE
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("click_on") and is_action:
+	if !is_action:
+		return
+	var grid_pos: Vector3i = map.local_to_grid3d(get_global_mouse_position(), true)
+	var npc_at_grid_pos: DiceGridNode2d = TacGrid.get_mob_at_grid_3d(grid_pos)
+	if event.is_action_pressed("click_on"):
 		if !_cache():
 			return
-		var grid_pos: Vector3i = map.local_to_grid3d(get_global_mouse_position(), true)
 		var player_move: int = get_stat(StatTray.Stat.MOVEMENT)
-		var player_atk: int = get_stat(StatTray.Stat.ATTACK)
-		var player_range: int = get_stat(StatTray.Stat.RANGE)
-		var npc_at_grid_pos: DiceGridNode2d = TacGrid.get_mob_at_grid_3d(grid_pos)
-		if npc_at_grid_pos and map.is_in_hard_range(player.grid_position, grid_pos, player_range) and player_atk >= mob_atk:
+		if npc_at_grid_pos and can_attack(grid_pos):
 			npc_at_grid_pos.damage(1)
 			spend_stat(mob_atk, StatTray.Stat.ATTACK)
 			_update_highlights(true)
@@ -47,6 +47,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			player.move_to(grid_pos)
 			_update_highlights()
 		player.blocking = true
+	if event is InputEventMouseMotion and npc_at_grid_pos and can_attack(grid_pos):
+		map.draw_highlight(Map.Highlight.TARGET_HOVER, [Vector2i(grid_pos.x, grid_pos.y)])
+
+func can_attack(grid_pos: Vector3i) -> bool:
+	return map.is_in_hard_range(player.grid_position, grid_pos, get_stat(StatTray.Stat.RANGE)) and get_stat(StatTray.Stat.ATTACK) >= mob_atk
 
 
 # PUBLIC

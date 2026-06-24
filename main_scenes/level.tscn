@@ -236,12 +236,13 @@ tile_set = SubResource("TileSet_1by8w")
 z_index = 1
 position = Vector2(120, 120)
 grid_position = Vector3i(7, 7, 1)
+blocking = true
 
 [node name="NpcDiceGridNode2D" parent="." unique_id=1697430993 instance=ExtResource("11_kb74p")]
 z_index = 1
-position = Vector2(88, 56)
+position = Vector2(104, 120)
 hp = 3
-grid_position = Vector3i(5, 3, 1)
+grid_position = Vector3i(6, 7, 1)
 
 [node name="NpcDiceGridNode2D2" parent="." unique_id=290946196 instance=ExtResource("11_kb74p")]
 z_index = 1

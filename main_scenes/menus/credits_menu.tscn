@@ -72,10 +72,12 @@ size_flags_vertical = 3
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=1148993353]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])[/center]"
+text = "[center]Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])
+Adapted from Barny Skinner's
+[url=\"https://www.littlerocketgames.com/product/one-card-dungeon/\"]One Card Dungeon[/url] (go buy it)[/center]"
 fit_content = true
 
-[node name="Label" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=439979277]
+[node name="Label2" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=231772313]
 layout_mode = 2
 text = "Tools Used:"
 label_settings = ExtResource("2_f2ib0")
@@ -114,6 +116,11 @@ horizontal_alignment = 1
 [node name="Label3" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=363788724]
 layout_mode = 2
 text = "EastWest Sound Library"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=1708565453]
+layout_mode = 2
 label_settings = ExtResource("2_f2ib0")
 horizontal_alignment = 1
 
