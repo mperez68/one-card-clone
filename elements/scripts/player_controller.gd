@@ -4,6 +4,8 @@ signal pass_turn
 
 const Stage := Level.Stage
 
+const MAX_MOVE: int = 6
+
 @onready var stat_tray_container: HBoxContainer = %StatTrayContainer
 @onready var rolling_container: PanelContainer = %RollingContainer
 @onready var rolling_dice_tray: HBoxContainer = %RollingDiceTray
@@ -11,9 +13,18 @@ const Stage := Level.Stage
 @onready var end_turn_button: SfxButton = %EndTurnButton
 
 var rolling_dice: int
-var is_action: bool = false
+var is_action: bool = false:
+	set(value):
+		is_action = value
+		_update_highlights(true)
 var player: Node
 var map: Map
+
+# Mob Values
+var mob_move: int = 3
+var mob_atk: int = 3
+var mob_defence: int = 3
+var mob_range: int = 3
 
 # ENGINE
 func _unhandled_input(event: InputEvent) -> void:
@@ -21,15 +32,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		if !_cache():
 			return
 		var grid_pos: Vector3i = map.local_to_grid3d(get_global_mouse_position(), true)
-		for npc in get_tree().get_nodes_in_group("npc"):
-			if npc is GridNode2D and npc.grid_position == grid_pos and !npc.is_dead() and map.is_in_range(player.grid_position, grid_pos, get_stat(StatTray.Stat.RANGE)):
-				npc.damage(1)
-				spend_stat(1, StatTray.Stat.ATTACK)
-				return
-		var remaining_move: int = get_stat(StatTray.Stat.MOVEMENT)
-		if remaining_move > 0 and map.is_navigable(player.grid_position, grid_pos, remaining_move):
-			spend_stat(map.get_route(player.grid_position, grid_pos).size(), StatTray.Stat.MOVEMENT)
+		var player_move: int = get_stat(StatTray.Stat.MOVEMENT)
+		var player_atk: int = get_stat(StatTray.Stat.ATTACK)
+		var player_range: int = get_stat(StatTray.Stat.RANGE)
+		var npc_at_grid_pos: DiceGridNode2d = TacGrid.get_mob_at_grid_3d(grid_pos)
+		if npc_at_grid_pos and map.is_in_hard_range(player.grid_position, grid_pos, player_range) and player_atk >= mob_atk:
+			npc_at_grid_pos.damage(1)
+			spend_stat(mob_atk, StatTray.Stat.ATTACK)
+			_update_highlights(true)
+			return
+		player.blocking = false
+		if player_move > 0 and map.is_navigable(player.grid_position, grid_pos, player_move):
+			spend_stat(ceili(map.get_route_weight(player.grid_position, grid_pos)), StatTray.Stat.MOVEMENT)
 			player.move_to(grid_pos)
+			_update_highlights()
+		player.blocking = true
 
 
 # PUBLIC
@@ -78,6 +95,21 @@ func _roll_tray():
 	for child in rolling_dice_tray.get_children():
 		if child is Dice:
 			child.roll(randf_range(1.0, 2.0))
+
+func _update_highlights(hide_player: bool = false):
+	_cache()
+	if hide_player:
+		player.blocking = false
+	var tiles: Array[Vector2i]
+	var move: int = get_stat(StatTray.Stat.MOVEMENT)
+	if move > 0 and is_action:
+		for x in range(max(0, player.grid_position.x - ceili(float(move) / 2)) - 1, player.grid_position.x + ceili(float(move) / 2) + 2):
+			for y in range(max(0, player.grid_position.y - ceili(float(move) / 2)) - 1, player.grid_position.y + ceili(float(move) / 2) + 2):
+				if map.get_route_weight(player.grid_position, Vector3i(x, y, player.grid_position.z)) <= move and Vector3i(x, y, player.grid_position.z) != player.grid_position:
+					tiles.push_back(Vector2i(x, y))
+	map.draw_highlight(Map.Highlight.MOVE_HIGHLIGHT, tiles)
+	if hide_player:
+		player.blocking = true
 
 
 # SIGNALS

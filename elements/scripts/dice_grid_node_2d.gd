@@ -10,11 +10,10 @@ signal died
 		hp = clamp(value, 0, 6)
 		if dice:
 			dice.face_value = hp as Face.Value
-		blocking = hp == 0
-		if hp == 0:
+		if hp == 0 and !Engine.is_editor_hint():
 			died.emit()
-			if dice:
-				dice.type = Dice.Type.DISABLED
+			blocking = false
+			queue_free()
 		elif dice:
 			dice.type = default_type
 @export var default_type: Dice.Type = Dice.Type.NPC

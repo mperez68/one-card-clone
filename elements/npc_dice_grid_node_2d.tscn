@@ -10,8 +10,8 @@ atlas = SubResource("CompressedTexture2D_rfep6")
 region = Rect2(0, 32, 16, 16)
 
 [node name="NpcDiceGridNode2D" unique_id=1426874908 groups=["npc"] instance=ExtResource("1_155a7")]
+blocking = true
 
 [node name="Dice" parent="." index="0" unique_id=757168519]
 texture = SubResource("AtlasTexture_rtwah")
 type = 4
-face_value = 3

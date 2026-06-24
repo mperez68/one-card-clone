@@ -28,6 +28,18 @@ texture = ExtResource("1_iigjb")
 5:1/0 = 0
 5:1/0/terrain_set = 2
 5:1/0/terrain = 3
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 3
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 2
 
 [resource]
 terrain_set_0/mode = 0

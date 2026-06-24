@@ -119,6 +119,7 @@ type_dir = Dictionary[int, Texture2D]({
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_5skr3")
 script = ExtResource("2_63d02")
 face_dir = Dictionary[int, Texture2D]({

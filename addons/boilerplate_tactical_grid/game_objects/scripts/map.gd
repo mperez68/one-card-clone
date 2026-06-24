@@ -5,15 +5,19 @@ signal initialized
 
 enum Highlight{ MOVE_HIGHLIGHT, MOVE_HOVER, TARGET_HIGHLIGHT, TARGET_HOVER }
 
-const MAX_COORDINATE_SIZE: int = 3
+const MAX_COORDINATE_SIZE: int = 2
 const CLIMB_KEY: String = "climb_weight"
 const INTERVENING_DEPTH: int = 2	## 0 is starting position, 1 is adjacent tiles, so 2 is where intervening begins.
 
 ## The movement cost to climb walls. If less than 0, walls cannot be climbed unless the tile has a custom data value "climb_weight" set as a float.
 @export_range(-1.0, 5.0, 0.1, "or_greater") var climb_weight: float = -1
+## Weight for movement between adjacent tiles along the edge.
+@export_range(0.0, 10.0, 0.1, "or_greater") var adjacent_weight: float = 1
+## Weight for movement from corner to corner of grid. -1 disables diagonal movement.
+@export_range(-1.0, 10.0, 0.1, "or_greater") var diagonal_weight: float = 1.5
 @export var use_fog: bool = true
 
-@onready var util_layers: Array[TileMapLayer] = [%FogOfWar, %HighlightLayer, %TargetLayer, %HoverLayer,%VisLayer ]
+@onready var util_layers: Array[TileMapLayer] = [%FogOfWar, %HighlightLayer, %TargetLayer, %HoverLayer, %VisLayer ]
 @onready var vis_layer: TileMapLayer = %VisLayer
 @onready var fog_of_war: TileMapLayer = %FogOfWar
 @onready var target_layer: TileMapLayer = %TargetLayer
@@ -46,7 +50,7 @@ func initialize():
 	# Buffer layer for navigation
 	layers.push_back(TileMapLayer.new())
 	# Populate Navigation
-	nav = AStar3D.new()
+	nav = AStar3DCumulative.new()
 	var fog_coverage: Array[Vector2i]
 	for index in layers.size():
 		for x in used_rect.size.x:
@@ -154,12 +158,25 @@ func get_route(start: Vector3i, end: Vector3i, start_inclusive: bool = false, en
 	nav.set_point_disabled(start_id, starting_disabled)
 	var route_3d: Array[Vector3i] = []
 	for point in path:
-		route_3d.push_back(Vector3i(point))
+		if !route_3d.has(point):
+			route_3d.push_back(Vector3i(point))
 	if !start_inclusive:
 		route_3d.pop_front()
 	if !end_inclusive:
 		route_3d.pop_back()
 	return route_3d
+
+const FAIL_WEIGHT: int = 9999
+
+func get_route_weight(start: Vector3i, end: Vector3i) -> float:
+	if !nav.has_point(_grid3d_to_id(start)) or !nav.has_point(_grid3d_to_id(end)):
+		return FAIL_WEIGHT
+	var total_weight: float = FAIL_WEIGHT
+	for id in nav.get_id_path(_grid3d_to_id(start), _grid3d_to_id(end)):
+		if total_weight == FAIL_WEIGHT:
+			total_weight = 0
+		total_weight += ceili(nav.get_point_weight_scale(id))
+	return total_weight
 
 func get_route_near(start: Vector3i, end: Vector3i, range_tolerance: float = 1, require_visibility: bool = true) -> Array[Vector3i]:
 	var best_route: Array[Vector3i] = []
@@ -184,13 +201,13 @@ func can_stand(grid_position: Vector3i, ignore_blocks: bool = true) -> bool:
 
 ## Returns true if a path exists between the two given points (start and end).
 ## If a max_weight value over 0 is given, it will return false if the paths weight is greater than this value.
-func is_navigable(start: Vector3i, end: Vector3i, max_weight: int = 0) -> bool:
+func is_navigable(start: Vector3i, end: Vector3i, max_weight: float = 0) -> bool:
 	if start == end:
 		return true
 	var cell: TileData = get_cell_tile_data(end)
 	#var floor_cell: TileData = get_cell_tile_data(end + Vector3i.FORWARD)
-	var route_length: int = get_route(start, end).size()
-	return route_length > 0 and (route_length <= max_weight if max_weight > 0 else true)
+	var weight: int = get_route_weight(start, end)
+	return weight > 0 and (weight <= max_weight if max_weight > 0 else true)
 
 
 ##
@@ -218,6 +235,16 @@ func is_in_range(start: Vector3i, end: Vector3i, max_distance: float = 9999.0, r
 			if _is_blocked(cell, floor_cell, start.z):
 				return false
 	return true
+
+func is_in_hard_range(start: Vector3i, end: Vector3i, max_distance: int = 9999) -> bool:
+	if !nav.has_point(_grid3d_to_id(end)):
+		return false
+	for entity in get_tree().get_nodes_in_group(GridNode2D.ENTITY_KEY):
+		entity.blocking = false
+	var ret: bool = get_route_weight(start, end) <= max_distance
+	for entity in get_tree().get_nodes_in_group(GridNode2D.ENTITY_KEY):
+		entity.blocking = entity.hp > 0
+	return ret
 
 func get_closest_open(center: Vector3i) -> Vector3i:
 	if center.z <= 0:
@@ -341,34 +368,40 @@ func _id_to_grid3d(id: int) -> Vector3i:
 func _add_point(pos: Vector3i):
 	var id: int = _grid3d_to_id(pos)
 	var cell: TileData = layers[pos.z].get_cell_tile_data(Vector2i(pos.x, pos.y))
-	nav.add_point(id, Vector3(pos))
+	nav.add_point(id, Vector3(pos), 0.0)
 	# Connect to existing adjacent points
 	if nav.has_point(_grid3d_to_id(pos + Vector3i.LEFT)):
-		nav.connect_points(id, _grid3d_to_id(pos + Vector3i.LEFT))
+		_connect_with_interstitial_weight(pos, pos + Vector3i.LEFT, adjacent_weight)
 	if nav.has_point(_grid3d_to_id(pos + Vector3i.DOWN)):
-		nav.connect_points(id, _grid3d_to_id(pos + Vector3i.DOWN))
+		_connect_with_interstitial_weight(pos, pos + Vector3i.DOWN, adjacent_weight)
+	# Connect diagonally
+	if diagonal_weight >= 0.0:
+		if nav.has_point(_grid3d_to_id(pos + Vector3i.LEFT + Vector3i.DOWN)):
+			_connect_with_interstitial_weight(pos, pos + Vector3i.LEFT + Vector3i.DOWN, diagonal_weight / sqrt(2.0))
+		if nav.has_point(_grid3d_to_id(pos + Vector3i.LEFT + Vector3i.UP)):
+			_connect_with_interstitial_weight(pos, pos + Vector3i.LEFT + Vector3i.UP, diagonal_weight / sqrt(2.0))
 	if pos.z > 0 and (climb_weight >= 0 or (cell and cell.has_custom_data(CLIMB_KEY))):
 		var weight = cell.get_custom_data(CLIMB_KEY) if cell and cell.has_custom_data(CLIMB_KEY) else climb_weight
 		# Connect to falloffs
 		if nav.has_point(_grid3d_to_id(pos + Vector3i.LEFT + Vector3i.FORWARD)):
-			_connect_with_weight(pos, pos + Vector3i.LEFT + Vector3i.FORWARD, weight)
+			_connect_with_interstitial_weight(pos, pos + Vector3i.LEFT + Vector3i.FORWARD, weight)
 		if nav.has_point(_grid3d_to_id(pos + Vector3i.DOWN + Vector3i.FORWARD)):
-			_connect_with_weight(pos, pos + Vector3i.DOWN + Vector3i.FORWARD, weight)
+			_connect_with_interstitial_weight(pos, pos + Vector3i.DOWN + Vector3i.FORWARD, weight)
 		# Connect to climbs
 		if nav.has_point(_grid3d_to_id(pos + Vector3i.RIGHT + Vector3i.FORWARD)):
-			_connect_with_weight(pos, pos + Vector3i.RIGHT + Vector3i.FORWARD, weight)
+			_connect_with_interstitial_weight(pos, pos + Vector3i.RIGHT + Vector3i.FORWARD, weight)
 		if nav.has_point(_grid3d_to_id(pos + Vector3i.UP + Vector3i.FORWARD)):
-			_connect_with_weight(pos, pos + Vector3i.UP + Vector3i.FORWARD, weight)
+			_connect_with_interstitial_weight(pos, pos + Vector3i.UP + Vector3i.FORWARD, weight)
 
-func _connect_with_weight(start: Vector3i, end: Vector3i, weight: float):
+func _connect_with_interstitial_weight(start: Vector3i, end: Vector3i, weight: float):
 	var i: int = 0
 	while nav.has_point(_grid3d_to_id(start, i)):
 		i += 1
 	var new_id := _grid3d_to_id(start, i)
-	nav.add_point(new_id, lerp(start, end, 0.5))
+	nav.add_point(new_id, (start as Vector3).lerp((end as Vector3), 0.5))
 	nav.set_point_weight_scale(new_id, weight)
 	nav.connect_points(_grid3d_to_id(start), new_id)
-	nav.connect_points(_grid3d_to_id(end), new_id)
+	nav.connect_points(new_id, _grid3d_to_id(end))
 
 
 # SIGNALS

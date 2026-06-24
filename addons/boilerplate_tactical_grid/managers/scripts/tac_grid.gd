@@ -48,6 +48,12 @@ func global_to_grid_2d(value: Vector2) -> Vector2i:
 							roundi(-with_offset.x / grid_size.x + with_offset.y / grid_size.y))
 	return ret
 
+func get_mob_at_grid_3d(target: Vector3i) -> DiceGridNode2d:
+	for npc in get_tree().get_nodes_in_group("npc"):
+		if npc is DiceGridNode2d and npc.grid_position == target:
+			return npc
+	return null
+
 
 # PRIVATE
 func _get_map(parent: Node) -> Map:
