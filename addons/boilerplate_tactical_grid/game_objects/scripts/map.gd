@@ -178,17 +178,33 @@ func get_route_weight(start: Vector3i, end: Vector3i) -> float:
 		total_weight += ceili(nav.get_point_weight_scale(id))
 	return total_weight
 
-func get_route_near(start: Vector3i, end: Vector3i, range_tolerance: float = 1, require_visibility: bool = true) -> Array[Vector3i]:
+func get_valid_approach(start: Vector3i, end: Vector3i, tolerance: int = 2, max_weight: int = 9999) -> Vector3i:
 	var best_route: Array[Vector3i] = []
-	for x in range(end.x - ceili(range_tolerance), end.x + ceili(range_tolerance) + 1):
-		for y in range(end.y - ceili(range_tolerance), end.y + ceili(range_tolerance) + 1):
-			var offset: Vector3i = grid2d_to_grid3d(Vector2i(x, y), true)
-			var temp_route: Array[Vector3i] = get_route(start, offset)
-			if is_in_range(start, offset, range_tolerance, require_visibility):
-				pass
-			if best_route.is_empty() or (!temp_route.is_empty() and best_route.size() > temp_route.size() and offset.distance_to(end) <= range_tolerance):
-				best_route = temp_route
-	return best_route
+	var best_weight: int = 9999
+	
+	for adjacent_tile in [end + Vector3i.RIGHT, end + Vector3i.DOWN, end + Vector3i.LEFT, end + Vector3i.UP]:
+		var temp_weight: int = get_route_weight(start, adjacent_tile)
+		if temp_weight < best_weight:
+			best_weight = temp_weight
+			best_route = get_route(start, adjacent_tile)
+	
+	while !best_route.is_empty() and get_route_weight(start, best_route.back()) > max_weight:
+		best_route.pop_back()
+	
+	return best_route.back() if !best_route.is_empty() else Vector3i.ZERO
+
+#func get_route_near(start: Vector3i, end: Vector3i, range_tolerance: float = 1.0) -> Array[Vector3i]:
+	#var best_route: Array[Vector3i] = []
+	#var best_weight: int = 9999
+	#for x in range(end.x - ceili(range_tolerance), end.x + ceili(range_tolerance) + 1):
+		#for y in range(end.y - ceili(range_tolerance), end.y + ceili(range_tolerance) + 1):
+			#var offset: Vector3i = grid2d_to_grid3d(Vector2i(x, y), true)
+			#var temp_route: Array[Vector3i] = get_route(start, offset)
+			#if !temp_route.is_empty():
+				#var temp_weight: int = get_route_weight(start, temp_route.back())
+				#if best_route.is_empty() or (!temp_route.is_empty() and best_weight > temp_weight and is_in_hard_range(offset, end, range_tolerance)):
+					#best_route = temp_route
+	#return best_route
 
 ## Returns true if the given grid position is considered a walkable platform.
 ## Check `platform_key` for more information on how this is determined.

@@ -234,21 +234,24 @@ tile_set = SubResource("TileSet_1by8w")
 
 [node name="PlayerDiceGridNode2D" parent="." unique_id=1426874908 instance=ExtResource("10_20sh4")]
 z_index = 1
-position = Vector2(120, 120)
-grid_position = Vector3i(7, 7, 1)
+position = Vector2(120, 88)
+grid_position = Vector3i(7, 5, 1)
 blocking = true
 
 [node name="NpcDiceGridNode2D" parent="." unique_id=1697430993 instance=ExtResource("11_kb74p")]
 z_index = 1
-position = Vector2(104, 120)
+position = Vector2(56, 88)
 hp = 3
-grid_position = Vector3i(6, 7, 1)
+grid_position = Vector3i(3, 5, 1)
 
-[node name="NpcDiceGridNode2D2" parent="." unique_id=290946196 instance=ExtResource("11_kb74p")]
+[node name="NpcDiceGridNode2D2" parent="." unique_id=831015495 instance=ExtResource("11_kb74p")]
 z_index = 1
-position = Vector2(56, 72)
+position = Vector2(72, 56)
 hp = 3
-grid_position = Vector3i(3, 4, 1)
+grid_position = Vector3i(4, 3, 1)
+
+[node name="NpcTimer" type="Timer" parent="." unique_id=221911610]
+unique_name_in_owner = true
 
 [connection signal="stage_changed" from="." to="." method="_on_stage_changed"]
 [connection signal="stage_changed" from="." to="Hud/PlayerController" method="_on_stage_changed"]
@@ -265,3 +268,4 @@ grid_position = Vector3i(3, 4, 1)
 [connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice3" to="Hud/PlayerController" method="_on_dice_rolled"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/AllocationButton" to="Hud/PlayerController" method="_on_allocation_button_pressed"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/EndTurnButton" to="Hud/PlayerController" method="_on_end_turn_button_pressed"]
+[connection signal="timeout" from="NpcTimer" to="." method="_on_npc_timer_timeout"]

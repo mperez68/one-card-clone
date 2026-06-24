@@ -5,6 +5,14 @@ signal stage_changed(last_stage: Stage, new_stage: Stage)
 enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTACK, POST_GAME }
 
 @onready var map: Map = %Map
+@onready var npc_timer: Timer = %NpcTimer
+
+@export var npc_movement: int = 4
+@export var npc_attack: int = 4
+@export var npc_defence: int = 4
+@export var npc_range: int = 4
+
+var queued_npcs: Array[DiceGridNode2d]
 
 var stage: Stage:
 	set(value):
@@ -40,10 +48,23 @@ func _on_stage_changed(last_stage: Stage, new_stage: Stage) -> void:
 			pass
 	match new_stage:
 		Stage.COMPUTER_MOVE:
-			await get_tree().create_timer(0.5).timeout	# TODO approach
-			pass_turn()
+			for npc in get_tree().get_nodes_in_group("npc"):
+				queued_npcs.push_back(npc as DiceGridNode2d)
+			npc_timer.start()
 		Stage.COMPUTER_ATTACK:
 			await get_tree().create_timer(0.5).timeout	# TODO calc damage
 			pass_turn()
 		_:
 			pass
+
+
+func _on_npc_timer_timeout() -> void:
+	var player = get_tree().get_nodes_in_group("player").front()
+	if queued_npcs.is_empty():
+		npc_timer.stop()
+		pass_turn()
+	else:
+		var npc = queued_npcs.pop_front()
+		npc.blocking = false
+		npc.move_to(map.get_valid_approach(npc.grid_position, player.grid_position, npc_range, npc_movement))
+		npc.blocking = true
