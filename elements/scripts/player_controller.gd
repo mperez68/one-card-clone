@@ -12,6 +12,11 @@ const MAX_MOVE: int = 6
 @onready var allocation_button: SfxButton = %AllocationButton
 @onready var end_turn_button: SfxButton = %EndTurnButton
 
+@onready var end_game_container: Control = %EndGameContainer
+@onready var success_container: VBoxContainer = %SuccessContainer
+@onready var failure_container: VBoxContainer = %FailureContainer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
 var rolling_dice: int
 var is_action: bool = false:
 	set(value):
@@ -27,6 +32,13 @@ var mob_defence: int = 3
 var mob_range: int = 3
 
 # ENGINE
+func _ready() -> void:
+	if !_cache():
+		printerr("Can't cache!")
+		return
+	player.died.connect(end_game.bind(false))
+	
+
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_action:
 		return
@@ -79,6 +91,11 @@ func set_enemy_stats(mve: int, atk: int, def: int, rng: int):
 			StatTray.Stat.RANGE:
 				new_value = rng
 		tray.enemy_value = new_value
+
+func end_game(success: bool):
+	animation_player.play("show")
+	end_game_container.show()
+	(success_container if success else failure_container).show()
 
 
 # PRIVATE

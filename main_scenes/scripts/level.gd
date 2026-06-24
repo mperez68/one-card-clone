@@ -8,12 +8,15 @@ enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTAC
 @onready var npc_timer: Timer = %NpcTimer
 @onready var player_controller: PlayerController = %PlayerController
 
+@export var next_level: PackedScene = preload("res://main_scenes/menus/credits_menu.tscn")
+@export_group("Npc Stats")
 @export var npc_movement: int = 4
 @export var npc_attack: int = 4
 @export var npc_defence: int = 4
 @export var npc_range: int = 4
 
 var queued_npcs: Array[DiceGridNode2d]
+var living_npcs: int = 0
 
 var stage: Stage:
 	set(value):
@@ -30,6 +33,14 @@ func _ready() -> void:
 	player_controller.set_enemy_stats(npc_movement, npc_attack, npc_defence, npc_range)
 	await get_tree().create_timer(0.5).timeout	# TODO start when prompted
 	pass_turn()
+	for npc in get_tree().get_nodes_in_group("npc"):
+		living_npcs += 1
+		npc.died.connect(_on_npc_died)
+
+func _on_npc_died():
+	living_npcs -= 1
+	if living_npcs == 0:
+		player_controller.end_game(true)
 
 
 # PUBLIC
@@ -87,3 +98,18 @@ func _on_npc_timer_timeout() -> void:
 				while total_attack >= player_def:
 					player.damage(1)
 					total_attack -= player_def
+
+
+func _on_progression_button_pressed(selection: int) -> void:
+	match selection:
+		0:
+			print("heal")
+		1:
+			print("+1 movement")
+		2:
+			print("+1 attack")
+		3:
+			print("+1 defence")
+		4:
+			print("+1 range")
+	SceneManager.new_scene(next_level)

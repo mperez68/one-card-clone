@@ -9,7 +9,12 @@
 [ext_resource type="Script" uid="uid://c7qjjllo181k6" path="res://elements/scripts/player_controller.gd" id="4_u3ekq"]
 [ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="5_2ix7r"]
 [ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="7_g7dyr"]
+[ext_resource type="Texture2D" uid="uid://csd6n6x5dqno1" path="res://assets/icons/dice_32.png" id="8_kb74p"]
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="9_1yxrq"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="10_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://d4ly7j6jyoj3r" path="res://elements/player_dice_grid_node_2d.tscn" id="10_20sh4"]
+[ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
+[ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="11_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://eeinuiutrflp" path="res://elements/npc_dice_grid_node_2d.tscn" id="11_kb74p"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmqk0"]
@@ -60,6 +65,48 @@ load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.cte
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5akd"]
 atlas = SubResource("CompressedTexture2D_eq14r")
 region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="Resource" id="Resource_3ml1t"]
+script = ExtResource("11_3ml1t")
+location_override = "res://main_scenes/menus/splash.tscn"
+button_text = "Back to Menu"
+metadata/_custom_type_script = "uid://cqkdtdqupov0c"
+
+[sub_resource type="Animation" id="Animation_3ml1t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%EndGameContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_csbuq"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%EndGameContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvsxn"]
+_data = {
+&"RESET": SubResource("Animation_3ml1t"),
+&"show": SubResource("Animation_csbuq")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26175"]
 texture = ExtResource("2_u00cv")
@@ -223,6 +270,134 @@ visible = false
 layout_mode = 2
 text = "End Turn"
 
+[node name="EndGameContainer" type="Control" parent="Hud" unique_id=1498777416]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_4pqnc")
+
+[node name="TextureRect" type="TextureRect" parent="Hud/EndGameContainer" unique_id=1695124089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("8_kb74p")
+stretch_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Hud/EndGameContainer" unique_id=636697548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SuccessContainer" type="VBoxContainer" parent="Hud/EndGameContainer/CenterContainer" unique_id=984688210]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer" unique_id=1210574957]
+layout_mode = 2
+
+[node name="CloserText" type="Label" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer" unique_id=545314610]
+layout_mode = 2
+text = "Level cleared!"
+label_settings = ExtResource("9_1yxrq")
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer" unique_id=1962140725]
+layout_mode = 2
+
+[node name="CloserText" type="Label" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer3" unique_id=1209579349]
+layout_mode = 2
+text = "Select one to proceed:"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer" unique_id=1342762104]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2" unique_id=2032683271]
+layout_mode = 2
+
+[node name="SfxButton" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=513835916 instance=ExtResource("7_g7dyr")]
+layout_mode = 2
+text = "Full Heal"
+
+[node name="Label" type="Label" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=1619514245]
+layout_mode = 2
+text = "- OR -"
+label_settings = ExtResource("10_3ml1t")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=1417832499]
+layout_mode = 2
+text = "+1 to:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=968283492]
+layout_mode = 2
+
+[node name="SfxButton2" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=2139439178 instance=ExtResource("7_g7dyr")]
+layout_mode = 2
+text = "Speed"
+
+[node name="SfxButton3" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1148047650 instance=ExtResource("7_g7dyr")]
+layout_mode = 2
+text = "Attack"
+
+[node name="SfxButton4" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1265002958 instance=ExtResource("7_g7dyr")]
+layout_mode = 2
+text = "Defence"
+
+[node name="SfxButton5" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=352037015 instance=ExtResource("7_g7dyr")]
+layout_mode = 2
+text = "Range"
+
+[node name="FailureContainer" type="VBoxContainer" parent="Hud/EndGameContainer/CenterContainer" unique_id=1902676182]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Hud/EndGameContainer/CenterContainer/FailureContainer" unique_id=44491969]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CloserText" type="Label" parent="Hud/EndGameContainer/CenterContainer/FailureContainer/PanelContainer" unique_id=1671537046]
+layout_mode = 2
+text = "You Died!"
+label_settings = ExtResource("9_1yxrq")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Hud/EndGameContainer/CenterContainer/FailureContainer" unique_id=904127417]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/EndGameContainer/CenterContainer/FailureContainer/PanelContainer2" unique_id=802235948]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/EndGameContainer/CenterContainer/FailureContainer/PanelContainer2/VBoxContainer" unique_id=1216258464]
+layout_mode = 2
+text = "X levels cleared."
+horizontal_alignment = 1
+
+[node name="SceneChangeButton" parent="Hud/EndGameContainer/CenterContainer/FailureContainer" unique_id=1394044327 instance=ExtResource("10_br3m6")]
+layout_mode = 2
+text = "Back to Menu"
+scene_link = SubResource("Resource_3ml1t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hud" unique_id=1640478881]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_kvsxn")
+
 [node name="Map" parent="." unique_id=952170447 instance=ExtResource("1_j6h3a")]
 unique_name_in_owner = true
 adjacent_weight = 2.0
@@ -269,4 +444,9 @@ unique_name_in_owner = true
 [connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice3" to="Hud/PlayerController" method="_on_dice_rolled"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/AllocationButton" to="Hud/PlayerController" method="_on_allocation_button_pressed"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/EndTurnButton" to="Hud/PlayerController" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/SfxButton" to="." method="_on_progression_button_pressed" binds= [0]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton2" to="." method="_on_progression_button_pressed" binds= [1]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton3" to="." method="_on_progression_button_pressed" binds= [2]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton4" to="." method="_on_progression_button_pressed" binds= [3]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton5" to="." method="_on_progression_button_pressed" binds= [4]]
 [connection signal="timeout" from="NpcTimer" to="." method="_on_npc_timer_timeout"]
