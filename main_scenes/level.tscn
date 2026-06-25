@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://capadifnn3uqv" path="res://elements/stat_tray.tscn" id="4_l2prf"]
 [ext_resource type="Script" uid="uid://c7qjjllo181k6" path="res://elements/scripts/player_controller.gd" id="4_u3ekq"]
 [ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="5_2ix7r"]
+[ext_resource type="Texture2D" uid="uid://d344x5dkn137q" path="res://assets/sprites/menu_icons.png" id="6_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="7_g7dyr"]
 [ext_resource type="Texture2D" uid="uid://csd6n6x5dqno1" path="res://assets/icons/dice_32.png" id="8_kb74p"]
 [ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="9_1yxrq"]
@@ -15,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
 [ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="11_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="16_3ml1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1by8w"]
+atlas = ExtResource("6_3ml1t")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmqk0"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
@@ -64,6 +69,10 @@ load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.cte
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5akd"]
 atlas = SubResource("CompressedTexture2D_eq14r")
 region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxtgc"]
+atlas = ExtResource("6_3ml1t")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="Resource" id="Resource_3ml1t"]
 script = ExtResource("11_3ml1t")
@@ -206,12 +215,41 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="RollingDiceTray" type="HBoxContainer" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer" unique_id=1110851050]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer" unique_id=601212504]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer" unique_id=683304578]
 layout_mode = 2
 alignment = 1
 
-[node name="Dice" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray" unique_id=757168519 instance=ExtResource("5_2ix7r")]
+[node name="TextureRect" type="TextureRect" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/HBoxContainer" unique_id=631162714]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_1by8w")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/HBoxContainer" unique_id=1562432790]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_1by8w")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/HBoxContainer" unique_id=1147377178]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_1by8w")
+stretch_mode = 3
+
+[node name="RollingDiceTray" type="GridContainer" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer" unique_id=1198453888]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="Dice" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=757168519 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_h61ea")
 type = 2
@@ -226,7 +264,8 @@ type_dir = Dictionary[int, Texture2D]({
 6: SubResource("AtlasTexture_g5akd")
 })
 
-[node name="Dice2" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray" unique_id=544587051 instance=ExtResource("5_2ix7r")]
+[node name="Dice2" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=544587051 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_h61ea")
 type = 2
@@ -241,7 +280,8 @@ type_dir = Dictionary[int, Texture2D]({
 6: SubResource("AtlasTexture_g5akd")
 })
 
-[node name="Dice3" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray" unique_id=1809149321 instance=ExtResource("5_2ix7r")]
+[node name="Dice3" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=1809149321 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_h61ea")
 type = 2
@@ -256,11 +296,98 @@ type_dir = Dictionary[int, Texture2D]({
 6: SubResource("AtlasTexture_g5akd")
 })
 
-[node name="AllocationButton" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer" unique_id=1026818470 instance=ExtResource("7_g7dyr")]
+[node name="Dice4" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=1979759807 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="SpinButton" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=1026818470 instance=ExtResource("7_g7dyr")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+disabled = true
+text = ""
+icon = SubResource("AtlasTexture_fxtgc")
+
+[node name="Dice6" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=845523676 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="Dice7" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=1357185132 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="Dice8" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=326879301 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="Dice9" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray" unique_id=992184269 instance=ExtResource("5_2ix7r")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="AllocationButton" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer" unique_id=1076381779 instance=ExtResource("7_g7dyr")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-disabled = true
 text = "Fight"
 
 [node name="EndTurnButton" parent="Hud/PlayerController/MarginContainer/Control/VBoxContainer" unique_id=203260590 instance=ExtResource("7_g7dyr")]
@@ -430,16 +557,15 @@ grid_position = Vector3i(3, 5, 1)
 [connection signal="stage_changed" from="." to="." method="_on_stage_changed"]
 [connection signal="stage_changed" from="." to="Hud/PlayerController" method="_on_stage_changed"]
 [connection signal="pass_turn" from="Hud/PlayerController" to="." method="pass_turn"]
-[connection signal="dice_dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/StatsContainer/VBoxContainer/StatTrayContainer/StatTray" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="dice_dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/StatsContainer/VBoxContainer/StatTrayContainer/StatTray2" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="dice_dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/StatsContainer/VBoxContainer/StatTrayContainer/StatTray3" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="dice_dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/StatsContainer/VBoxContainer/StatTrayContainer/StatTray4" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice" to="Hud/PlayerController" method="_on_dice_rolled"]
-[connection signal="dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice2" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice2" to="Hud/PlayerController" method="_on_dice_rolled"]
-[connection signal="dropped" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice3" to="Hud/PlayerController" method="_on_stat_tray_dice_dropped"]
-[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice3" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice2" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice3" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice4" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/SpinButton" to="Hud/PlayerController" method="_on_spin_button_pressed"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice6" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice7" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice8" to="Hud/PlayerController" method="_on_dice_rolled"]
+[connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/RollingDiceTray/Dice9" to="Hud/PlayerController" method="_on_dice_rolled"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/AllocationButton" to="Hud/PlayerController" method="_on_allocation_button_pressed"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/EndTurnButton" to="Hud/PlayerController" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/SuccessButton" to="." method="_on_progression_button_pressed" binds= [0]]

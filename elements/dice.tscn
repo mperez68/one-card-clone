@@ -101,6 +101,8 @@ region = Rect2(0, 176, 16, 16)
 
 [node name="Dice" type="TextureRect" unique_id=757168519]
 custom_minimum_size = Vector2(16, 16)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = SubResource("AtlasTexture_hxfj5")
 script = ExtResource("2_mhoi1")
 type = 1

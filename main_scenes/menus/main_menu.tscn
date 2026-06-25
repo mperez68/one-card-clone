@@ -80,7 +80,7 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/TitleContainer" unique_id=246676301]
 layout_mode = 2
-text = "One-Card
+text = "Dice-Spinner
 Dungeon"
 label_settings = ExtResource("2_ids5a")
 horizontal_alignment = 1
@@ -92,7 +92,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/TitleContainer2" unique_id=1751318882]
 layout_mode = 2
-text = "Adapated from Barny Skinner's
+text = "A spin on Barny Skinner's
 One Card Dungeon."
 label_settings = ExtResource("6_fagh0")
 horizontal_alignment = 1

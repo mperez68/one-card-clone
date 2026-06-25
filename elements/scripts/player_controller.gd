@@ -8,14 +8,19 @@ const MAX_MOVE: int = 6
 
 @onready var stat_tray_container: HBoxContainer = %StatTrayContainer
 @onready var rolling_container: PanelContainer = %RollingContainer
-@onready var rolling_dice_tray: HBoxContainer = %RollingDiceTray
+@onready var rolling_dice_tray: Control = %RollingDiceTray
 @onready var allocation_button: SfxButton = %AllocationButton
 @onready var end_turn_button: SfxButton = %EndTurnButton
+@onready var spin_button: SfxButton = %SpinButton
 
 @onready var end_game_container: Control = %EndGameContainer
 @onready var success_container: VBoxContainer = %SuccessContainer
 @onready var failure_container: VBoxContainer = %FailureContainer
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+
+@onready var ordered_dice_wheel: Array[Dice] = [
+	%Dice, %Dice2, %Dice3, %Dice6, %Dice9, %Dice8, %Dice7, %Dice4
+]
 
 var rolling_dice: int
 var is_action: bool = false:
@@ -72,6 +77,13 @@ func get_stat(stat: StatTray.Stat) -> int:
 			return tray.remaining_value
 	return 0
 
+func set_stat(die: Dice, stat: StatTray.Stat):
+	for tray in stat_tray_container.get_children():
+		if tray is StatTray and tray.stat == stat:
+			tray.modifier_dice.type = die.type
+			tray.modifier_dice.face_value = die.face_value
+			return
+
 func get_npc_stat(stat: StatTray.Stat) -> int:
 	for tray in stat_tray_container.get_children():
 		if tray is StatTray and tray.stat == stat:
@@ -115,14 +127,6 @@ func _cache() -> bool:
 		map = TacGrid.get_map()
 	return player != null and map != null
 
-func _set_draggable(draggable: bool):
-	for child in rolling_dice_tray.get_children():
-		if child is Dice:
-			child.draggable = draggable
-	for child in stat_tray_container.get_children():
-		if child is StatTray:
-			child.draggable = draggable
-
 func _show_remaining(showing: bool, reset: bool = false):
 	for child in stat_tray_container.get_children():
 		if child is StatTray:
@@ -136,7 +140,7 @@ func _start_action():
 			child.start_action()
 
 func _roll_tray():
-	rolling_dice = rolling_dice_tray.get_children().size()
+	rolling_dice = ordered_dice_wheel.size()
 	for child in rolling_dice_tray.get_children():
 		if child is Dice:
 			child.roll(randf_range(1.0, 2.0))
@@ -162,9 +166,8 @@ func _on_stage_changed(last_stage: Stage, new_stage: Stage):
 	match last_stage:
 		Stage.ALLOCATION:
 			allocation_button.hide()
-			allocation_button.disabled = true
+			spin_button.disabled = true
 			rolling_container.hide()
-			_set_draggable(false)
 		Stage.ACTION:
 			_show_remaining(false)
 			end_turn_button.hide()
@@ -178,7 +181,7 @@ func _on_stage_changed(last_stage: Stage, new_stage: Stage):
 			rolling_container.show()
 		Stage.ALLOCATION:
 			allocation_button.show()
-			_set_draggable(true)
+			spin_button.disabled = false
 		Stage.ACTION:
 			_start_action()
 			_show_remaining(true)
@@ -192,15 +195,10 @@ func _on_dice_rolled() -> void:
 	if rolling_dice <= 0:
 		pass_turn.emit()
 
-func _on_stat_tray_dice_dropped() -> void:
-	allocation_button.disabled = true
-	for child in rolling_dice_tray.get_children():
-		if child is Dice:
-			if ![Dice.Type.EMPTY, Dice.Type.EMPTY_DISABLED].has(child.type):
-				return
-	allocation_button.disabled = false
-
 func _on_allocation_button_pressed() -> void:
+	set_stat(ordered_dice_wheel[0], StatTray.Stat.MOVEMENT)
+	set_stat(ordered_dice_wheel[1], StatTray.Stat.ATTACK)
+	set_stat(ordered_dice_wheel[2], StatTray.Stat.DEFENSE)
 	pass_turn.emit()
 
 func _on_end_turn_button_pressed() -> void:
@@ -208,3 +206,10 @@ func _on_end_turn_button_pressed() -> void:
 
 func _on_scene_change_button_pressed() -> void:
 	PlayerStatsManager.reset()
+
+func _on_spin_button_pressed() -> void:
+	var last_value: Face.Value = ordered_dice_wheel.back().face_value
+	for die in ordered_dice_wheel:
+		var temp_value: Face.Value = die.face_value
+		die.face_value = last_value
+		last_value = temp_value
