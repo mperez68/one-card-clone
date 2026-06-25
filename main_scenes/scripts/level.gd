@@ -14,11 +14,11 @@ enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTAC
 
 @export var next_level: PackedScene = preload("res://main_scenes/menus/credits_menu.tscn")
 @export_group("Npc Stats")
-@export var npc_hp: int = 4
-@export var npc_movement: int = 4
+@export var npc_hp: int = 2
+@export var npc_movement: int = 5
 @export var npc_attack: int = 4
 @export var npc_defence: int = 4
-@export var npc_range: int = 4
+@export var npc_range: int = 3
 
 var queued_npcs: Array[DiceGridNode2d]
 var living_npcs: int = 0
@@ -131,4 +131,5 @@ func _on_progression_button_pressed(selection: int) -> void:
 			PlayerStatsManager.boost_stat(StatTray.Stat.DEFENSE)
 		4:
 			PlayerStatsManager.boost_stat(StatTray.Stat.RANGE)
+	PlayerStatsManager.hp = player_controller.player.hp
 	SceneManager.new_scene(next_level)
