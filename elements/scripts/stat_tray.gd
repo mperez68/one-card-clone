@@ -18,6 +18,11 @@ enum Stat{ MOVEMENT, ATTACK, DEFENSE, RANGE }
 		stat = value
 		_update()
 @export var stat_dir: Dictionary[Stat, Texture2D]
+@export var draggable: bool = false:
+	set(value):
+		draggable = value
+		if modifier_dice:
+			modifier_dice.draggable = draggable
 
 var settable: bool = true
 var total_value: int:
@@ -32,10 +37,6 @@ var enemy_value: int:
 	set(value):
 		enemy_value = value
 		_update()
-var draggable: bool = false:
-	set(value):
-		draggable = value
-		modifier_dice.draggable = draggable
 var show_remaining: bool = false:
 	set(value):
 		show_remaining = value
@@ -63,6 +64,7 @@ func set_base_dice(value: int):
 
 # PRIVATE
 func _update():
+	draggable = draggable
 	if !stat_dir.has(stat) or !stat_texture:
 		return
 	stat_texture.texture = stat_dir[stat]

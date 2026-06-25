@@ -11,6 +11,9 @@ enum Stage{ PRE_GAME, ROLLING, ALLOCATION, ACTION, COMPUTER_MOVE, COMPUTER_ATTAC
 @onready var npc_timer: Timer = %NpcTimer
 @onready var player_controller: PlayerController = %PlayerController
 @onready var spawn_marker: SpawnMarker = %SpawnMarker
+@onready var success_buttons: Array[SfxButton] = [
+	%SuccessButton, %SuccessButton1, %SuccessButton2, %SuccessButton3, %SuccessButton4
+]
 
 @export var next_level: PackedScene = preload("res://main_scenes/menus/credits_menu.tscn")
 @export_group("Npc Stats")
@@ -120,6 +123,9 @@ func _on_npc_timer_timeout() -> void:
 
 
 func _on_progression_button_pressed(selection: int) -> void:
+	for button in success_buttons:
+		button.disabled = true
+	PlayerStatsManager.hp = player_controller.player.hp
 	match selection:
 		0:
 			PlayerStatsManager.heal()
@@ -131,5 +137,4 @@ func _on_progression_button_pressed(selection: int) -> void:
 			PlayerStatsManager.boost_stat(StatTray.Stat.DEFENSE)
 		4:
 			PlayerStatsManager.boost_stat(StatTray.Stat.RANGE)
-	PlayerStatsManager.hp = player_controller.player.hp
 	SceneManager.new_scene(next_level)

@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://cgdgs7axekhqs"]
+
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_26x8r"]
+[ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="2_gg53k"]
+[ext_resource type="Script" uid="uid://gkd0fvneon0" path="res://main_scenes/menus/scripts/how_to_play_2_menu.gd" id="2_s5c1r"]
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="3_iaerm"]
+[ext_resource type="PackedScene" uid="uid://capadifnn3uqv" path="res://elements/stat_tray.tscn" id="4_67bt0"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="4_s5c1r"]
+[ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="5_gg53k"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_s5c1r"]
+[ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="6_4do4k"]
+[ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="9_4do4k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmqk0"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h61ea"]
+atlas = SubResource("CompressedTexture2D_mmqk0")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="Resource" id="Resource_1by8w"]
+script = ExtResource("9_4do4k")
+location_override = "res://main_scenes/menus/main_menu.tscn"
+button_text = "Main Menu"
+metadata/_custom_type_script = "uid://cqkdtdqupov0c"
+
+[node name="HowToPlay2Menu" type="Control" unique_id=258569090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_26x8r")
+script = ExtResource("2_s5c1r")
+
+[node name="BgRect" parent="." unique_id=741438001 instance=ExtResource("2_gg53k")]
+layout_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=418069230]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=295671991]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=1687803766]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=1435791865]
+layout_mode = 2
+text = "Turns"
+label_settings = ExtResource("3_iaerm")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=574135836]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2" unique_id=671097346]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=648368321]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=187498681]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "At the start of each turn, roll 3 dice and manually assign them to your stats for your turn.
+(Try it here!)"
+label_settings = ExtResource("4_s5c1r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1937175510]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=399903517]
+layout_mode = 2
+alignment = 1
+
+[node name="StatTray" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1923911916 instance=ExtResource("4_67bt0")]
+layout_mode = 2
+draggable = true
+
+[node name="StatTray2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1085858876 instance=ExtResource("4_67bt0")]
+layout_mode = 2
+stat = 1
+draggable = true
+
+[node name="StatTray3" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=571736777 instance=ExtResource("4_67bt0")]
+layout_mode = 2
+stat = 2
+draggable = true
+
+[node name="StatTray4" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1068126392 instance=ExtResource("4_67bt0")]
+layout_mode = 2
+stat = 3
+draggable = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=162570736]
+layout_mode = 2
+alignment = 1
+
+[node name="Dice" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=885503768 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 2
+draggable = true
+
+[node name="Dice2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1059092875 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 5
+draggable = true
+
+[node name="Dice3" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=597130819 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 6
+draggable = true
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=148929762]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "After assigning stats, you get to move and attack in any order. When your turn is done, all NPCs move and attack simultaneously, summing their attack stats."
+label_settings = ExtResource("4_s5c1r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=54432177]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer3" unique_id=1048257587]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1970711352 instance=ExtResource("5_s5c1r")]
+custom_minimum_size = Vector2(48, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+back = true
+save = false
+
+[node name="SceneChangeButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1190099506 instance=ExtResource("6_4do4k")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main Menu"
+scene_link = SubResource("Resource_1by8w")

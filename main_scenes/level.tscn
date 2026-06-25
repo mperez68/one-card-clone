@@ -328,7 +328,8 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2" unique_id=2032683271]
 layout_mode = 2
 
-[node name="SfxButton" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=513835916 instance=ExtResource("7_g7dyr")]
+[node name="SuccessButton" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=513835916 instance=ExtResource("7_g7dyr")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Full Heal"
 
@@ -346,19 +347,23 @@ horizontal_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer" unique_id=968283492]
 layout_mode = 2
 
-[node name="SfxButton2" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=2139439178 instance=ExtResource("7_g7dyr")]
+[node name="SuccessButton1" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=2139439178 instance=ExtResource("7_g7dyr")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Speed"
 
-[node name="SfxButton3" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1148047650 instance=ExtResource("7_g7dyr")]
+[node name="SuccessButton2" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1148047650 instance=ExtResource("7_g7dyr")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Attack"
 
-[node name="SfxButton4" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1265002958 instance=ExtResource("7_g7dyr")]
+[node name="SuccessButton3" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1265002958 instance=ExtResource("7_g7dyr")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Defence"
 
-[node name="SfxButton5" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=352037015 instance=ExtResource("7_g7dyr")]
+[node name="SuccessButton4" parent="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=352037015 instance=ExtResource("7_g7dyr")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Range"
 
@@ -437,10 +442,10 @@ grid_position = Vector3i(3, 5, 1)
 [connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/RollingDiceTray/Dice3" to="Hud/PlayerController" method="_on_dice_rolled"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/AllocationButton" to="Hud/PlayerController" method="_on_allocation_button_pressed"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/EndTurnButton" to="Hud/PlayerController" method="_on_end_turn_button_pressed"]
-[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/SfxButton" to="." method="_on_progression_button_pressed" binds= [0]]
-[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton2" to="." method="_on_progression_button_pressed" binds= [1]]
-[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton3" to="." method="_on_progression_button_pressed" binds= [2]]
-[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton4" to="." method="_on_progression_button_pressed" binds= [3]]
-[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SfxButton5" to="." method="_on_progression_button_pressed" binds= [4]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/SuccessButton" to="." method="_on_progression_button_pressed" binds= [0]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SuccessButton1" to="." method="_on_progression_button_pressed" binds= [1]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SuccessButton2" to="." method="_on_progression_button_pressed" binds= [2]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SuccessButton3" to="." method="_on_progression_button_pressed" binds= [3]]
+[connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SuccessButton4" to="." method="_on_progression_button_pressed" binds= [4]]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/FailureContainer/SceneChangeButton" to="Hud/PlayerController" method="_on_scene_change_button_pressed"]
 [connection signal="timeout" from="NpcTimer" to="." method="_on_npc_timer_timeout"]
