@@ -17,6 +17,7 @@ const MAX_MOVE: int = 6
 @onready var success_container: VBoxContainer = %SuccessContainer
 @onready var failure_container: VBoxContainer = %FailureContainer
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var rotate_animated_sprite: AnimatedSprite2D = %RotateAnimatedSprite
 
 @onready var ordered_dice_wheel: Array[Dice] = [
 	%RollingDice, %RollingDice2, %RollingDice3, %RollingDice5, %RollingDice8, %RollingDice7, %RollingDice6, %RollingDice4
@@ -215,6 +216,7 @@ func _on_scene_change_button_pressed() -> void:
 	PlayerStatsManager.reset()
 
 func _on_spin_button_pressed() -> void:
+	rotate_animated_sprite.play("default")
 	var last_value: Face.Value = ordered_dice_wheel.back().face_value
 	for die in ordered_dice_wheel:
 		var temp_value: Face.Value = die.face_value

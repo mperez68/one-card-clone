@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_xbeoc"]
 [ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="2_i8kcj"]
 [ext_resource type="Script" uid="uid://bnsgy30b155mp" path="res://elements/scripts/dice_grid_node_2d.gd" id="2_lw25c"]
+[ext_resource type="AudioStream" uid="uid://b6hdlx0rjd68q" path="res://assets/sfx/damage.wav" id="4_csnqb"]
+[ext_resource type="AudioStream" uid="uid://bah4sk850mnc3" path="res://assets/sfx/shoot.wav" id="5_fetfa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
@@ -113,5 +115,15 @@ texture = SubResource("GradientTexture2D_1by8w")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_fxtgc")
+
+[node name="DamageSfx" type="AudioStreamPlayer2D" parent="." index="2" unique_id=1410936840]
+unique_name_in_owner = true
+stream = ExtResource("4_csnqb")
+bus = &"Sfx"
+
+[node name="MoveSfx" type="AudioStreamPlayer2D" parent="." index="3" unique_id=335281138]
+unique_name_in_owner = true
+stream = ExtResource("5_fetfa")
+bus = &"Sfx"
 
 [connection signal="finished" from="DamageParticles" to="." method="_on_damage_particles_finished"]

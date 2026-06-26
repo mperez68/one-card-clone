@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://gxx2105nbtt1"]
+[gd_scene format=3 uid="uid://gxx2105nbtt1"]
 
 [ext_resource type="Script" uid="uid://cghb0wostuhjr" path="res://global/scripts/sfx_manager.gd" id="1_xuqmn"]
 [ext_resource type="AudioStream" uid="uid://i6mpitoql1iv" path="res://assets/sfx/click.wav" id="2_1lb6b"]
 
-[node name="SfxManager" type="Node"]
+[node name="SfxManager" type="Node" unique_id=8748262]
 script = ExtResource("1_xuqmn")
 
-[node name="Click" type="AudioStreamPlayer" parent="."]
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=2038752209]
 unique_name_in_owner = true
 stream = ExtResource("2_1lb6b")
+volume_db = -10.0
 bus = &"Sfx"

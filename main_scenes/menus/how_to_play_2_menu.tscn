@@ -4,12 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="2_gg53k"]
 [ext_resource type="Script" uid="uid://gkd0fvneon0" path="res://main_scenes/menus/scripts/how_to_play_2_menu.gd" id="2_s5c1r"]
 [ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="3_iaerm"]
-[ext_resource type="PackedScene" uid="uid://capadifnn3uqv" path="res://elements/stat_tray.tscn" id="4_67bt0"]
 [ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="4_s5c1r"]
 [ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="5_gg53k"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_s5c1r"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="6_4do4k"]
+[ext_resource type="Texture2D" uid="uid://d344x5dkn137q" path="res://assets/sprites/menu_icons.png" id="6_pgyib"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="8_jbqsd"]
 [ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="9_4do4k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfksr"]
+atlas = ExtResource("6_pgyib")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mmqk0"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
@@ -17,6 +22,52 @@ load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.cte
 [sub_resource type="AtlasTexture" id="AtlasTexture_h61ea"]
 atlas = SubResource("CompressedTexture2D_mmqk0")
 region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhoi1"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et0uw"]
+atlas = SubResource("CompressedTexture2D_mhoi1")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5skr3"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxfj5"]
+atlas = SubResource("CompressedTexture2D_5skr3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ul8td"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7qy5"]
+atlas = SubResource("CompressedTexture2D_ul8td")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtwah"]
+atlas = SubResource("CompressedTexture2D_rfep6")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6h3d5"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x5ec"]
+atlas = SubResource("CompressedTexture2D_6h3d5")
+region = Rect2(0, 192, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eq14r"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5akd"]
+atlas = SubResource("CompressedTexture2D_eq14r")
+region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u76b1"]
+atlas = ExtResource("6_pgyib")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="Resource" id="Resource_1by8w"]
 script = ExtResource("9_4do4k")
@@ -71,66 +122,180 @@ alignment = 1
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=187498681]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "At the start of each turn, roll 3 dice and manually assign them to your stats for your turn.
-(Try it here!)"
+text = "At the start of each turn, rotate the rolled dice and lock in the top 3 results as your assigned stats."
 label_settings = ExtResource("4_s5c1r")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1937175510]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=889191029]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=399903517]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1043064199]
 layout_mode = 2
 alignment = 1
 
-[node name="StatTray" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1923911916 instance=ExtResource("4_67bt0")]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=420213657]
 layout_mode = 2
-draggable = true
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_bfksr")
+stretch_mode = 3
 
-[node name="StatTray2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1085858876 instance=ExtResource("4_67bt0")]
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=407306129]
 layout_mode = 2
-stat = 1
-draggable = true
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_bfksr")
+stretch_mode = 3
 
-[node name="StatTray3" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=571736777 instance=ExtResource("4_67bt0")]
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1237840479]
 layout_mode = 2
-stat = 2
-draggable = true
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_bfksr")
+stretch_mode = 3
 
-[node name="StatTray4" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1068126392 instance=ExtResource("4_67bt0")]
+[node name="RollingDiceTray" type="GridContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2003149142]
+unique_name_in_owner = true
 layout_mode = 2
-stat = 3
-draggable = true
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=162570736]
-layout_mode = 2
-alignment = 1
-
-[node name="Dice" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=885503768 instance=ExtResource("5_gg53k")]
+[node name="RollingDice" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=757168519 instance=ExtResource("5_gg53k")]
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_h61ea")
 type = 2
-face_value = 2
-draggable = true
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
 
-[node name="Dice2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1059092875 instance=ExtResource("5_gg53k")]
+[node name="RollingDice2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=1897955297 instance=ExtResource("5_gg53k")]
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_h61ea")
 type = 2
-face_value = 5
-draggable = true
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
 
-[node name="Dice3" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=597130819 instance=ExtResource("5_gg53k")]
+[node name="RollingDice3" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=560002202 instance=ExtResource("5_gg53k")]
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_h61ea")
 type = 2
-face_value = 6
-draggable = true
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="RollingDice4" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=1122940234 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="SpinButton" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=1026818470 instance=ExtResource("8_jbqsd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+disabled = true
+text = ""
+icon = SubResource("AtlasTexture_u76b1")
+
+[node name="RollingDice5" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=927259636 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="RollingDice6" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=319984380 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="RollingDice7" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=1316844156 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
+
+[node name="RollingDice8" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/RollingDiceTray" unique_id=316905480 instance=ExtResource("5_gg53k")]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_h61ea")
+type = 2
+face_value = 7
+type_dir = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_et0uw"),
+1: SubResource("AtlasTexture_hxfj5"),
+2: SubResource("AtlasTexture_h61ea"),
+3: SubResource("AtlasTexture_y7qy5"),
+4: SubResource("AtlasTexture_rtwah"),
+5: SubResource("AtlasTexture_6x5ec"),
+6: SubResource("AtlasTexture_g5akd")
+})
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=148929762]
 custom_minimum_size = Vector2(100, 0)

@@ -9,6 +9,8 @@ signal died
 
 @onready var dice: Dice = %Dice
 @onready var damage_particles: GPUParticles2D = %DamageParticles
+@onready var damage_sfx: AudioStreamPlayer2D = %DamageSfx
+@onready var move_sfx: AudioStreamPlayer2D = %MoveSfx
 
 @export_range(0.0, 6.0, 1.0) var hp: int = 3:
 	set(value):
@@ -34,6 +36,7 @@ func _ready():
 func damage(value: int):
 	hp -= value
 	damage_particles.emitting = true
+	damage_sfx.play()
 
 func heal():
 	hp = 6
@@ -52,6 +55,7 @@ func move_to(target_position: Vector3i):
 		add_sibling(node)
 		node.play(i * DELAY_INCREMENT)
 	super(target_position)
+	move_sfx.play()
 
 # PRIVATE
 
