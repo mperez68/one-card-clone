@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://mol4fxc6v1ey" path="res://assets/fonts/Micro_Chat.ttf" id="1_5sfep"]
 
 [resource]
+line_spacing = 0.0
 font = ExtResource("1_5sfep")
 font_size = 5
 font_color = Color(0.827451, 0.85490197, 0.5137255, 1)

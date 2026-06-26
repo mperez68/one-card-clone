@@ -10,6 +10,8 @@ enum Type{ DISABLED, STAT, ROLLING, PLAYER, NPC, EMPTY, EMPTY_DISABLED }
 @onready var face: Face = %Face
 @onready var roll_timer: Timer = %RollTimer
 @onready var rolling_timer: Timer = %RollingTimer
+@onready var spin_particles: CPUParticles2D = %SpinParticles
+@onready var set_particles: CPUParticles2D = %SetParticles
 
 @export var type: Type:
 	set(value):
@@ -51,7 +53,12 @@ func _drop_data(_at_position:Vector2, data:Variant) -> void:
 
 
 # PUBLIC
+func set_to_six():
+	set_particles.emitting = true
+	face_value = Face.Value.SIX
+
 func roll(delay: float = 0.0):
+	spin_particles.emitting = true
 	type = Dice.Type.ROLLING
 	face_value = Face.Value.UNKNOWN
 	if delay > 0.0:
@@ -59,6 +66,11 @@ func roll(delay: float = 0.0):
 		roll_timer.start(delay)
 	else:
 		_on_roll_timer_timeout()
+
+func roll_no_signal():
+	set_particles.emitting = true
+	face_value = randi_range(1, 6) as Face.Value
+	
 
 func reset(settable: bool = true):
 	type = Type.EMPTY if settable else Type.EMPTY_DISABLED
@@ -75,9 +87,8 @@ func _update():
 
 
 # SIGNALS
-
-
 func _on_roll_timer_timeout() -> void:
+	set_particles.emitting = true
 	rolling_timer.stop()
 	face_value = randi_range(1, 6) as Face.Value
 	rolled.emit()

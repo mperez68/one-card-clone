@@ -8,12 +8,48 @@
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="4_vb3i7"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_vb3i7"]
 [ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="6_fagh0"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="7_d66i4"]
 [ext_resource type="PackedScene" uid="uid://b27xpmt51ajfg" path="res://main_scenes/menus/options_menu.tscn" id="7_g8byo"]
+[ext_resource type="Script" uid="uid://bi2nlrgko3iti" path="res://main_scenes/menus/scripts/h_box_container_3.gd" id="7_i714h"]
 [ext_resource type="PackedScene" uid="uid://3sggrtska1mg" path="res://main_scenes/levels/level_01.tscn" id="7_wcnxn"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="8_38vm8"]
+[ext_resource type="Texture2D" uid="uid://d344x5dkn137q" path="res://assets/sprites/menu_icons.png" id="8_i714h"]
 [ext_resource type="PackedScene" uid="uid://c3njtoyv7xfje" path="res://main_scenes/menus/credits_menu.tscn" id="9_38vm8"]
+[ext_resource type="Texture2D" uid="uid://cckh7pxqqfsea" path="res://assets/sprites/class_icons.png" id="9_r0kdf"]
 [ext_resource type="PackedScene" uid="uid://c18qfne8f4xr5" path="res://ui/footer_container.tscn" id="9_yy0sh"]
 [ext_resource type="PackedScene" uid="uid://c4qbc6vhkoj6l" path="res://main_scenes/menus/how_to_play_menu.tscn" id="11_clqb2"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_r0kdf"]
+resource_local_to_scene = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxtgc"]
+atlas = ExtResource("8_i714h")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1by8w"]
+atlas = ExtResource("9_r0kdf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nhw27"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a61fp"]
+atlas = SubResource("CompressedTexture2D_nhw27")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b1v3b"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arclj"]
+atlas = SubResource("CompressedTexture2D_b1v3b")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l81yf"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm1g1"]
+atlas = SubResource("CompressedTexture2D_l81yf")
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="Resource" id="Resource_clqb2"]
 script = ExtResource("8_38vm8")
@@ -104,6 +140,62 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer" unique_id=1233430881]
 layout_mode = 2
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer" unique_id=669544126]
+layout_mode = 2
+alignment = 1
+script = ExtResource("7_i714h")
+
+[node name="SfxButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" unique_id=1026818470 instance=ExtResource("7_d66i4")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 7
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_r0kdf")
+text = ""
+icon = SubResource("AtlasTexture_fxtgc")
+icon_alignment = 1
+
+[node name="SfxButton2" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" unique_id=853602419 instance=ExtResource("7_d66i4")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 7
+toggle_mode = true
+button_group = SubResource("ButtonGroup_r0kdf")
+text = ""
+icon = SubResource("AtlasTexture_1by8w")
+icon_alignment = 1
+
+[node name="SfxButton3" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" unique_id=1876316015 instance=ExtResource("7_d66i4")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 7
+toggle_mode = true
+button_group = SubResource("ButtonGroup_r0kdf")
+text = ""
+icon = SubResource("AtlasTexture_a61fp")
+icon_alignment = 1
+
+[node name="SfxButton4" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" unique_id=1572703238 instance=ExtResource("7_d66i4")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 7
+toggle_mode = true
+button_group = SubResource("ButtonGroup_r0kdf")
+text = ""
+icon = SubResource("AtlasTexture_arclj")
+icon_alignment = 1
+
+[node name="SfxButton5" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" unique_id=788713882 instance=ExtResource("7_d66i4")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 7
+toggle_mode = true
+button_group = SubResource("ButtonGroup_r0kdf")
+text = ""
+icon = SubResource("AtlasTexture_rm1g1")
+icon_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer" unique_id=1447609585]
 layout_mode = 2
 alignment = 1
@@ -146,3 +238,9 @@ save = false
 
 [node name="FooterContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("9_yy0sh")]
 layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3/SfxButton" to="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" method="_on_sfx_button_pressed" binds= [0]]
+[connection signal="pressed" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3/SfxButton2" to="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" method="_on_sfx_button_pressed" binds= [1]]
+[connection signal="pressed" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3/SfxButton3" to="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" method="_on_sfx_button_pressed" binds= [2]]
+[connection signal="pressed" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3/SfxButton4" to="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" method="_on_sfx_button_pressed" binds= [3]]
+[connection signal="pressed" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3/SfxButton5" to="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer3" method="_on_sfx_button_pressed" binds= [4]]

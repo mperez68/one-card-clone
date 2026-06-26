@@ -24,7 +24,11 @@ enum Stat{ MOVEMENT, ATTACK, DEFENSE, RANGE }
 		if modifier_dice:
 			modifier_dice.draggable = draggable
 
-var settable: bool = true
+var settable: bool = true:
+	set(value):
+		settable = value
+		modifier_dice.reset(settable)
+		
 var total_value: int:
 	set(value):
 		total_value = value

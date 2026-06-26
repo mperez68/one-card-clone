@@ -12,6 +12,7 @@ var attack: int
 var defense: int
 var a_range: int
 var level: int
+var player_class: ClassInfo.PlayerClass
 
 
 # ENGINE
@@ -26,6 +27,7 @@ func reset():
 	defense = default_defense
 	a_range = default_range
 	level = 1
+	player_class = ClassInfo.PlayerClass.NONE
 
 func inc_level():
 	level += 1

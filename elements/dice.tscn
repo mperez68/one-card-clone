@@ -99,6 +99,20 @@ load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.cte
 atlas = SubResource("CompressedTexture2D_rtwah")
 region = Rect2(0, 176, 16, 16)
 
+[sub_resource type="Gradient" id="Gradient_lw25c"]
+colors = PackedColorArray(0.49803922, 0.47843137, 0.15686275, 1, 0.827451, 0.85490197, 0.5137255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mhoi1"]
+gradient = SubResource("Gradient_lw25c")
+width = 3
+height = 3
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_1by8w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Dice" type="TextureRect" unique_id=757168519]
 custom_minimum_size = Vector2(16, 16)
 size_flags_horizontal = 4
@@ -141,6 +155,40 @@ one_shot = true
 [node name="RollingTimer" type="Timer" parent="." unique_id=958121455]
 unique_name_in_owner = true
 wait_time = 0.25
+
+[node name="SpinParticles" type="CPUParticles2D" parent="." unique_id=575617728]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_mhoi1")
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+orbit_velocity_min = 0.75
+orbit_velocity_max = 0.75
+color_ramp = SubResource("Gradient_1by8w")
+
+[node name="SetParticles" type="CPUParticles2D" parent="." unique_id=489179370]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_mhoi1")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 18.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+color_ramp = SubResource("Gradient_1by8w")
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="RollingTimer" to="." method="_on_rolling_timer_timeout"]

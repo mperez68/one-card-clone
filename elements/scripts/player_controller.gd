@@ -30,6 +30,12 @@ var is_action: bool = false:
 		_update_highlights(true)
 var player: Node
 var map: Map
+var ranger_swap: bool = false:
+	set(value):
+		ranger_swap = value
+		get_tray(StatTray.Stat.MOVEMENT).settable = !ranger_swap
+		get_tray(StatTray.Stat.RANGE).settable = ranger_swap
+
 
 # ENGINE
 func _ready() -> void:
@@ -76,31 +82,33 @@ func can_attack(grid_pos: Vector3i) -> bool:
 
 
 # PUBLIC
-func get_stat(stat: StatTray.Stat) -> int:
+func get_tray(stat: StatTray.Stat) -> StatTray:
 	for tray in stat_tray_container.get_children():
 		if tray is StatTray and tray.stat == stat:
-			return tray.remaining_value
-	return 0
+			return tray
+	return null
+
+func get_stat(stat: StatTray.Stat) -> int:
+	var tray: StatTray = get_tray(stat)
+	return tray.remaining_value if tray else 0
 
 func set_stat(die: Dice, stat: StatTray.Stat):
-	for tray in stat_tray_container.get_children():
-		if tray is StatTray and tray.stat == stat:
-			tray.modifier_dice.type = die.type
-			tray.modifier_dice.face_value = die.face_value
-			return
+	var tray: StatTray = get_tray(stat)
+	if !tray:
+		return
+	tray.modifier_dice.type = die.type
+	tray.modifier_dice.face_value = die.face_value
+	return
 
 func get_npc_stat(stat: StatTray.Stat) -> int:
-	for tray in stat_tray_container.get_children():
-		if tray is StatTray and tray.stat == stat:
-			return tray.enemy_value
-	return 0
+	var tray: StatTray = get_tray(stat)
+	return tray.enemy_value if tray else 0
 
 func spend_stat(value: int, stat: StatTray.Stat) -> bool:
-	for tray in stat_tray_container.get_children():
-		if tray is StatTray and tray.stat == stat:
-			if tray.remaining_value >= value:
-				tray.remaining_value -= value
-				return true
+	var tray: StatTray = get_tray(stat)
+	if tray and tray.remaining_value >= value:
+		tray.remaining_value -= value
+		return true
 	return false
 
 func set_enemy_stats(mve: int, atk: int, def: int, rng: int):
@@ -188,6 +196,7 @@ func _on_stage_changed(last_stage: Stage, new_stage: Stage):
 			_show_remaining(false, true)
 			_roll_tray()
 			rolling_container.show()
+			ranger_swap = false
 		Stage.ALLOCATION:
 			allocation_button.show()
 			spin_button.disabled = false
@@ -205,9 +214,9 @@ func _on_dice_rolled() -> void:
 		pass_turn.emit()
 
 func _on_allocation_button_pressed() -> void:
-	set_stat(ordered_dice_wheel[0], StatTray.Stat.MOVEMENT)
-	set_stat(ordered_dice_wheel[1], StatTray.Stat.ATTACK)
-	set_stat(ordered_dice_wheel[2], StatTray.Stat.DEFENSE)
+	set_stat(ordered_dice_wheel[0], (int(StatTray.Stat.MOVEMENT) + int(ranger_swap)) as StatTray.Stat)
+	set_stat(ordered_dice_wheel[1], (int(StatTray.Stat.ATTACK) + int(ranger_swap)) as StatTray.Stat)
+	set_stat(ordered_dice_wheel[2], (int(StatTray.Stat.DEFENSE) + int(ranger_swap)) as StatTray.Stat)
 	pass_turn.emit()
 
 func _on_end_turn_button_pressed() -> void:

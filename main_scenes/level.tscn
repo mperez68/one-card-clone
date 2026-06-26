@@ -17,6 +17,7 @@
 [ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="10_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
 [ext_resource type="Texture2D" uid="uid://cksr8xyfen7uh" path="res://assets/sprites/rotation_anim.png" id="10_kvsxn"]
+[ext_resource type="PackedScene" uid="uid://b8h47c4naku05" path="res://ui/class_info.tscn" id="12_aqj45"]
 [ext_resource type="Script" uid="uid://cerukfhjpjqtj" path="res://main_scenes/scripts/level_count_label.gd" id="15_3jom1"]
 [ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="16_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://c3njtoyv7xfje" path="res://main_scenes/menus/credits_menu.tscn" id="17_cf8wk"]
@@ -463,6 +464,21 @@ visible = false
 layout_mode = 2
 text = "End Turn"
 
+[node name="ClassInfoContainer" type="PanelContainer" parent="Hud/PlayerController/MarginContainer/Control" unique_id=2096144172]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(136, 24)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 136.0
+grow_vertical = 0
+
+[node name="ClassInfo" parent="Hud/PlayerController/MarginContainer/Control/ClassInfoContainer" unique_id=1857434144 instance=ExtResource("12_aqj45")]
+layout_mode = 2
+player_class = 1
+
 [node name="EndGameContainer" type="Control" parent="Hud" unique_id=1498777416]
 unique_name_in_owner = true
 visible = false
@@ -590,7 +606,7 @@ script = ExtResource("15_3jom1")
 
 [node name="SceneChangeButton" parent="Hud/EndGameContainer/CenterContainer/FailureContainer" unique_id=1394044327 instance=ExtResource("10_br3m6")]
 layout_mode = 2
-text = ""
+text = "Back"
 scene_link = SubResource("Resource_3jom1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hud" unique_id=1640478881]
@@ -624,6 +640,7 @@ grid_position = Vector3i(3, 5, 1)
 
 [connection signal="stage_changed" from="." to="." method="_on_stage_changed"]
 [connection signal="stage_changed" from="." to="Hud/PlayerController" method="_on_stage_changed"]
+[connection signal="stage_changed" from="." to="Hud/PlayerController/MarginContainer/Control/ClassInfoContainer/ClassInfo" method="_on_stage_changed"]
 [connection signal="pass_turn" from="Hud/PlayerController" to="." method="pass_turn"]
 [connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/PanelContainer/RollingDiceTray/RollingDice" to="Hud/PlayerController" method="_on_dice_rolled"]
 [connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/PanelContainer/RollingDiceTray/RollingDice2" to="Hud/PlayerController" method="_on_dice_rolled"]

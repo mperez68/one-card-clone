@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b8h47c4naku05"]
+
+[ext_resource type="Texture2D" uid="uid://cckh7pxqqfsea" path="res://assets/sprites/class_icons.png" id="1_hyw3a"]
+[ext_resource type="Script" uid="uid://egesbqtrhs1x" path="res://ui/scripts/class_info.gd" id="1_wroip"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="2_wroip"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="3_ayvk1"]
+[ext_resource type="Texture2D" uid="uid://d344x5dkn137q" path="res://assets/sprites/menu_icons.png" id="4_y7tf6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wroip"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayvk1"]
+atlas = SubResource("CompressedTexture2D_wroip")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0a0wp"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kewkh"]
+atlas = SubResource("CompressedTexture2D_0a0wp")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8r0ur"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w3a1"]
+atlas = SubResource("CompressedTexture2D_8r0ur")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ayvk1"]
+load_path = "res://.godot/imported/class_icons.png-6955b8c4f12bd225d81116048268bcff.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7tf6"]
+atlas = SubResource("CompressedTexture2D_ayvk1")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bls2"]
+atlas = ExtResource("1_hyw3a")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jikww"]
+atlas = ExtResource("4_y7tf6")
+region = Rect2(0, 32, 16, 16)
+
+[node name="ClassInfo" type="HBoxContainer" unique_id=1857434144]
+alignment = 1
+script = ExtResource("1_wroip")
+texture_dir = Dictionary[int, Texture2D]({
+1: SubResource("AtlasTexture_ayvk1"),
+2: SubResource("AtlasTexture_kewkh"),
+3: SubResource("AtlasTexture_2w3a1"),
+4: SubResource("AtlasTexture_y7tf6")
+})
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=973643555]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_0bls2")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="." unique_id=998981141]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Reroll for each damage taken."
+label_settings = ExtResource("2_wroip")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SfxButton" parent="." unique_id=1026818470 instance=ExtResource("3_ayvk1")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+disabled = true
+text = ""
+icon = SubResource("AtlasTexture_jikww")
+
+[connection signal="pressed" from="SfxButton" to="." method="_on_sfx_button_pressed"]
