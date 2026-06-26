@@ -17,9 +17,10 @@
 [ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="10_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
 [ext_resource type="Texture2D" uid="uid://cksr8xyfen7uh" path="res://assets/sprites/rotation_anim.png" id="10_kvsxn"]
-[ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="11_3ml1t"]
 [ext_resource type="Script" uid="uid://cerukfhjpjqtj" path="res://main_scenes/scripts/level_count_label.gd" id="15_3jom1"]
 [ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="16_3ml1t"]
+[ext_resource type="PackedScene" uid="uid://c3njtoyv7xfje" path="res://main_scenes/menus/credits_menu.tscn" id="17_cf8wk"]
+[ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="18_aqj45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1by8w"]
 atlas = ExtResource("6_3ml1t")
@@ -121,11 +122,11 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="Resource" id="Resource_3ml1t"]
-script = ExtResource("11_3ml1t")
-location_override = "res://main_scenes/menus/splash.tscn"
-button_text = "Back to Menu"
-metadata/_custom_type_script = "uid://cqkdtdqupov0c"
+[sub_resource type="Resource" id="Resource_3jom1"]
+script = ExtResource("18_aqj45")
+packed_scene = ExtResource("17_cf8wk")
+button_text = "Back"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Animation" id="Animation_3ml1t"]
 length = 0.001
@@ -589,8 +590,8 @@ script = ExtResource("15_3jom1")
 
 [node name="SceneChangeButton" parent="Hud/EndGameContainer/CenterContainer/FailureContainer" unique_id=1394044327 instance=ExtResource("10_br3m6")]
 layout_mode = 2
-text = "Back to Menu"
-scene_link = SubResource("Resource_3ml1t")
+text = ""
+scene_link = SubResource("Resource_3jom1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hud" unique_id=1640478881]
 unique_name_in_owner = true
