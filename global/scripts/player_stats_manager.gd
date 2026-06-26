@@ -11,6 +11,7 @@ var movement: int
 var attack: int
 var defense: int
 var a_range: int
+var level: int
 
 
 # ENGINE
@@ -24,6 +25,10 @@ func reset():
 	attack = default_attack
 	defense = default_defense
 	a_range = default_range
+	level = 1
+
+func inc_level():
+	level += 1
 
 func heal():
 	hp = default_hp

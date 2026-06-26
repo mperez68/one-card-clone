@@ -33,7 +33,10 @@ func _ready():
 # PUBLIC
 func damage(value: int):
 	hp -= value
-	damage_particles.emitting = true
+	if damage_particles.emitting:
+		_on_damage_particles_finished()
+	else:
+		damage_particles.emitting = true
 	damage_sfx.play()
 
 func heal():

@@ -122,6 +122,7 @@ func add_player(new_player: DiceGridNode2d):
 	new_player.died.connect(end_game.bind(false))
 
 func end_game(success: bool):
+	get_parent().get_parent().stage = Stage.POST_GAME	 # Bad practice but I got less than a day
 	animation_player.play("show")
 	end_game_container.show()
 	(success_container if success else failure_container).show()

@@ -137,6 +137,7 @@ func _on_npc_timer_timeout() -> void:
 
 
 func _on_progression_button_pressed(selection: int) -> void:
+	PlayerStatsManager.inc_level()
 	for button in success_buttons:
 		button.disabled = true
 	PlayerStatsManager.hp = player_controller.player.hp

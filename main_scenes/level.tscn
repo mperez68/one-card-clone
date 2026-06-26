@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
 [ext_resource type="Texture2D" uid="uid://cksr8xyfen7uh" path="res://assets/sprites/rotation_anim.png" id="10_kvsxn"]
 [ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="11_3ml1t"]
+[ext_resource type="Script" uid="uid://cerukfhjpjqtj" path="res://main_scenes/scripts/level_count_label.gd" id="15_3jom1"]
 [ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="16_3ml1t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1by8w"]
@@ -580,10 +581,11 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Hud/EndGameContainer/CenterContainer/FailureContainer/PanelContainer2" unique_id=802235948]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Hud/EndGameContainer/CenterContainer/FailureContainer/PanelContainer2/VBoxContainer" unique_id=1216258464]
+[node name="LevelCountLabel" type="Label" parent="Hud/EndGameContainer/CenterContainer/FailureContainer/PanelContainer2/VBoxContainer" unique_id=1216258464]
 layout_mode = 2
 text = "X levels cleared."
 horizontal_alignment = 1
+script = ExtResource("15_3jom1")
 
 [node name="SceneChangeButton" parent="Hud/EndGameContainer/CenterContainer/FailureContainer" unique_id=1394044327 instance=ExtResource("10_br3m6")]
 layout_mode = 2
