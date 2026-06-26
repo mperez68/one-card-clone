@@ -64,6 +64,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_gif_recorder") and OS.is_debug_build():
+		_record_pressed()
 		visible = !visible
 
 func _toggle_parameters(toggled: bool):

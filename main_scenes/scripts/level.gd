@@ -2,6 +2,7 @@ class_name Level extends Node2D
 
 const PLAYER: PackedScene = preload("res://elements/player_dice_grid_node_2d.tscn")
 const NPC: PackedScene = preload("res://elements/npc_dice_grid_node_2d.tscn")
+const TEXT: PackedScene = preload("res://ui/fading_label_holder.tscn")
 
 signal stage_changed(last_stage: Stage, new_stage: Stage)
 
@@ -104,8 +105,10 @@ func _on_npc_timer_timeout() -> void:
 			else:
 				var npc = queued_npcs.pop_front()
 				npc.blocking = false
-				npc.move_to(map.get_valid_approach(npc.grid_position, player.grid_position, npc_range, npc_movement))
+				var target_pos: Vector3i = map.get_valid_approach(npc.grid_position, player.grid_position, npc_range, npc_movement)
 				npc.blocking = true
+				if map.can_stand(target_pos, false) and target_pos != Vector3i.ZERO:
+					npc.move_to(target_pos)
 		Stage.COMPUTER_ATTACK:
 			if queued_npcs.is_empty():
 				npc_timer.stop()
@@ -114,9 +117,20 @@ func _on_npc_timer_timeout() -> void:
 				var total_attack: int = 0
 				for npc in queued_npcs:
 					if map.is_in_hard_range(npc.grid_position, player.grid_position, npc_range):
+						var text1: FadingLabelHolder = TEXT.instantiate()
+						text1.set_text("%s" % npc_attack)
+						text1.position = npc.position
+						add_child(text1)
 						total_attack += npc_attack
 				queued_npcs.clear()
 				var player_def: int = player_controller.get_stat(StatTray.Stat.DEFENSE)
+				var text: FadingLabelHolder = TEXT.instantiate()
+				if total_attack >= player_def:
+					text.set_text("%s%s" % [str(total_attack), "" if total_attack < player_def else "!"])
+				else:
+					text.set_text("" if total_attack > 0 else "...")
+				text.position = player.position
+				add_child(text)
 				while total_attack >= player_def:
 					player.damage(1)
 					total_attack -= player_def

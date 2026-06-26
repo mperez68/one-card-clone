@@ -40,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer" unique_id=418333276]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 
 [node name="HeaderPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=323270205]

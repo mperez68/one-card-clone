@@ -158,7 +158,7 @@ func get_route(start: Vector3i, end: Vector3i, start_inclusive: bool = false, en
 	nav.set_point_disabled(start_id, starting_disabled)
 	var route_3d: Array[Vector3i] = []
 	for point in path:
-		if !route_3d.has(point):
+		if !route_3d.has(point) and point.x == Vector3i(point).x and point.y == Vector3i(point).y:
 			route_3d.push_back(Vector3i(point))
 	if !start_inclusive:
 		route_3d.pop_front()

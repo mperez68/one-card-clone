@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://beloddta8exfu"]
+
+[ext_resource type="PackedScene" uid="uid://onb3nc4xf5gu" path="res://main_scenes/level.tscn" id="1_orqse"]
+[ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="2_gtvyr"]
+
+[node name="Level" unique_id=1152307825 instance=ExtResource("1_orqse")]
+npc_hp = 1
+npc_movement = 1
+npc_defence = 1
+
+[node name="SpawnMarker" parent="." index="5" unique_id=1426874908]
+position = Vector2(88, 88)
+grid_position = Vector3i(5, 5, 1)
+
+[node name="SpawnMarker2" parent="." index="6" unique_id=1885530925]
+position = Vector2(72, 72)
+grid_position = Vector3i(4, 4, 1)
+
+[node name="SpawnMarker3" parent="." index="7" unique_id=1243993731 instance=ExtResource("2_gtvyr")]
+z_index = 1
+position = Vector2(104, 88)
+type = 0
+grid_position = Vector3i(6, 5, 1)
+
+[connection signal="pass_turn" from="Hud/PlayerController" to="." method="pass_turn"]

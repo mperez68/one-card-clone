@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dgmav0n4s1gyh"]
+
+[ext_resource type="Script" uid="uid://v6um2pjriu31" path="res://ui/scripts/fading_label_holder.gd" id="1_vvcye"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="2_vvcye"]
+
+[sub_resource type="Animation" id="Animation_8nel8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h6cd7"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihetu"]
+_data = {
+&"RESET": SubResource("Animation_8nel8"),
+&"fade": SubResource("Animation_h6cd7")
+}
+
+[node name="FadingLabelHolder" type="Control" unique_id=1966268758]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vvcye")
+
+[node name="Label" type="Label" parent="." unique_id=5870465]
+unique_name_in_owner = true
+z_index = 999
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "9"
+label_settings = ExtResource("2_vvcye")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=697826229]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ihetu")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

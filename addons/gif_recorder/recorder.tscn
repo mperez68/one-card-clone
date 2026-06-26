@@ -11,9 +11,12 @@
 layer = 1000
 
 [node name="Recorder" type="Control" parent="." unique_id=1511196887 node_paths=PackedStringArray("record_area", "input_area", "width_edit", "height_edit", "borders", "record_button", "move_button", "frame_counter", "parameter_toggle", "parameters_node", "scale_options", "export_option_button")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-mouse_filter = 1
+offset_top = -67.0
+offset_bottom = -67.0
+mouse_filter = 2
 script = ExtResource("1_kb1p5")
 record_area = NodePath("NoInputs/VBoxContainer/Display")
 input_area = NodePath("Inputs")
@@ -37,14 +40,17 @@ export_option_button = NodePath("Inputs/InputContainer/Parameters/HBoxContainer2
 layout_mode = 1
 offset_right = 328.0
 offset_bottom = 31.0
+mouse_filter = 2
 
 [node name="InputContainer" type="HBoxContainer" parent="Recorder/Inputs" unique_id=1477469906]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="W" type="HBoxContainer" parent="Recorder/Inputs/InputContainer" unique_id=746885525]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/W" unique_id=1835686303]
 layout_mode = 2
@@ -52,8 +58,9 @@ text = "W:"
 
 [node name="W" type="LineEdit" parent="Recorder/Inputs/InputContainer/W" unique_id=697585323]
 layout_mode = 2
-text = "300"
-placeholder_text = "300"
+mouse_filter = 2
+text = "256"
+placeholder_text = "256"
 max_length = 3
 select_all_on_focus = true
 virtual_keyboard_type = 2
@@ -61,6 +68,7 @@ virtual_keyboard_type = 2
 [node name="H" type="HBoxContainer" parent="Recorder/Inputs/InputContainer" unique_id=1483478648]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/H" unique_id=2106039721]
 layout_mode = 2
@@ -68,28 +76,33 @@ text = "H:"
 
 [node name="H" type="LineEdit" parent="Recorder/Inputs/InputContainer/H" unique_id=1668257623]
 layout_mode = 2
-text = "300"
-placeholder_text = "300"
+mouse_filter = 2
+text = "192"
+placeholder_text = "192"
 max_length = 3
 select_all_on_focus = true
 virtual_keyboard_type = 2
 
 [node name="ParameterToggle" type="CheckBox" parent="Recorder/Inputs/InputContainer" unique_id=1789154262]
 layout_mode = 2
+mouse_filter = 2
 text = "..."
 alignment = 1
 
 [node name="Parameters" type="VBoxContainer" parent="Recorder/Inputs/InputContainer" unique_id=860226701]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Recorder/Inputs/InputContainer/Parameters" unique_id=1993588488]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Spacer" type="Control" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=292028597]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=1949532022]
 layout_mode = 2
@@ -97,6 +110,7 @@ text = "30FPS"
 
 [node name="CheckButton" type="CheckButton" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=1202956272]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label3" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer" unique_id=186035326]
 layout_mode = 2
@@ -104,6 +118,7 @@ text = "60FPS"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Recorder/Inputs/InputContainer/Parameters" unique_id=885692931]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=697804630]
 layout_mode = 2
@@ -111,6 +126,7 @@ text = "Scale"
 
 [node name="ScaleOption" type="OptionButton" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=1389793903]
 layout_mode = 2
+mouse_filter = 2
 selected = 0
 item_count = 4
 popup/item_0/text = "1"
@@ -128,6 +144,7 @@ text = "Mode"
 
 [node name="RecorderMode" type="OptionButton" parent="Recorder/Inputs/InputContainer/Parameters/HBoxContainer2" unique_id=196063478]
 layout_mode = 2
+mouse_filter = 2
 selected = 1
 item_count = 2
 popup/item_0/text = "FFMPEG"
@@ -138,12 +155,14 @@ popup/item_1/id = 1
 [node name="Spacer2" type="Control" parent="Recorder/Inputs/InputContainer" unique_id=173842938]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Record" type="TextureButton" parent="Recorder/Inputs/InputContainer" unique_id=1328601407]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture_normal = ExtResource("2_it02b")
 texture_hover = ExtResource("3_2hktp")
 ignore_texture_size = true
@@ -154,6 +173,7 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture_normal = ExtResource("2_kb1p5")
 texture_pressed = ExtResource("3_qikt5")
 ignore_texture_size = true
@@ -173,6 +193,7 @@ theme_override_constants/separation = 0
 [node name="BorderLeft" type="ColorRect" parent="Recorder/NoInputs" unique_id=1285979263]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Recorder/NoInputs" unique_id=1275943973]
 layout_mode = 2
@@ -183,6 +204,7 @@ theme_override_constants/separation = 0
 [node name="BorderTop" type="ColorRect" parent="Recorder/NoInputs/VBoxContainer" unique_id=162222437]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Display" type="Control" parent="Recorder/NoInputs/VBoxContainer" unique_id=1192268536]
 custom_minimum_size = Vector2(300, 300)
@@ -196,18 +218,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Recorder/NoInputs/VBoxContainer/Display/CenterContainer" unique_id=704838800]
 custom_minimum_size = Vector2(2, 2)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="BorderBottom" type="ColorRect" parent="Recorder/NoInputs/VBoxContainer" unique_id=946185360]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="BorderRight" type="ColorRect" parent="Recorder/NoInputs" unique_id=1772279109]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [connection signal="gui_input" from="Recorder/Inputs" to="Recorder" method="_drag_input"]
 [connection signal="text_changed" from="Recorder/Inputs/InputContainer/W/W" to="Recorder" method="_size_changed"]

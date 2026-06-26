@@ -19,7 +19,7 @@ const MAX_MOVE: int = 6
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @onready var ordered_dice_wheel: Array[Dice] = [
-	%Dice, %Dice2, %Dice3, %Dice6, %Dice9, %Dice8, %Dice7, %Dice4
+	%RollingDice, %RollingDice2, %RollingDice3, %RollingDice5, %RollingDice8, %RollingDice7, %RollingDice6, %RollingDice4
 ]
 
 var rolling_dice: int
@@ -32,6 +32,10 @@ var map: Map
 
 # ENGINE
 func _ready() -> void:
+	if OS.get_name() == "Web":
+		var children: Array[Node] = rolling_dice_tray.get_children()
+		for i in 3:
+			ordered_dice_wheel[i] = children[i]
 	for tray in stat_tray_container.get_children():
 		match tray.stat:
 			StatTray.Stat.MOVEMENT:
@@ -53,14 +57,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		var player_move: int = get_stat(StatTray.Stat.MOVEMENT)
 		if npc_at_grid_pos and can_attack(grid_pos):
-			npc_at_grid_pos.damage(1)
-			spend_stat(get_npc_stat(StatTray.Stat.DEFENSE), StatTray.Stat.ATTACK)
+			if spend_stat(get_npc_stat(StatTray.Stat.DEFENSE), StatTray.Stat.ATTACK):
+				npc_at_grid_pos.damage(1)
 			_update_highlights(true)
 			return
 		player.blocking = false
 		if player_move > 0 and map.is_navigable(player.grid_position, grid_pos, player_move):
-			spend_stat(ceili(map.get_route_weight(player.grid_position, grid_pos)), StatTray.Stat.MOVEMENT)
-			player.move_to(grid_pos)
+			if spend_stat(ceili(map.get_route_weight(player.grid_position, grid_pos)), StatTray.Stat.MOVEMENT):
+				player.move_to(grid_pos)
 			_update_highlights()
 		player.blocking = true
 	if event is InputEventMouseMotion and npc_at_grid_pos and can_attack(grid_pos):
@@ -90,10 +94,13 @@ func get_npc_stat(stat: StatTray.Stat) -> int:
 			return tray.enemy_value
 	return 0
 
-func spend_stat(value: int, stat: StatTray.Stat):
+func spend_stat(value: int, stat: StatTray.Stat) -> bool:
 	for tray in stat_tray_container.get_children():
 		if tray is StatTray and tray.stat == stat:
-			tray.remaining_value -= value
+			if tray.remaining_value >= value:
+				tray.remaining_value -= value
+				return true
+	return false
 
 func set_enemy_stats(mve: int, atk: int, def: int, rng: int):
 	for tray: StatTray in stat_tray_container.get_children():

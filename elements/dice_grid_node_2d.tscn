@@ -4,6 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="2_i8kcj"]
 [ext_resource type="Script" uid="uid://bnsgy30b155mp" path="res://elements/scripts/dice_grid_node_2d.gd" id="2_lw25c"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtwah"]
+atlas = SubResource("CompressedTexture2D_rfep6")
+region = Rect2(0, 32, 16, 16)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhoi1"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
 
@@ -32,13 +39,6 @@ load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.cte
 atlas = SubResource("CompressedTexture2D_ul8td")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
-load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rtwah"]
-atlas = SubResource("CompressedTexture2D_rfep6")
-region = Rect2(0, 32, 16, 16)
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6h3d5"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
 
@@ -53,6 +53,33 @@ load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.cte
 atlas = SubResource("CompressedTexture2D_eq14r")
 region = Rect2(0, 208, 16, 16)
 
+[sub_resource type="Gradient" id="Gradient_lw25c"]
+colors = PackedColorArray(0.49803922, 0.47843137, 0.15686275, 1, 0.827451, 0.85490197, 0.5137255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1by8w"]
+gradient = SubResource("Gradient_lw25c")
+width = 3
+height = 3
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_1gjvx"]
+offsets = PackedFloat32Array(0.38547486, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0bls2"]
+gradient = SubResource("Gradient_1gjvx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fxtgc"]
+particle_flag_disable_z = true
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 31.999977
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -10.000002
+radial_accel_max = -7.000002
+color_ramp = SubResource("GradientTexture1D_0bls2")
+
 [node name="DiceGridNode2D" unique_id=1426874908 instance=ExtResource("1_xbeoc")]
 script = ExtResource("2_lw25c")
 hp = 1
@@ -65,8 +92,8 @@ offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
 mouse_filter = 2
-texture = SubResource("AtlasTexture_et0uw")
-type = 0
+texture = SubResource("AtlasTexture_rtwah")
+type = 4
 face_value = 1
 type_dir = Dictionary[int, Texture2D]({
 0: SubResource("AtlasTexture_et0uw"),
@@ -77,3 +104,14 @@ type_dir = Dictionary[int, Texture2D]({
 5: SubResource("AtlasTexture_6x5ec"),
 6: SubResource("AtlasTexture_g5akd")
 })
+
+[node name="DamageParticles" type="GPUParticles2D" parent="." index="1" unique_id=1222662899]
+unique_name_in_owner = true
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_1by8w")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fxtgc")
+
+[connection signal="finished" from="DamageParticles" to="." method="_on_damage_particles_finished"]
