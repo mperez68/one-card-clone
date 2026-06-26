@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="7_d66i4"]
 [ext_resource type="PackedScene" uid="uid://b27xpmt51ajfg" path="res://main_scenes/menus/options_menu.tscn" id="7_g8byo"]
 [ext_resource type="Script" uid="uid://bi2nlrgko3iti" path="res://main_scenes/menus/scripts/h_box_container_3.gd" id="7_i714h"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="7_r0kdf"]
 [ext_resource type="PackedScene" uid="uid://3sggrtska1mg" path="res://main_scenes/levels/level_01.tscn" id="7_wcnxn"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="8_38vm8"]
 [ext_resource type="Texture2D" uid="uid://d344x5dkn137q" path="res://assets/sprites/menu_icons.png" id="8_i714h"]
@@ -24,7 +25,7 @@ resource_local_to_scene = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxtgc"]
 atlas = ExtResource("8_i714h")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1by8w"]
 atlas = ExtResource("9_r0kdf")
@@ -139,6 +140,12 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer" unique_id=1233430881]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer" unique_id=624955615]
+layout_mode = 2
+text = "Pick a Class:"
+label_settings = ExtResource("7_r0kdf")
+horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer" unique_id=669544126]
 layout_mode = 2
