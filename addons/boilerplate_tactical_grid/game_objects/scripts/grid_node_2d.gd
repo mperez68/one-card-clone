@@ -53,7 +53,9 @@ enum Facing{ RIGHT, DOWN, LEFT, UP }
 	set(value):
 		blocking = value
 		if !Engine.is_editor_hint() and is_node_ready():
-			TacGrid.get_map().set_point_disabled(grid_position, blocking)
+			var map: Map = TacGrid.get_map()
+			if map:
+				map.set_point_disabled(grid_position, blocking)
 
 
 # ENGINE

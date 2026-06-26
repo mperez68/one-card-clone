@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4xrff5j6wmn" path="res://addons/boilerplate_tactical_grid/game_objects/map.tscn" id="1_j6h3a"]
 [ext_resource type="Script" uid="uid://cunbjr6igq0t1" path="res://main_scenes/scripts/level.gd" id="1_qysur"]
 [ext_resource type="PackedScene" uid="uid://c8b4fltujg36m" path="res://addons/gif_recorder/recorder.tscn" id="2_csbuq"]
+[ext_resource type="PackedScene" uid="uid://bfpi0dtywf3a4" path="res://elements/move_sprite_grid_node_2d.tscn" id="2_sseup"]
 [ext_resource type="Texture2D" uid="uid://daeh6cel7l3cu" path="res://assets/sprites/tiles.png" id="2_u00cv"]
 [ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="3_4pqnc"]
 [ext_resource type="PackedScene" uid="uid://capadifnn3uqv" path="res://elements/stat_tray.tscn" id="4_l2prf"]
@@ -178,6 +179,10 @@ sources/0 = SubResource("TileSetAtlasSource_26175")
 
 [node name="Level" type="Node2D" unique_id=1152307825]
 script = ExtResource("1_qysur")
+
+[node name="MoveSpriteGridNode2D" parent="." unique_id=1426874908 instance=ExtResource("2_sseup")]
+position = Vector2(-8, -8)
+grid_position = Vector3i(-1, -1, 0)
 
 [node name="CanvasLayer" parent="." unique_id=1843499695 instance=ExtResource("2_csbuq")]
 
@@ -602,7 +607,7 @@ tile_set = SubResource("TileSet_1by8w")
 [node name="NpcTimer" type="Timer" parent="." unique_id=221911610]
 unique_name_in_owner = true
 
-[node name="SpawnMarker" parent="." unique_id=1426874908 instance=ExtResource("16_3ml1t")]
+[node name="SpawnMarker" parent="." unique_id=801800475 instance=ExtResource("16_3ml1t")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(120, 120)

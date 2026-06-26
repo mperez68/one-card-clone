@@ -1,5 +1,5 @@
 @tool
-class_name MoveSpriteGridNode2d extends GridNode2D
+class_name MoveSpriteGridNode2D extends GridNode2D
 
 @onready var delay_timer: Timer = %DelayTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D

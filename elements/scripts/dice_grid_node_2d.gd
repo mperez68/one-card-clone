@@ -1,8 +1,6 @@
 @tool
 class_name DiceGridNode2d extends GridNode2D
 
-const MOVE_SPRITE: PackedScene = preload("res://elements/move_sprite_grid_node_2d.tscn")
-
 const DELAY_INCREMENT: float = 0.1
 
 signal died
@@ -46,16 +44,16 @@ func is_dead() -> bool:
 
 func move_to(target_position: Vector3i):
 	var route = TacGrid.get_map().get_route(grid_position, target_position, true, true)
+	super(target_position)
+	move_sfx.play()
 	for i in route.size() - 1:
 		var pos: Vector3i = route[i]
 		var next_pos: Vector3i = route[i + 1]
-		var node: MoveSpriteGridNode2d = MOVE_SPRITE.instantiate()
+		var node: MoveSpriteGridNode2D = load("res://elements/move_sprite_grid_node_2d.tscn").instantiate()
 		node.grid_position = pos
 		node.set_facing(pos, next_pos)
 		add_sibling(node)
 		node.play(i * DELAY_INCREMENT)
-	super(target_position)
-	move_sfx.play()
 
 # PRIVATE
 
