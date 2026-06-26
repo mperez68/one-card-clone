@@ -7,10 +7,29 @@
 [ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="4_s5c1r"]
 [ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="5_gg53k"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_s5c1r"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="5_u76b1"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="6_4do4k"]
+[ext_resource type="FontFile" uid="uid://ceg1s232ybolx" path="res://assets/fonts/Simple_Script.ttf" id="6_b41yk"]
+[ext_resource type="PackedScene" uid="uid://capadifnn3uqv" path="res://elements/stat_tray.tscn" id="6_jbqsd"]
 [ext_resource type="Texture2D" uid="uid://d344x5dkn137q" path="res://assets/sprites/menu_icons.png" id="6_pgyib"]
 [ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="8_jbqsd"]
-[ext_resource type="Script" uid="uid://cqkdtdqupov0c" path="res://resources/scripts/path_scene_link.gd" id="9_4do4k"]
+[ext_resource type="PackedScene" uid="uid://8j1tsh0bgwu4" path="res://main_scenes/menus/how_to_play_3_menu.tscn" id="12_jbqsd"]
+[ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="13_bfksr"]
+
+[sub_resource type="FontVariation" id="FontVariation_u76b1"]
+base_font = ExtResource("6_b41yk")
+baseline_offset = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_u54tf"]
+line_spacing = -4.0
+font = SubResource("FontVariation_u76b1")
+font_size = 7
+font_color = Color(0.827451, 0.85490197, 0.5137255, 1)
+outline_size = 7
+outline_color = Color(0.11372549, 0.20784314, 0, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 5
+stacked_outline_0/color = Color(0.63529414, 0.7137255, 0.4117647, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfksr"]
 atlas = ExtResource("6_pgyib")
@@ -69,11 +88,11 @@ region = Rect2(0, 208, 16, 16)
 atlas = ExtResource("6_pgyib")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="Resource" id="Resource_1by8w"]
-script = ExtResource("9_4do4k")
-location_override = "res://main_scenes/menus/main_menu.tscn"
-button_text = "Main Menu"
-metadata/_custom_type_script = "uid://cqkdtdqupov0c"
+[sub_resource type="Resource" id="Resource_yv6xu"]
+script = ExtResource("13_bfksr")
+packed_scene = ExtResource("12_jbqsd")
+button_text = "Next"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [node name="HowToPlay2Menu" type="Control" unique_id=258569090]
 layout_mode = 3
@@ -105,7 +124,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=1435791865]
 layout_mode = 2
-text = "Turns"
+text = "Rolling"
 label_settings = ExtResource("3_iaerm")
 horizontal_alignment = 1
 
@@ -119,10 +138,60 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=187498681]
-custom_minimum_size = Vector2(150, 0)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=1286382085]
 layout_mode = 2
-text = "At the start of each turn, rotate the rolled dice and lock in the results as your assigned stats. They are locked into your stats in the order the arrows point to them."
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer" unique_id=510650250]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1487303048]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer5" unique_id=41568189]
+layout_mode = 2
+text = "STAGES"
+label_settings = ExtResource("5_u76b1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=520858187]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer" unique_id=2114717147]
+layout_mode = 2
+text = "Rolling"
+label_settings = SubResource("LabelSettings_u54tf")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=719570523]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer2" unique_id=730673458]
+layout_mode = 2
+text = "Allocation"
+label_settings = ExtResource("4_s5c1r")
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=380873515]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer3" unique_id=1887769000]
+layout_mode = 2
+text = "Action"
+label_settings = ExtResource("4_s5c1r")
+
+[node name="PanelContainer4" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1145926014]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer4" unique_id=1114541097]
+layout_mode = 2
+text = "Enemy"
+label_settings = ExtResource("4_s5c1r")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=187498681]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "At the start of each turn, your wheel of dice are all rolled. You can spin the wheel until the 3 arrows point to the dice you want to lock in to the 3 open slots (lighter spaces). They will sum with your base stats for the rest of the turn."
 label_settings = ExtResource("4_s5c1r")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -130,6 +199,25 @@ autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer" unique_id=889191029]
 layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1863569236]
+layout_mode = 2
+
+[node name="StatTray" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1923911916 instance=ExtResource("6_jbqsd")]
+layout_mode = 2
+
+[node name="StatTray2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1732792319 instance=ExtResource("6_jbqsd")]
+layout_mode = 2
+stat = 1
+
+[node name="StatTray3" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=872677677 instance=ExtResource("6_jbqsd")]
+layout_mode = 2
+stat = 2
+
+[node name="StatTray4" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=901455426 instance=ExtResource("6_jbqsd")]
+layout_mode = 2
+stat = 3
+settable = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1043064199]
 layout_mode = 2
@@ -297,15 +385,6 @@ type_dir = Dictionary[int, Texture2D]({
 6: SubResource("AtlasTexture_g5akd")
 })
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=148929762]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "After assigning stats, you get to move and attack in any order. When your turn is done, all NPCs move and attack simultaneously, summing their attack stats."
-label_settings = ExtResource("4_s5c1r")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=54432177]
 layout_mode = 2
 
@@ -320,9 +399,10 @@ size_flags_horizontal = 3
 text = "Back"
 back = true
 save = false
+force_text = true
 
 [node name="SceneChangeButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1190099506 instance=ExtResource("6_4do4k")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Main Menu"
-scene_link = SubResource("Resource_1by8w")
+text = "Next"
+scene_link = SubResource("Resource_yv6xu")

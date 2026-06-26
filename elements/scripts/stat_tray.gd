@@ -23,11 +23,11 @@ enum Stat{ MOVEMENT, ATTACK, DEFENSE, RANGE }
 		draggable = value
 		if modifier_dice:
 			modifier_dice.draggable = draggable
-
-var settable: bool = true:
+@export var settable: bool = true:
 	set(value):
 		settable = value
-		modifier_dice.reset(settable)
+		if modifier_dice:
+			modifier_dice.reset(settable)
 		
 var total_value: int:
 	set(value):
@@ -76,7 +76,7 @@ func _update():
 	enemy_stat_label.text = str(enemy_value)
 	enemy_stat_label.visible = enemy_value != 0
 	
-	remaining_value_label.text=  str(remaining_value)
+	remaining_value_label.text = str(remaining_value)
 	remaining_value_label.visible = show_remaining and ![Stat.DEFENSE, Stat.RANGE].has(stat)
 	slash_label.visible = show_remaining and ![Stat.DEFENSE, Stat.RANGE].has(stat)
 	

@@ -52,11 +52,11 @@ font_color = Color(0.5803922, 0.61960787, 0.17254902, 1)
 outline_size = 5
 outline_color = Color(0.11372549, 0.20784314, 0, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6h3d5"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dhaf3"]
 load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6x5ec"]
-atlas = SubResource("CompressedTexture2D_6h3d5")
+atlas = SubResource("CompressedTexture2D_dhaf3")
 region = Rect2(0, 192, 16, 16)
 
 [node name="StatTray" type="VBoxContainer" unique_id=1923911916]

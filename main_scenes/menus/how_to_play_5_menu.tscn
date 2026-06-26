@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://d2xwu18spsjnd"]
+
+[ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="1_c1ghe"]
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_xvuq0"]
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="3_c1lhm"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="4_ihh8g"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="5_hkfr5"]
+[ext_resource type="FontFile" uid="uid://ceg1s232ybolx" path="res://assets/fonts/Simple_Script.ttf" id="6_d0i1u"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="7_sbxhe"]
+[ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="8_wh8kr"]
+[ext_resource type="PackedScene" uid="uid://5s5nrtkggpll" path="res://main_scenes/menus/how_to_play_6_menu.tscn" id="9_c1lhm"]
+[ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="9_vkxn5"]
+
+[sub_resource type="FontVariation" id="FontVariation_1by8w"]
+base_font = ExtResource("6_d0i1u")
+baseline_offset = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ht36"]
+line_spacing = -4.0
+font = SubResource("FontVariation_1by8w")
+font_size = 7
+font_color = Color(0.827451, 0.85490197, 0.5137255, 1)
+outline_size = 7
+outline_color = Color(0.11372549, 0.20784314, 0, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 5
+stacked_outline_0/color = Color(0.63529414, 0.7137255, 0.4117647, 1)
+
+[sub_resource type="Resource" id="Resource_737wb"]
+script = ExtResource("9_vkxn5")
+packed_scene = ExtResource("9_c1lhm")
+button_text = "Next"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[node name="HowToPlay4Menu" type="Control" unique_id=374171008]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xvuq0")
+
+[node name="BgRect" parent="." unique_id=741438001 instance=ExtResource("1_c1ghe")]
+layout_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1945959859]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2125642126]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=758482226]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=1626328045]
+layout_mode = 2
+text = "Enemy Turn"
+label_settings = ExtResource("3_c1lhm")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=208826351]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2" unique_id=1405828377]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=773289462]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer" unique_id=1119217961]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=35051164]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer5" unique_id=930916148]
+layout_mode = 2
+text = "STAGES"
+label_settings = ExtResource("4_ihh8g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1427929981]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer" unique_id=1041847899]
+layout_mode = 2
+text = "Rolling"
+label_settings = ExtResource("5_hkfr5")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=120700637]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer2" unique_id=1158657224]
+layout_mode = 2
+text = "Allocation"
+label_settings = ExtResource("5_hkfr5")
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1038730096]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer3" unique_id=498000208]
+layout_mode = 2
+text = "Action"
+label_settings = ExtResource("5_hkfr5")
+
+[node name="PanelContainer4" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=144361183]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer4" unique_id=572417804]
+layout_mode = 2
+text = "Enemy"
+label_settings = SubResource("LabelSettings_2ht36")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1852460573]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All enemies will approach the player if a path exists on their turn. The enemies will then attack, summing their attack value for each enemy in range of the player. Just like the player attack, each increment of the players defence can be expended for 1 damage."
+label_settings = ExtResource("5_hkfr5")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=499993310]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer3" unique_id=39330594]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1970711352 instance=ExtResource("7_sbxhe")]
+custom_minimum_size = Vector2(48, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+back = true
+save = false
+force_text = true
+
+[node name="SceneChangeButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1772337532 instance=ExtResource("8_wh8kr")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+scene_link = SubResource("Resource_737wb")

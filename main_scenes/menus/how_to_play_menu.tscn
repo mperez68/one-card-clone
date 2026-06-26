@@ -4,13 +4,28 @@
 [ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_u0j5h"]
 [ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="3_onkxg"]
 [ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="4_8sa6x"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="4_vu6yh"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="5_370e6"]
 [ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="5_ymfkd"]
 [ext_resource type="Texture2D" uid="uid://8c83ni3ylisa" path="res://assets/icons/tut_01.png" id="6_8sa6x"]
-[ext_resource type="Texture2D" uid="uid://der3nu6e7r4ya" path="res://assets/icons/tut_02.png" id="7_370e6"]
+[ext_resource type="PackedScene" uid="uid://olkfe8ge6xfg" path="res://elements/dice.tscn" id="7_a88q2"]
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="9_vu6yh"]
 [ext_resource type="PackedScene" uid="uid://cgdgs7axekhqs" path="res://main_scenes/menus/how_to_play_2_menu.tscn" id="10_fdrl1"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="11_a88q2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ul8td"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7qy5"]
+atlas = SubResource("CompressedTexture2D_ul8td")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfep6"]
+load_path = "res://.godot/imported/dice.png-a6d99fb7cbff5fac1bb328e1b542bf16.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtwah"]
+atlas = SubResource("CompressedTexture2D_rfep6")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="Resource" id="Resource_1xnh8"]
 script = ExtResource("11_a88q2")
@@ -43,12 +58,12 @@ mouse_filter = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1282066935]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=1166627211]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=258883852]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=2043319978]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=1032498345]
 layout_mode = 2
-text = "Measurements"
+text = "Stages & Range"
 label_settings = ExtResource("4_8sa6x")
 horizontal_alignment = 1
 
@@ -59,13 +74,114 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=499227189]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer" unique_id=650214403]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2" unique_id=1698588074]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2/PanelContainer5" unique_id=1903486474]
+layout_mode = 2
+text = "STAGES"
+label_settings = ExtResource("4_vu6yh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2" unique_id=492562732]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2/PanelContainer" unique_id=472884164]
+layout_mode = 2
+text = "Rolling"
+label_settings = ExtResource("5_ymfkd")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2" unique_id=189039162]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2/PanelContainer2" unique_id=1279134895]
+layout_mode = 2
+text = "Allocation"
+label_settings = ExtResource("5_ymfkd")
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2" unique_id=1982324380]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2/PanelContainer3" unique_id=388389484]
+layout_mode = 2
+text = "Action"
+label_settings = ExtResource("5_ymfkd")
+
+[node name="PanelContainer4" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2" unique_id=1867142283]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/PanelContainer/VBoxContainer2/PanelContainer4" unique_id=638409075]
+layout_mode = 2
+text = "Enemy"
+label_settings = ExtResource("5_ymfkd")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=1576633475]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2" unique_id=1176043134]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1923843950]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=2089350526]
+layout_mode = 2
+text = "You"
+label_settings = ExtResource("5_ymfkd")
+horizontal_alignment = 1
+
+[node name="Dice" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=757168519 instance=ExtResource("7_a88q2")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_y7qy5")
+type = 3
+face_value = 6
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=975095603]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=1408616490]
+layout_mode = 2
+text = "NPC"
+label_settings = ExtResource("5_ymfkd")
+horizontal_alignment = 1
+
+[node name="Dice2" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=233665669 instance=ExtResource("7_a88q2")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_rtwah")
+type = 4
+face_value = 3
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2" unique_id=1902406289]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "The number on the dice is the remaining HP on the unit."
+label_settings = ExtResource("5_ymfkd")
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=1666254312]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer" unique_id=460504545]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Range is measured by 2 pts per adjacent tile and 3 per diagonal."
+text = "Range for movement and attacks is measured by 2 pts per adjacent tile and 3 per diagonal."
 label_settings = ExtResource("5_ymfkd")
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -75,24 +191,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 texture = ExtResource("6_8sa6x")
-stretch_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=650214403]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2" unique_id=559414302]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Each increment of defence that an attack reaches deal 1 damage."
-label_settings = ExtResource("5_ymfkd")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer2/VBoxContainer/VBoxContainer2" unique_id=2095904492]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-texture = ExtResource("7_370e6")
 stretch_mode = 2
 
 [node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=413213832]
@@ -109,6 +207,7 @@ size_flags_horizontal = 3
 text = "Back"
 back = true
 save = false
+force_text = true
 
 [node name="SceneChangeButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1107288493 instance=ExtResource("9_vu6yh")]
 layout_mode = 2

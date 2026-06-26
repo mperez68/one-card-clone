@@ -9,6 +9,7 @@ class_name QuitButton extends SfxButton
 	set(value):
 		save = value
 		_set_text()
+@export var force_text: bool = true
 
 
 # ENGINE
@@ -19,6 +20,8 @@ class_name QuitButton extends SfxButton
 
 # PRIVATE
 func _set_text():
+	if !force_text:
+		return
 	var all_text: String = "Back" if back else "Quit"
 	all_text = ("Save & " if save else "") + all_text
 	text = all_text

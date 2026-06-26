@@ -159,7 +159,7 @@ size_flags_horizontal = 7
 toggle_mode = true
 button_pressed = true
 button_group = SubResource("ButtonGroup_r0kdf")
-text = ""
+text = " "
 icon = SubResource("AtlasTexture_fxtgc")
 icon_alignment = 1
 
@@ -169,7 +169,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 toggle_mode = true
 button_group = SubResource("ButtonGroup_r0kdf")
-text = ""
+text = " "
 icon = SubResource("AtlasTexture_1by8w")
 icon_alignment = 1
 
@@ -179,7 +179,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 toggle_mode = true
 button_group = SubResource("ButtonGroup_r0kdf")
-text = ""
+text = " "
 icon = SubResource("AtlasTexture_a61fp")
 icon_alignment = 1
 
@@ -189,7 +189,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 toggle_mode = true
 button_group = SubResource("ButtonGroup_r0kdf")
-text = ""
+text = " "
 icon = SubResource("AtlasTexture_arclj")
 icon_alignment = 1
 
@@ -199,7 +199,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 toggle_mode = true
 button_group = SubResource("ButtonGroup_r0kdf")
-text = ""
+text = " "
 icon = SubResource("AtlasTexture_rm1g1")
 icon_alignment = 1
 
@@ -210,7 +210,7 @@ alignment = 1
 [node name="SceneChangeButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer" unique_id=871362439 instance=ExtResource("4_vb3i7")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Delve"
+text = "Play"
 scene_link = SubResource("Resource_clqb2")
 
 [node name="HowToPlayButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/BodyContainer/VBoxContainer/HBoxContainer" unique_id=689215967 instance=ExtResource("4_vb3i7")]
@@ -242,6 +242,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Quit"
 save = false
+force_text = true
 
 [node name="FooterContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=636837887 instance=ExtResource("9_yy0sh")]
 layout_mode = 2

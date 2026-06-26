@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="10_br3m6"]
 [ext_resource type="Texture2D" uid="uid://cksr8xyfen7uh" path="res://assets/sprites/rotation_anim.png" id="10_kvsxn"]
 [ext_resource type="PackedScene" uid="uid://b8h47c4naku05" path="res://ui/class_info.tscn" id="12_aqj45"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="13_fkcfm"]
+[ext_resource type="FontFile" uid="uid://mol4fxc6v1ey" path="res://assets/fonts/Micro_Chat.ttf" id="14_klftr"]
 [ext_resource type="Script" uid="uid://cerukfhjpjqtj" path="res://main_scenes/scripts/level_count_label.gd" id="15_3jom1"]
 [ext_resource type="PackedScene" uid="uid://dhb31yudghw1y" path="res://elements/spawn_marker.tscn" id="16_3ml1t"]
 [ext_resource type="PackedScene" uid="uid://c3njtoyv7xfje" path="res://main_scenes/menus/credits_menu.tscn" id="17_cf8wk"]
@@ -122,6 +124,10 @@ animations = [{
 "name": &"default",
 "speed": 16.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klftr"]
+atlas = ExtResource("6_3ml1t")
+region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="Resource" id="Resource_3jom1"]
 script = ExtResource("18_aqj45")
@@ -479,6 +485,19 @@ grow_vertical = 0
 layout_mode = 2
 player_class = 1
 
+[node name="QuitButton" parent="Hud/PlayerController/MarginContainer/Control" unique_id=1970711352 instance=ExtResource("13_fkcfm")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 1
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("14_klftr")
+theme_override_font_sizes/font_size = 5
+text = ""
+icon = SubResource("AtlasTexture_klftr")
+back = true
+save = false
+force_text = true
+
 [node name="EndGameContainer" type="Control" parent="Hud" unique_id=1498777416]
 unique_name_in_owner = true
 visible = false
@@ -653,6 +672,7 @@ grid_position = Vector3i(3, 5, 1)
 [connection signal="rolled" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/RollingContainer/VBoxContainer/PanelContainer/RollingDiceTray/RollingDice8" to="Hud/PlayerController" method="_on_dice_rolled"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/AllocationButton" to="Hud/PlayerController" method="_on_allocation_button_pressed"]
 [connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/VBoxContainer/EndTurnButton" to="Hud/PlayerController" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="Hud/PlayerController/MarginContainer/Control/QuitButton" to="Hud/PlayerController" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/SuccessButton" to="." method="_on_progression_button_pressed" binds= [0]]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SuccessButton1" to="." method="_on_progression_button_pressed" binds= [1]]
 [connection signal="pressed" from="Hud/EndGameContainer/CenterContainer/SuccessContainer/PanelContainer2/VBoxContainer/HBoxContainer/SuccessButton2" to="." method="_on_progression_button_pressed" binds= [2]]

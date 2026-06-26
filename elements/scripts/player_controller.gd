@@ -232,3 +232,7 @@ func _on_spin_button_pressed() -> void:
 		var temp_value: Face.Value = die.face_value
 		die.face_value = last_value
 		last_value = temp_value
+
+
+func _on_quit_button_pressed() -> void:
+	PlayerStatsManager.reset()

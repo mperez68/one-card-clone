@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://c6ixlxn4ql6nk"]
+
+[ext_resource type="PackedScene" uid="uid://bbtuq7qy671l2" path="res://ui/bg_rect.tscn" id="1_c1ghe"]
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_xvuq0"]
+[ext_resource type="Script" uid="uid://bau5mw2y51ge2" path="res://main_scenes/menus/scripts/how_to_play_3_menu.gd" id="2_hkfr5"]
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="3_c1lhm"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="4_ihh8g"]
+[ext_resource type="LabelSettings" uid="uid://vgt8qx0a0bxr" path="res://resources/ui/footer_settings.tres" id="5_hkfr5"]
+[ext_resource type="FontFile" uid="uid://ceg1s232ybolx" path="res://assets/fonts/Simple_Script.ttf" id="6_d0i1u"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="7_sbxhe"]
+[ext_resource type="PackedScene" uid="uid://capadifnn3uqv" path="res://elements/stat_tray.tscn" id="8_d0i1u"]
+[ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="8_wh8kr"]
+[ext_resource type="PackedScene" uid="uid://d2xwu18spsjnd" path="res://main_scenes/menus/how_to_play_5_menu.tscn" id="9_c1lhm"]
+[ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="9_vkxn5"]
+
+[sub_resource type="FontVariation" id="FontVariation_noybg"]
+base_font = ExtResource("6_d0i1u")
+baseline_offset = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_noybg"]
+line_spacing = -4.0
+font = SubResource("FontVariation_noybg")
+font_size = 7
+font_color = Color(0.827451, 0.85490197, 0.5137255, 1)
+outline_size = 7
+outline_color = Color(0.11372549, 0.20784314, 0, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 5
+stacked_outline_0/color = Color(0.63529414, 0.7137255, 0.4117647, 1)
+
+[sub_resource type="Resource" id="Resource_noybg"]
+script = ExtResource("9_vkxn5")
+packed_scene = ExtResource("9_c1lhm")
+button_text = "Next"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[node name="HowToPlay3Menu" type="Control" unique_id=390987045]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xvuq0")
+script = ExtResource("2_hkfr5")
+
+[node name="BgRect" parent="." unique_id=741438001 instance=ExtResource("1_c1ghe")]
+layout_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1664775080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=542310454]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=1907866312]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer" unique_id=123748593]
+layout_mode = 2
+text = "Action"
+label_settings = ExtResource("3_c1lhm")
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=1952630193]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2" unique_id=879895386]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1794000559]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer" unique_id=1759654761]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1695430603]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer5" unique_id=248589979]
+layout_mode = 2
+text = "STAGES"
+label_settings = ExtResource("4_ihh8g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1020487545]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer" unique_id=1342276429]
+layout_mode = 2
+text = "Rolling"
+label_settings = ExtResource("5_hkfr5")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=991183829]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer2" unique_id=1698262335]
+layout_mode = 2
+text = "Allocation"
+label_settings = ExtResource("5_hkfr5")
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=2146386421]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer3" unique_id=1819388287]
+layout_mode = 2
+text = "Action"
+label_settings = SubResource("LabelSettings_noybg")
+
+[node name="PanelContainer4" type="PanelContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1464181401]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/PanelContainer/VBoxContainer2/PanelContainer4" unique_id=525118807]
+layout_mode = 2
+text = "Enemy"
+label_settings = ExtResource("5_hkfr5")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1643022394]
+layout_mode = 2
+
+[node name="StatTray" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/HBoxContainer2" unique_id=1923911916 instance=ExtResource("8_d0i1u")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatTray2" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/HBoxContainer2" unique_id=1829821881 instance=ExtResource("8_d0i1u")]
+unique_name_in_owner = true
+layout_mode = 2
+stat = 1
+
+[node name="StatTray3" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/HBoxContainer2" unique_id=1818893558 instance=ExtResource("8_d0i1u")]
+unique_name_in_owner = true
+layout_mode = 2
+stat = 2
+
+[node name="StatTray4" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer/HBoxContainer2" unique_id=24855319 instance=ExtResource("8_d0i1u")]
+unique_name_in_owner = true
+layout_mode = 2
+stat = 3
+settable = false
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1924368911]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "In any order, you can expend increments of your movement and attack.
+The enemy defense stat is the cost for how much attack you must spend to deal 1 damage."
+label_settings = ExtResource("5_hkfr5")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=1239112112]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer3" unique_id=1838372153]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1970711352 instance=ExtResource("7_sbxhe")]
+custom_minimum_size = Vector2(48, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+back = true
+save = false
+force_text = true
+
+[node name="SceneChangeButton" parent="CenterContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1724906612 instance=ExtResource("8_wh8kr")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+scene_link = SubResource("Resource_noybg")
