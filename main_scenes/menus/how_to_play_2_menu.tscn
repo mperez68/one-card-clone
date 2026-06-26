@@ -317,6 +317,7 @@ type_dir = Dictionary[int, Texture2D]({
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+focus_mode = 0
 disabled = true
 text = ""
 icon = SubResource("AtlasTexture_u76b1")

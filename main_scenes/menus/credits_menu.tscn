@@ -53,7 +53,7 @@ layout_mode = 2
 
 [node name="HeaderLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/HeaderPanel" unique_id=1288688810]
 layout_mode = 2
-text = "Credits"
+text = "Thanks for Playing!"
 label_settings = ExtResource("1_600bw")
 horizontal_alignment = 1
 
@@ -85,42 +85,34 @@ horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer" unique_id=140745094]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 6
 columns = 2
 
 [node name="Label" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=538502523]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Ableton Live"
-label_settings = ExtResource("2_f2ib0")
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=1405995339]
-layout_mode = 2
-text = "Aseprite"
-label_settings = ExtResource("2_f2ib0")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=2117854986]
-layout_mode = 2
-text = "Massive Sound Library"
-label_settings = ExtResource("2_f2ib0")
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=865397463]
-layout_mode = 2
-text = "Tilesetter"
 label_settings = ExtResource("2_f2ib0")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=363788724]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "EastWest Sound Library"
 label_settings = ExtResource("2_f2ib0")
 horizontal_alignment = 1
 
-[node name="Label6" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=1708565453]
+[node name="Label4" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=1405995339]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Aseprite"
+label_settings = ExtResource("2_f2ib0")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/GridContainer" unique_id=865397463]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tilesetter"
 label_settings = ExtResource("2_f2ib0")
 horizontal_alignment = 1
 
@@ -149,5 +141,6 @@ grow_vertical = 0
 text = "Back"
 back = true
 save = false
+force_text = true
 
 [connection signal="meta_clicked" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/ScrollContainer/OptionsContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]

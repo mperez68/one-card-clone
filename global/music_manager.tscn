@@ -12,6 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://d1i57yr8k5j40" path="res://assets/music/02/intro_lead.wav" id="10_sdpgi"]
 [ext_resource type="AudioStream" uid="uid://bpps7hgqo3bvi" path="res://assets/music/02/loop_rhythm.wav" id="11_n4oys"]
 [ext_resource type="AudioStream" uid="uid://8rqy5tcackps" path="res://assets/music/02/loop_lead.wav" id="12_4n2xl"]
+[ext_resource type="AudioStream" uid="uid://b2q0facmq5plq" path="res://assets/music/corsairs/intro.wav" id="13_54quk"]
+[ext_resource type="AudioStream" uid="uid://byg2dt6f31d76" path="res://assets/music/corsairs/loop_rhythm.wav" id="14_sdfcm"]
+[ext_resource type="AudioStream" uid="uid://deaqtlckosnhj" path="res://assets/music/corsairs/loop_lead.wav" id="15_k1edt"]
 
 [node name="MusicManager" type="Node" unique_id=962444912]
 script = ExtResource("1_57y8n")
@@ -25,8 +28,13 @@ outro_rhythm = ExtResource("7_sdfcm")
 outro_lead = ExtResource("8_k1edt")
 
 [node name="Song2" parent="." unique_id=605536035 instance=ExtResource("2_jhamn")]
-song_name = "Menu"
 intro_rhythm = ExtResource("9_8oqg7")
 intro_lead = ExtResource("10_sdpgi")
 loop_rhythm = ExtResource("11_n4oys")
 loop_lead = ExtResource("12_4n2xl")
+
+[node name="Song" parent="." unique_id=1886313696 instance=ExtResource("2_jhamn")]
+song_name = "Menu"
+intro_rhythm = ExtResource("13_54quk")
+loop_rhythm = ExtResource("14_sdfcm")
+loop_lead = ExtResource("15_k1edt")
